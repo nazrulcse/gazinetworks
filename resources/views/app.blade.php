@@ -21,7 +21,7 @@
     <!-- Color CSS -->
     <link href="{{asset('css/color.css')}}" rel="stylesheet" type="text/css" media="all">
     <!-- Responsive CSS -->
-    <link href="{{asset('css/responsive.css')}}" rel="stylesheet" type="text/css" media="all">
+
 </head>
 
 <body>
@@ -53,7 +53,7 @@
         <div class="gt_top3_menu default_width">
             <div class="container">
                 <div class="gt-logo">
-                    <a href="index-2.html"><img src="{{asset('images/logo.png')}}" alt=""></a>
+                    <a><img src="{{asset('images/logo.png')}}" alt=""></a>
                 </div>
                 <nav class="gt_hdr3_navigation">
                     <!-- Responsive Buttun -->
@@ -64,7 +64,7 @@
                     </a>
                     <!-- Responsive Buttun -->
                     <ul class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class="active"><a>Home</a></li>
                         <li class=""><a href="about-us.html">About Us</a></li>
                         <li class=""><a href="package_view.html">Package</a>
                             <ul>
