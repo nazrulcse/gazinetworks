@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\v1;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,11 +13,6 @@ class UserController extends Controller
 
     public $successStatus = 200;
 
-    /**
-     * login api
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function login(){
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
             $user = Auth::user();
@@ -26,15 +21,10 @@ class UserController extends Controller
             return response()->json(['success' => $success], $this->successStatus);
         }
         else{
-            return response()->json(['error'=>'Unauthorised'], 401);
+            return response()->json(['error'=>'Unauthorized'], 401);
         }
     }
 
-    /**
-     * Register api
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -60,11 +50,6 @@ class UserController extends Controller
 
     }
 
-    /**
-     * details api
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function details()
     {
         $user = Auth::user();
