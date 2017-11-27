@@ -27,7 +27,6 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="user_email">Email</label>
                             {!! Form::label('email', 'Email:', ['class' => 'control-label']) !!}
                             {!! Form::text('email', null, ['class' => 'form-control']) !!}
                         </div>
@@ -39,6 +38,15 @@
                             {!! Form::text('phone', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <textarea class="form-control" id="address" name="address" placeholder="Enter Monthly Salary"></textarea>
+                        </div>
+                    </div>
+
+                    @if ($flag= request()->has('is_agent'))
 
                     <div class="col-md-6">
                         <div class="form-group">
@@ -56,10 +64,86 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!! Form::label('monthly_salary', 'Monthly Salary:', ['class' => 'control-label']) !!}
-                            {!! Form::text('monthly_salary', null, ['class' => 'form-control']) !!}
+                                {!! Form::label('monthly_salary', 'Monthly Salary:', ['class' => 'control-label']) !!}
+                                {!! Form::text('monthly_salary', null, ['class' => 'form-control']) !!}
+                         </div>
+                     </div>
+
+            @else
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('customer_id', 'Customer Id:', ['class' => 'control-label']) !!}
+                                {!! Form::text('customer_id', null, ['class' => 'form-control']) !!}
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('customer_road', 'Road:', ['class' => 'control-label']) !!}
+                                {!! Form::text('customer_road', null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('customer_house', 'House:', ['class' => 'control-label']) !!}
+                                {!! Form::text('customer_house', null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('customer_flat', 'Flat:', ['class' => 'control-label']) !!}
+                                {!! Form::text('customer_flat', null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('customer_tv_count', 'Number of TV:', ['class' => 'control-label']) !!}
+                                {!! Form::text('customer_tv_count', null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('customer_monthly_bill', 'Monthly Bill:', ['class' => 'control-label']) !!}
+                                {!! Form::text('customer_monthly_bill', null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('customer_discount', 'Discount:', ['class' => 'control-label']) !!}
+                                {!! Form::text('customer_discount', null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('customer_connection_charge', 'Connection Charge:', ['class' => 'control-label']) !!}
+                                {!! Form::text('customer_connection_charge', null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('customer_zone', 'Connection Charge:', ['class' => 'control-label']) !!}
+                                {!! Form::text('customer_zone', null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('', 'Additional Info:', ['class' => 'control-label']) !!}</br>
+                                {!! Form::checkbox('is_free','1', null) !!}Free of charge
+                                {!! Form::checkbox('set_top_box_iv','1', null) !!}Set-top box iv
+                                {!! Form::checkbox('status','1', null) !!}Status
+                            </div>
+                        </div>
+
+            @endif
+
 
                     <div class="col-md-6">
                         <div class="form-group">
@@ -74,15 +158,6 @@
                             {!! Form::text('c_password', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="address">Address</label>
-                            <textarea class="form-control" id="address" name="address" placeholder="Enter Monthly Salary"></textarea>
-                        </div>
-                    </div>
-
-
 
                     <div class="col-md-6">
                         <div class="form-group">

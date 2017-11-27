@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use App\Role;
 
 class UsersController extends Controller
 {
@@ -24,9 +25,35 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
-        $input = $request->all();
 
-        User::create($input);
+        $input = $request->all();
+        $image=$request->file('image');
+        if($image){
+            $image_name=str_random(20);
+            $text=strtolower($image->getClientOriginalExtension());
+            $image_full_name=$image_name.'.'.$text;
+            $upload_path='user_image/';
+            $image_url=$upload_path.$image_full_name;
+            $success=$image->move($upload_path,$image_full_name);
+            if($success){
+                $input['image']=$image_url;
+                $user = User::create($input);
+                return redirect()->back();
+            }
+        }
+        else{
+            $user = User::create($input);
+            return redirect()->back();
+        }
+
+
+        $user = User::create($input);
+
+        if ($request->has('customer_id')){
+            $user->attachRole(Role::where('name','customer')->first());
+        }else{
+            $user->attachRole(Role::where('name','agent')->first());
+        }
 
         return redirect()->back();
     }

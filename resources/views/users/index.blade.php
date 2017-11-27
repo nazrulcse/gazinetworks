@@ -15,8 +15,12 @@
                 <div class="box-header">
                     <h3 class="box-title">User list</h3>
                 </div>
-                <a class="btn btn-lg btn-primary" href="{{ URL::to('users/create') }}">
-                    Create User
+                <a class="btn btn-lg btn-primary" href="{{ URL::to('users/create?is_agent') }}">
+                    Create Agent
+                </a>
+
+                <a class="btn btn-lg btn-primary" href="{{ URL::to('users/create?is_customer') }}">
+                    Create Customer
                 </a>                <!-- /.box-header -->
                 <div class="box-body">
                     <table id="example2" class="table table-bordered table-hover">
@@ -41,7 +45,7 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->phone}}</td>
-                                <td>{{$user->image}}</td>
+                                <td><img src="{{$user->image}}"></td>
                                 <td>{{$user->work_zone}}</td>
                                 <td>{{$user->nid}}</td>
                                 <td>{{$user->address}}</td>
