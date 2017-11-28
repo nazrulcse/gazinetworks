@@ -8,13 +8,20 @@ use App\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Role;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
+        if($request->has('agents')){
+            $users = Role::where('name','agent')->first()->users()->get();
+//            $users = User::all();
+        }else{
+            $users = Role::where('name','customer')->first()->users()->get();
+        }
+
         return view('users.index')->with('users', $users);
     }
 
@@ -27,32 +34,35 @@ class UsersController extends Controller
     {
 
         $input = $request->all();
+        $input['customer_is_free'] = $request->has('customer_is_free') ? 1 : 0;
+        $input['customer_set_top_box_iv'] = $request->has('customer_set_top_box_iv') ? 1 : 0;
+        $input['customer_status'] = $request->has('customer_status') ? 1 : 0;
+
         $image=$request->file('image');
         if($image){
             $image_name=str_random(20);
             $text=strtolower($image->getClientOriginalExtension());
             $image_full_name=$image_name.'.'.$text;
-            $upload_path='user_image/';
+            $upload_path='uploads/user_image/';
             $image_url=$upload_path.$image_full_name;
             $success=$image->move($upload_path,$image_full_name);
             if($success){
                 $input['image']=$image_url;
                 $user = User::create($input);
-                return redirect()->back();
             }
         }
         else{
             $user = User::create($input);
-            return redirect()->back();
         }
-
-
-        $user = User::create($input);
 
         if ($request->has('customer_id')){
             $user->attachRole(Role::where('name','customer')->first());
+            flash('Customer created')->success();
+            return Redirect::to('users?customers');
         }else{
             $user->attachRole(Role::where('name','agent')->first());
+            flash('Agent created')->success();
+            return Redirect::to('users?agents');
         }
 
         return redirect()->back();
@@ -74,12 +84,35 @@ class UsersController extends Controller
     public function update($id, Request $request)
     {
         $user = User::findOrFail($id);
-
         $input = $request->all();
+        $input['customer_is_free'] = $request->has('customer_is_free') ? 1 : 0;
+        $input['customer_set_top_box_iv'] = $request->has('customer_set_top_box_iv') ? 1 : 0;
+        $input['customer_status'] = $request->has('customer_status') ? 1 : 0;
 
-        $user->fill($input)->save();
+        $image=$request->file('image');
+        if($image){
+            $image_name=str_random(20);
+            $text=strtolower($image->getClientOriginalExtension());
+            $image_full_name=$image_name.'.'.$text;
+            $upload_path='uploads/user_image/';
+            $image_url=$upload_path.$image_full_name;
+            $success=$image->move($upload_path,$image_full_name);
+            if($success){
+                $input['image']=$image_url;
+                $user->fill($input)->save();
+            }
+        }
+        else{
+            $user->fill($input)->save();
+        }
 
-        return redirect()->back();
+        if ($request->has('customer_id')){
+            flash('Customer updated')->success();
+            return Redirect::to('users?customers');
+        }else{
+            flash('Agent updated')->success();
+            return Redirect::to('users?agents');
+        }
     }
 
     public function destroy($id)
@@ -88,8 +121,8 @@ class UsersController extends Controller
         $user->delete();
 
         // redirect
-        Session::flash('message', 'Successfully deleted the nerd!');
-        return Redirect::to('users');
+        Session::flash('message', 'Successfully deleted the record!');
+        return redirect()->back();
     }
 
 }

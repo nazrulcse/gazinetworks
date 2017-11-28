@@ -10,12 +10,12 @@
         "barryvdh/laravel-ide-helper": "v2.4.1",
         "fideloper/proxy": "~3.3",
         "jeroennoten/laravel-adminlte": "^1.22",
+        "laracasts/flash": "^3.0",
         "laravel/framework": "5.5.*",
         "laravel/passport": "^4.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5",
         "zizaco/entrust": "5.2.x-dev"
-
     },
     "require-dev": {
         "filp/whoops": "~2.0",

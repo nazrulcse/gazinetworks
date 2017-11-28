@@ -181,6 +181,9 @@ return [
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        App\Providers\FormMacroServiceProvider::class,
+
 
     ],
 

@@ -116,8 +116,21 @@ return [
         ],
         [
             'text'        => 'Users',
-            'url'         => '/users',
             'icon'        => 'user',
+            'submenu' => [
+                [
+
+                    'text'  => 'Agents',
+                    'url'   => '/users?agents',
+                    'icon'  => 'address-card'
+                ],
+                [
+
+                    'text'  => 'Customers',
+                    'url'   => '/users?customers',
+                    'icon'  => 'address-book-o'
+                ]
+            ]
         ],
 
     ],

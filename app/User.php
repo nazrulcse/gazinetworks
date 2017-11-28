@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use App\Role;
 
 
 class User extends Authenticatable
@@ -15,15 +16,18 @@ class User extends Authenticatable
     use EntrustUserTrait;
 
     protected $fillable = [
-        'name', 'email', 'password','phone','work_zone','nid','address','monthly_salary','image'
+        'name', 'email', 'password','phone','work_zone','nid','address','monthly_salary','image',
+        'customer_id', 'customer_road', 'customer_house', 'customer_flat', 'customer_tv_count',
+        'customer_monthly_bill', 'customer_discount', 'customer_connection_charge', 'customer_is_free',
+        'customer_set_top_box_iv','customer_status','customer_zone'
     ];
 
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    public function role()
+    public function roles()
     {
-        return $this->hasOne('App\Role');
+        return $this->belongsToMany('App\Role', 'role_user');
     }
 }

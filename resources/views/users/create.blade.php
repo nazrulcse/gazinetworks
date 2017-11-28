@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Create Users</h1>
+    <h1>Create {{ request()->has('is_agent')? "Agent" : "Customer" }}</h1>
 @stop
 
 @section('content')
@@ -12,7 +12,7 @@
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">User Form</h3>
+                    <h3 class="box-title">{{ request()->has('is_agent')? "Agent" : "Customer" }} Form</h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
@@ -41,35 +41,35 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="address">Address</label>
-                            <textarea class="form-control" id="address" name="address" placeholder="Enter Monthly Salary"></textarea>
+                            {!! Form::label('address', 'Address:', ['class' => 'control-label']) !!}
+                            {!! Form::text('address', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     @if ($flag= request()->has('is_agent'))
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('work_zone', 'Work Zone:', ['class' => 'control-label']) !!}
-                            {!! Form::text('work_zone', null, ['class' => 'form-control']) !!}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('work_zone', 'Work Zone:', ['class' => 'control-label']) !!}
+                                {!! Form::text('work_zone', null, ['class' => 'form-control']) !!}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('nid', 'NID:', ['class' => 'control-label']) !!}
-                            {!! Form::text('nid', null, ['class' => 'form-control']) !!}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('nid', 'NID:', ['class' => 'control-label']) !!}
+                                {!! Form::text('nid', null, ['class' => 'form-control']) !!}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 {!! Form::label('monthly_salary', 'Monthly Salary:', ['class' => 'control-label']) !!}
                                 {!! Form::text('monthly_salary', null, ['class' => 'form-control']) !!}
-                         </div>
-                     </div>
+                            </div>
+                        </div>
 
-            @else
+                    @else
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_id', 'Customer Id:', ['class' => 'control-label']) !!}
@@ -128,21 +128,21 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::label('customer_zone', 'Connection Charge:', ['class' => 'control-label']) !!}
+                                {!! Form::label('customer_zone', 'Zone:', ['class' => 'control-label']) !!}
                                 {!! Form::text('customer_zone', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 {!! Form::label('', 'Additional Info:', ['class' => 'control-label']) !!}</br>
-                                {!! Form::checkbox('is_free','1', null) !!}Free of charge
-                                {!! Form::checkbox('set_top_box_iv','1', null) !!}Set-top box iv
-                                {!! Form::checkbox('status','1', null) !!}Status
+                                {!! Form::myCheckbox('customer_is_free','1','is_free', '', 'Free of charge') !!}
+                                {!! Form::myCheckbox('customer_set_top_box_iv','1','set_top_box_iv', '', 'Set-Top Box iv') !!}
+                                {!! Form::myCheckbox('customer_status','1','status', '', 'Status') !!}
                             </div>
                         </div>
 
-            @endif
+                    @endif
 
 
                     <div class="col-md-6">
