@@ -9,6 +9,7 @@ use App\Invoice;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
+
 class InvoiceController extends Controller{
 
     public $successStatus = 200;
@@ -34,7 +35,18 @@ class InvoiceController extends Controller{
         }
     }
 
-    public function customer_invoice(){
-        
+    public function customer_invoices(Request $request){
+
+        $list = Invoice::all()->where('customer_id','2')->toArray();
+
+        if(($list)){
+            $response['customer_id'] = $request['id'];
+            $response['invoice_list'] = $list;
+            $response['message'] = "Customer invoices received successfully";
+            return response()->json(['meta' => array('status' => $this->successStatus), 'response' => $response]);
+        }else{
+            $response['message'] = "Customer invoices can't be received";
+            return response()->json(['meta' => array('status' => $this->failureStatus), 'response' => $response]);
+        }
     }
 }

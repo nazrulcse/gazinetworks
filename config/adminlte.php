@@ -180,6 +180,20 @@ return [
             ]
         ],
 
+        [
+            'text'        => 'Payments',
+            'icon'        => 'money',
+            'submenu' => [
+
+                [
+                    'text'  => 'Payment List',
+                    'url'   => '/payments',
+                    'icon'  => 'list'
+                ],
+
+            ]
+        ]
+
     ],
 
     /*
