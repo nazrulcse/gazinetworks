@@ -15,11 +15,11 @@
 
     <title>Dish Cable &amp; ISP Billing - Home Page</title>
     <!-- Swiper Slider CSS -->
-    <link href="{{asset('css/swiper.css')}}" rel="stylesheet" type="text/css" media="all">
+    <link href="{{asset('public/css/swiper.css')}}" rel="stylesheet" type="text/css" media="all">
     <!-- Custom Main StyleSheet CSS -->
-    <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all">
+    <link href="{{asset('public/css/style.css')}}" rel="stylesheet" type="text/css" media="all">
     <!-- Color CSS -->
-    <link href="{{asset('css/color.css')}}" rel="stylesheet" type="text/css" media="all">
+    <link href="{{asset('public/css/color.css')}}" rel="stylesheet" type="text/css" media="all">
     <!-- Responsive CSS -->
 
 </head>
@@ -53,7 +53,7 @@
         <div class="gt_top3_menu default_width">
             <div class="container">
                 <div class="gt-logo">
-                    <a><img src="{{asset('images/logo.png')}}" alt=""></a>
+                    <a><img src="{{asset('public/images/logo.png')}}" alt=""></a>
                 </div>
                 <nav class="gt_hdr3_navigation">
                     <!-- Responsive Buttun -->
@@ -91,21 +91,21 @@
         <div class="swiper-container" id="swiper-container">
             <ul class="swiper-wrapper">
                 <li class="swiper-slide">
-                    <img src="{{asset('extra-images/1483791108.jpg')}}" alt="">
+                    <img src="{{asset('public/extra-images/1483791108.jpg')}}" alt="">
                     <div class="gt_banner_text gt_slide_1">
                         <h3>Welcome To Softking Cable Channel </h3>
                         <h2>It is a Bold text test</h2>
                     </div>
                 </li>
                 <li class="swiper-slide">
-                    <img src="{{asset('extra-images/1483791142.jpg')}}" alt="">
+                    <img src="{{asset('public/extra-images/1483791142.jpg')}}" alt="">
                     <div class="gt_banner_text gt_slide_1">
                         <h3>small text banner test</h3>
                         <h2>Bold text banner test</h2>
                     </div>
                 </li>
                 <li class="swiper-slide">
-                    <img src="{{asset('extra-images/1483791168.jpg')}}" alt="">
+                    <img src="{{asset('public/extra-images/1483791168.jpg')}}" alt="">
                     <div class="gt_banner_text gt_slide_1">
                         <h3>Slider small message test</h3>
                         <h2>Slider Bold message test</h2>
@@ -166,7 +166,7 @@
             <div class="container">
                 <div class="gt_hdg_1">
                     <h3>What we Services You</h3>
-                    <span><img src="{{asset('images/hdg-01.png')}}" alt=""></span>
+                    <span><img src="{{asset('public/images/hdg-01.png')}}" alt=""></span>
                     <p>Lorem Ipsum&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard ddummy text ever since the 1500s, when an unknowdn printer took af ghalley of type and scrambled dit to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
                 </div>
 
@@ -180,7 +180,7 @@
                 <div class="gt_hdg_1 white_hdg">
                     <h3>Our Company History</h3>
 
-                    <span><img src="{{asset('images/hdg-01.png')}}" alt=""></span>
+                    <span><img src="{{asset('public/images/hdg-01.png')}}" alt=""></span>
                 </div>
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
@@ -222,7 +222,7 @@
             <div class="container">
                 <div class="gt_hdg_1">
                     <h3>Popular Package</h3>
-                    <span><img src="{{asset('images/hdg-01.png')}}" alt=""></span>
+                    <span><img src="{{asset('public/images/hdg-01.png')}}" alt=""></span>
                 </div>
 
 
@@ -231,7 +231,7 @@
                     <div class="filterable-item all 1 col-md-4 col-sm-6 col-xs-12">
                         <div class="gt_latest_course2_wrap default_width">
                             <figure>
-                                <img src="{{asset('extra-images/latest-course-01.jpg')}}" alt="">
+                                <img src="{{asset('public/extra-images/latest-course-01.jpg')}}" alt="">
                                 <figcaption>
                                     <div class="course_price">1000</div>
                                     <div class="course_category bg_1">1.5mb</div>
@@ -246,7 +246,7 @@
                     <div class="filterable-item all 1 col-md-4 col-sm-6 col-xs-12">
                         <div class="gt_latest_course2_wrap default_width">
                             <figure>
-                                <img src="{{asset('extra-images/latest-course-01.jpg')}}" alt="">
+                                <img src="{{asset('public/extra-images/latest-course-01.jpg')}}" alt="">
                                 <figcaption>
                                     <div class="course_price">1500</div>
                                     <div class="course_category bg_1">2.5mb</div>
@@ -261,7 +261,7 @@
                     <div class="filterable-item all 1 col-md-4 col-sm-6 col-xs-12">
                         <div class="gt_latest_course2_wrap default_width">
                             <figure>
-                                <img src="{{asset('extra-images/latest-course-01.jpg')}}" alt="">
+                                <img src="{{asset('public/extra-images/latest-course-01.jpg')}}" alt="">
                                 <figcaption>
                                     <div class="course_price">2500</div>
                                     <div class="course_category bg_1">3.5mb</div>
@@ -290,7 +290,7 @@
                 <!--Main Heading Wrap Start-->
                 <div class="gt_hdg_1">
                     <h3>Our Sponsors</h3>
-                    <span><img src="{{asset('images/hdg-01.png')}}" alt=""></span>
+                    <span><img src="{{asset('public/images/hdg-01.png')}}" alt=""></span>
                 </div>
                 <!--Main Heading Wrap End-->
 
@@ -298,27 +298,27 @@
                 <div class="gt_brand_carousel owl-carouse">
                     <div class="item">
                         <div class="gt_brand_outer_wrap">
-                            <a href="#"><img src="{{asset('extra-images/1483782979.jpg')}}" alt="dgdfg" title="dgdfg"></a>
+                            <a href="#"><img src="{{asset('public/extra-images/1483782979.jpg')}}" alt="dgdfg" title="dgdfg"></a>
                         </div>
                     </div>
                     <div class="item">
                         <div class="gt_brand_outer_wrap">
-                            <a href="#"><img src="{{asset('extra-images/1483783283.jpg')}}" alt="Hasan Rahman" title="Hasan Rahman"></a>
+                            <a href="#"><img src="{{asset('public/extra-images/1483783283.jpg')}}" alt="Hasan Rahman" title="Hasan Rahman"></a>
                         </div>
                     </div>
                     <div class="item">
                         <div class="gt_brand_outer_wrap">
-                            <a href="#"><img src="{{asset('extra-images/1483783324.jpg')}}" alt="PHP" title="PHP"></a>
+                            <a href="#"><img src="{{asset('public/extra-images/1483783324.jpg')}}" alt="PHP" title="PHP"></a>
                         </div>
                     </div>
                     <div class="item">
                         <div class="gt_brand_outer_wrap">
-                            <a href="#"><img src="{{asset('extra-images/1483783720.jpg')}}" alt="fghgfh" title="fghgfh"></a>
+                            <a href="#"><img src="{{asset('public/extra-images/1483783720.jpg')}}" alt="fghgfh" title="fghgfh"></a>
                         </div>
                     </div>
                     <div class="item">
                         <div class="gt_brand_outer_wrap">
-                            <a href="#"><img src="{{asset('extra-images/1483783746.jpg')}}" alt="Hasan Rahman" title="Hasan Rahman"></a>
+                            <a href="#"><img src="{{asset('public/extra-images/1483783746.jpg')}}" alt="Hasan Rahman" title="Hasan Rahman"></a>
                         </div>
                     </div>
                 </div>
@@ -401,27 +401,27 @@
 
 
 <!--Jquery Library-->
-<script src="{{asset('js/jquery.js')}}"></script>
+<script src="{{asset('public/js/jquery.js')}}"></script>
 <!--Bootstrap core JavaScript-->
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('public/js/bootstrap.min.js')}}"></script>
 <!--Swiper JavaScript-->
-<script src="{{asset('js/swiper.jquery.min.js')}}"></script>
+<script src="{{asset('public/js/swiper.jquery.min.js')}}"></script>
 <!--Accordian JavaScript-->
-<script src="{{asset('js/jquery.accordion.js')}}"></script>
+<script src="{{asset('public/js/jquery.accordion.js')}}"></script>
 <!--Count Down JavaScript-->
-<script src="{{asset('js/jquery.downCount.js')}}"></script>
+<script src="{{asset('public/js/jquery.downCount.js')}}"></script>
 <!--Pretty Photo JavaScript-->
-<script src="{{asset('js/jquery.prettyPhoto.js')}}"></script>
+<script src="{{asset('public/js/jquery.prettyPhoto.js')}}"></script>
 <!--Owl Carousel JavaScript-->
-<script src="{{asset('js/owl.carousel.js')}}"></script>
+<script src="{{asset('public/js/owl.carousel.js')}}"></script>
 <!--Number Count (Waypoint) JavaScript-->
-<script src="{{asset('js/waypoints-min.js')}}"></script>
+<script src="{{asset('public/js/waypoints-min.js')}}"></script>
 <!--Filter able JavaScript-->
-<script src="{{asset('js/jquery-filterable.js')}}"></script>
+<script src="{{asset('public/js/jquery-filterable.js')}}"></script>
 <!--WOW JavaScript-->
-<script src="{{asset('js/wow.min.js')}}"></script>
+<script src="{{asset('public/js/wow.min.js')}}"></script>
 <!--Custom JavaScript-->
-<script src="{{asset('js/custom.js')}}"></script>
+<script src="{{asset('public/js/custom.js')}}"></script>
 
 </body>
 
