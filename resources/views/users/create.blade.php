@@ -78,7 +78,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <textarea class="form-control" id="address" name="address" placeholder="Enter Monthly Salary"></textarea>
+                            <textarea class="form-control" id="address" name="address" placeholder="Enter Address"></textarea>
                         </div>
                     </div>
 
