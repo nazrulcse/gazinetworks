@@ -15,11 +15,13 @@ class UsersController extends Controller
 
     public function index(Request $request)
     {
+
         if($request->has('agents')){
             $users = Role::where('name','agent')->first()->users()->get();
-//            $users = User::all();
-        }else{
+        }elseif($request->has('customers')){
             $users = Role::where('name','customer')->first()->users()->get();
+        }else{
+            $users = User::all();
         }
 
         return view('users.index')->with('users', $users);
@@ -121,7 +123,7 @@ class UsersController extends Controller
         $user->delete();
 
         // redirect
-        Session::flash('message', 'Successfully deleted the record!');
+        flash('Record deleted')->success();
         return redirect()->back();
     }
 

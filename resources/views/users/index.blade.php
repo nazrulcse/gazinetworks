@@ -18,7 +18,7 @@
                     <div class="box-header">
                         <h3 class="box-title">{{request()->has('agents')? "Agent List" : "Customer List"  }}</h3>
                     </div>
-                    @if(request()->has('agents'))
+{{--                    @if(request()->has('agents'))
                         <a class="btn btn-lg btn-primary create-btn" href="{{ URL::to('users/create?is_agent') }}">
                             Create Agent
                         </a>
@@ -26,7 +26,7 @@
                         <a class="btn btn-lg btn-primary create-btn" href="{{ URL::to('users/create?is_customer') }}">
                             Create Customer
                         </a>
-                    @endif
+                    @endif--}}
 
                     <div class="box-body">
                         <table id="example2" class="table table-bordered table-hover">
@@ -97,10 +97,10 @@
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                         @endif
-                                        <a class="btn btn-small btn-danger action-btn" style="width: 40px">
-                                            {{ Form::open(array('url' => 'users/' . $user->id, 'style'=>'margin-bottom:0')) }}
+                                        <a class="" style="width: 40px">
+                                            {{ Form::open(array('url' => 'users/' . $user->id, 'style'=>'margin-bottom:0;display:inline-block;')) }}
                                             {{ Form::hidden('_method', 'DELETE') }}
-                                            <i class="fa fa-remove"></i>
+                                            <button type="submit" class="btn btn-small btn-danger action-btn"><i class="fa fa-remove"></i></button>
                                             {{ Form::close() }}
                                         </a>
 
