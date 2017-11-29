@@ -83,15 +83,15 @@ Sidebar heading:	'Roboto Slab', serif;
 		   IMPORT CSS
 	  ==============================================================
 */
-	@import url('/css/bootstrap.min.css');
-	@import url('/css/owl.carousel.css');
-	@import url('/css/font-awesome.css');
-	@import url('/css/widget.css');
-	@import url('/css/typography.css');
-	@import url('/css/shortcodes.css');
-	@import url('/css/prettyPhoto.css');
-	@import url('/css/prettyPhoto.css');
-	@import url('/css/svg-style.css');
+	@import url('bootstrap.min.css');
+	@import url('owl.carousel.css');
+	@import url('font-awesome.css');
+	@import url('widget.css');
+	@import url('typography.css');
+	@import url('shortcodes.css');
+	@import url('prettyPhoto.css');
+	@import url('prettyPhoto.css');
+	@import url('svg-style.css');
 /*
 	  ==============================================================
 		   Default CSS
