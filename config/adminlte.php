@@ -108,30 +108,91 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        'MENU',
         [
-            'text' => 'Navigation',
+            'text' => 'Menu',
             'url'  => '',
             'can'  => '',
         ],
         [
-            'text'        => 'Users',
+            'text'        => 'Agents',
             'icon'        => 'user',
             'submenu' => [
                 [
 
-                    'text'  => 'Agents',
+                    'text'  => 'Agent List',
                     'url'   => '/users?agents',
-                    'icon'  => 'address-card'
+                    'icon'  => 'list-ol'
                 ],
                 [
 
-                    'text'  => 'Customers',
-                    'url'   => '/users?customers',
-                    'icon'  => 'address-book-o'
-                ]
+                    'text'  => 'Create Agent',
+                    'url'   => 'users/create?is_agent',
+                    'icon'  => 'address-card'
+                ],
             ]
         ],
+        [
+            'text'        => 'Customers',
+            'icon'        => 'address-book-o',
+            'submenu' => [
+
+                [
+                    'text'  => 'Customer List',
+                    'url'   => '/users?customers',
+                    'icon'  => 'list'
+                ],
+                [
+                    'text'  => 'Create Customer',
+                    'url'   => 'users/create?is_customer',
+                    'icon'  => 'address-card-o'
+                ],
+
+            ]
+        ],
+
+        [
+            'text'        => 'Invoices',
+            'icon'        => 'folder-open-o',
+            'submenu' => [
+
+                [
+                    'text'  => 'Invoice List',
+                    'url'   => '/invoices',
+                    'icon'  => 'file'
+                ],
+                [
+                    'text'  => 'Paid Invoices',
+                    'url'   => '/invoices?paid',
+                    'icon'  => 'file-text-o'
+                ],
+                [
+                    'text'  => 'Due Invoices',
+                    'url'   => '/invoices?due',
+                    'icon'  => 'file-zip-o'
+                ],
+                [
+                    'text'  => 'Create Invoice',
+                    'url'   => '/invoices/create',
+                    'icon'  => 'pencil'
+                ],
+
+            ]
+        ],
+
+        [
+            'text'        => 'Payments',
+            'icon'        => 'money',
+            'submenu' => [
+
+                [
+                    'text'  => 'Payment List',
+                    'url'   => '/payments',
+                    'icon'  => 'list'
+                ],
+
+            ]
+        ]
 
     ],
 

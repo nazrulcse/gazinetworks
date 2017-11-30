@@ -10,6 +10,7 @@
 @section('content')
     <section class="content">
         <div class="row">
+
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header with-border">
@@ -29,7 +30,6 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="user_email">Email</label>
                             {!! Form::label('email', 'Email:', ['class' => 'control-label']) !!}
                             {!! Form::text('email', null, ['class' => 'form-control']) !!}
                         </div>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
 
-                    @if ($flag= request()->has('is_agent'))
+                    @if ($flag= request()->has('agents'))
 
                     <div class="col-md-6">
                         <div class="form-group">
@@ -181,7 +181,7 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
                 {!! Form::close() !!}
             </div>
