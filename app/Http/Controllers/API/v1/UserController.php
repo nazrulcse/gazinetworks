@@ -18,6 +18,9 @@ class UserController extends Controller
             $user = Auth::user();
             $success['token'] =  $user->createToken('GaziNetworks')->accessToken;
             $success['message'] =  'Successfully logged in';
+            $success['id'] =  $user->id;
+            $success['type'] =  'customer';
+
             return response()->json(['success' => $success], $this->successStatus);
         }
         else{
@@ -50,7 +53,7 @@ class UserController extends Controller
 
     }
 
-    public function details()
+    public function profile()
     {
         $user = Auth::user();
         return response()->json(['success' => $user], $this->successStatus);

@@ -31,5 +31,5 @@ Route::group(['prefix' => '/v1'], function(){
 });
 
 Route::group(['prefix' => '/v1','middleware' => 'auth:api'], function(){
-    Route::post('details', 'API\v1\UserController@details');
+    Route::post('profile', 'API\v1\UserController@profile');
 });
