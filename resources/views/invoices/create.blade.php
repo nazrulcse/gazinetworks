@@ -22,7 +22,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!! Form::label('customer_id', 'Customer Name:', ['class' => 'control-label']) !!}
+                            {!! Form::label('customer_id', 'Customer Id:', ['class' => 'control-label']) !!}
                             {!! Form::select('customer_id', $customers,null, ['class' => 'form-control customer_select']) !!}
 
                         </div>

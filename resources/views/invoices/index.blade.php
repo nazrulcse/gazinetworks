@@ -82,6 +82,15 @@
                                             {{ Form::close() }}
                                         </a>
 
+                                        @if($invoice->status == 0 )
+                                        <a class="" style="width: 40px">
+                                            {{ Form::open(array('url' => '/payments?invoice='.$invoice->id, 'style'=>'margin-bottom:0;display:inline-block;')) }}
+                                            {{ Form::hidden('_method', 'POST') }}
+                                            <button type="submit" class="btn btn-small btn-success action-btn"><i class="fa fa-money"></i></button>
+                                            {{ Form::close() }}
+                                        </a>
+                                        @endif
+
                                         {{--                       <a class="btn btn-small btn-danger" href="{{URL::to('users/'. $user->id)}}" onclick="return check_delete();">
                                                                    <i class="fa fa-remove"></i>
                                                                </a>--}}

@@ -4,14 +4,9 @@ namespace App\Http\Controllers\API\v1;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
-use App\Invoice;
-use Illuminate\Support\Facades\Auth;
-use Validator;
 
-
-class InvoiceController extends Controller{
-
+class InvoiceController extends Controller
+{
     public $successStatus = 200;
     public $failureStatus = 100;
 
@@ -25,19 +20,29 @@ class InvoiceController extends Controller{
         $invoice['year'] = $request->year;
         $invoice['date'] = $request->date;
         $invoice['customer_id'] = $request->customer_id;
-        if ($invoice->save()){
-            $response['invoice_id'] = $invoice->id;
-            $response['message'] = "Invoice created successfully";
-            return response()->json(['meta' => array('status' => $this->successStatus), 'response' => $response]);
-        }else{
-            $response['message'] = "Invoice can't be created";
+
+        if (Invoice::where('customer_id', '=', $request['customer_id'])->where('month', '=', $month_name)->where('year', '=', $request['year'])->exists()) {
+
+            $response['message'] = "Invoice already exists";
             return response()->json(['meta' => array('status' => $this->failureStatus), 'response' => $response]);
+
+        }else{
+
+            if ($invoice->save()) {
+                $response['invoice_id'] = $invoice->id;
+                $response['message'] = "Invoice created successfully";
+                return response()->json(['meta' => array('status' => $this->successStatus), 'response' => $response]);
+            } else {
+                $response['message'] = "Invoice can't be created";
+                return response()->json(['meta' => array('status' => $this->failureStatus), 'response' => $response]);
+            }
+
         }
     }
 
     public function customer_invoices(Request $request){
 
-        $list = Invoice::all()->where('customer_id','2')->toArray();
+        $list = Invoice::all()->where('customer_id',$request['id'])->toArray();
 
         if(($list)){
             $response['customer_id'] = $request['id'];
