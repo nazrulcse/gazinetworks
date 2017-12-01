@@ -39,4 +39,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Payments', 'receiver_id');
     }
+
+    public function contact()
+    {
+        return $this->hasMany('App\Contact', 'customer_id');
+    }
+
+    public function complain()
+    {
+        return $this->hasMany('App\Complain', 'customer_id');
+    }
 }
