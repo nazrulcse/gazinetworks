@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Complain;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ComplainController extends Controller
 {

@@ -28,8 +28,11 @@ Route::group(['prefix' => '/v1'], function(){
     Route::post('payment/{}', 'API\v1\PaymentController@store');
     Route::post('contacts/store', 'API\v1\ContactController@store');
     Route::post('complain/store', 'API\v1\ComplainController@store');
+
 });
 
 Route::group(['prefix' => '/v1','middleware' => 'auth:api'], function(){
     Route::post('profile', 'API\v1\UserController@profile');
+    Route::post('details', 'API\v1\UserController@details');
+
 });

@@ -40,15 +40,15 @@
                             <tbody>
                             @foreach($contacts as $contact )
                                 <tr>
-                                    <td>{{$contacts->user->name}}</td>
-                                    <td>{{$contacts->user->customer_id}}</td>
-                                    <td>{{$contacts->subject}}</td>
-                                    <td>{{$contacts->category}}</td>
-                                    <td>{{$contacts->Message}}</td>
-                                    <td>{{ date('d/m/Y', strtotime($contacts->created_at))}}</td>
+                                    <td>{{$contact->user->name}}</td>
+                                    <td>{{$contact->user->customer_id}}</td>
+                                    <td>{{$contact->subject}}</td>
+                                    <td>{{$contact->category}}</td>
+                                    <td>{{$contact->message}}</td>
+                                    <td>{{ date('d/m/Y', strtotime($contact->created_at))}}</td>
                                     <td>
                                         <a class="" style="width: 40px">
-                                            {{ Form::open(array('url' => 'contacts/' . $complain->id, 'style'=>'margin-bottom:0;display:inline-block;')) }}
+                                            {{ Form::open(array('url' => 'contacts/' . $contact->id, 'style'=>'margin-bottom:0;display:inline-block;')) }}
                                             {{ Form::hidden('_method', 'DELETE') }}
                                             <button type="submit" class="btn btn-small btn-danger action-btn"><i class="fa fa-remove"></i></button>
                                             {{ Form::close() }}

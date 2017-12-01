@@ -194,13 +194,13 @@ return [
             [
 
                 'text'  => 'Customer Enquiry',
-                'url'   => '/complains',
+                'url'   => '/contacts',
                 'icon'  => 'phone-square'
             ],
             [
 
                 'text'  => 'Customer Complains',
-                'url'   => '/contacts',
+                'url'   => '/complains',
                 'icon'  => 'rss'
             ],
         ],
