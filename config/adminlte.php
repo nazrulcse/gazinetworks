@@ -110,11 +110,6 @@ return [
     'menu' => [
         'MENU',
         [
-            'text' => 'Menu',
-            'url'  => '',
-            'can'  => '',
-        ],
-        [
             'text'        => 'Agents',
             'icon'        => 'user',
             'submenu' => [
@@ -195,25 +190,20 @@ return [
         ],
 
         'Feedbacks',
-        [
-            'text' => 'Customer Feedbacks',
-            'url'  => '',
-            'can'  => '',
+
             [
 
-                'text'  => 'Customer',
-                'url'   => '/users?agents',
-                'icon'  => 'list-ol'
+                'text'  => 'Customer Enquiry',
+                'url'   => '/complains',
+                'icon'  => 'phone-square'
             ],
             [
 
-                'text'  => 'Agent List',
-                'url'   => '/users?agents',
-                'icon'  => 'list-ol'
+                'text'  => 'Customer Complains',
+                'url'   => '/contacts',
+                'icon'  => 'rss'
             ],
         ],
-
-    ],
 
     /*
     |--------------------------------------------------------------------------

@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1>
-        All Complains
+        All Customer Enquiries
 
     </h1>
 @stop
@@ -20,7 +20,7 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">
-                            Complain List
+                            Enquiry List
                         </h3>
                     </div>
 
