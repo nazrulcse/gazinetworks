@@ -4,9 +4,14 @@ namespace App\Http\Controllers\API\v1;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\Invoice;
+use Illuminate\Support\Facades\Auth;
+use Validator;
 
-class InvoiceController extends Controller
-{
+
+class InvoiceController extends Controller{
+
     public $successStatus = 200;
     public $failureStatus = 100;
 

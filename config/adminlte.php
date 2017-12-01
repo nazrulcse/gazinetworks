@@ -192,7 +192,26 @@ return [
                 ],
 
             ]
-        ]
+        ],
+
+        'Feedbacks',
+        [
+            'text' => 'Customer Feedbacks',
+            'url'  => '',
+            'can'  => '',
+            [
+
+                'text'  => 'Customer',
+                'url'   => '/users?agents',
+                'icon'  => 'list-ol'
+            ],
+            [
+
+                'text'  => 'Agent List',
+                'url'   => '/users?agents',
+                'icon'  => 'list-ol'
+            ],
+        ],
 
     ],
 

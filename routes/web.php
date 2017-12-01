@@ -8,6 +8,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('users', 'UsersController');
 
-Route::resource('invoices', 'InvoicesssController');
+Route::resource('invoices', 'InvoiceController');
 
 Route::resource('payments', 'PaymentController');
+
+Route::resource('contacts', 'ContactController');
+
+Route::resource('complains', 'ComplainController');
