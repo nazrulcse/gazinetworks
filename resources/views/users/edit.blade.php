@@ -8,7 +8,7 @@
 
 
 @section('content')
-    <section class="content">
+    <section class="contentxxx">
         <div class="row">
 
             <!-- general form elements -->

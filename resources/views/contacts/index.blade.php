@@ -12,9 +12,8 @@
 
 @section('content')
 
-    <section class="content">
+    <section class="contentXX">
         <div class="row">
-            <div class="col-xs-12">
                 @include('flash::message')
 
                 <div class="box">
@@ -25,7 +24,7 @@
                     </div>
 
                     <div class="box-body">
-                        <table id="example2" class="table table-bordered table-hover">
+                        <table id="example2" class="table table-hover beaccount-table table-striped">
                             <thead>
                             <tr>
                                 <th>Complain By</th>
@@ -46,7 +45,7 @@
                                     <td>{{$contact->category}}</td>
                                     <td>{{$contact->message}}</td>
                                     <td>{{ date('d/m/Y', strtotime($contact->created_at))}}</td>
-                                    <td>
+                                    <td class="text-right">
                                         <a class="" style="width: 40px">
                                             {{ Form::open(array('url' => 'contacts/' . $contact->id, 'style'=>'margin-bottom:0;display:inline-block;')) }}
                                             {{ Form::hidden('_method', 'DELETE') }}
@@ -61,7 +60,6 @@
                         </table>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
 

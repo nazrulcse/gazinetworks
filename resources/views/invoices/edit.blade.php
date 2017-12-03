@@ -8,7 +8,7 @@
 
 
 @section('content')
-    <section class="content">
+    <section class="contentXX">
         <div class="row">
 
 

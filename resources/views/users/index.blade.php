@@ -9,9 +9,8 @@
 
 @section('content')
 
-    <section class="content">
+    <section class="contentxx">
         <div class="row">
-            <div class="col-xs-12">
                 @include('flash::message')
 
                 <div class="box">
@@ -29,7 +28,7 @@
                     @endif--}}
 
                     <div class="box-body">
-                        <table id="example2" class="table table-bordered table-hover">
+                        <table id="example2" class="table table-hover beaccount-table table-striped">
                             <thead>
                             <tr>
                                 <th>Name</th>
@@ -84,7 +83,7 @@
                                         <td>{{$user->customer_status}}</td>
                                         <td>{{$user->customer_zone}}</td>
                                     @endif
-                                    <td>
+                                    <td class="text-right">
                                         {{--                                        <a class="btn btn-small btn-success action-btn" href="{{ URL::to('users/' . $user->id) }}">
                                                                                     <i class="fa fa-eye"></i>
                                                                                 </a>--}}
@@ -115,7 +114,6 @@
                         </table>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
 

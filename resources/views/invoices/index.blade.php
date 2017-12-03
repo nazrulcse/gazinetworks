@@ -18,9 +18,8 @@
 
 @section('content')
 
-    <section class="content">
+    <section class="contentXX">
         <div class="row">
-            <div class="col-xs-12">
                 @include('flash::message')
 
                 <div class="box">
@@ -48,7 +47,7 @@
                                         @endif--}}
 
                     <div class="box-body">
-                        <table id="example2" class="table table-bordered table-hover">
+                        <table id="example2" class="table table-hover beaccount-table table-striped">
                             <thead>
                             <tr>
                                 <th>Invoice of</th>
@@ -69,7 +68,7 @@
                                     <td>{{$invoice->date}}</td>
                                     <td>{{$invoice->month}}</td>
                                     <td>{{$invoice->year}}</td>
-                                    <td>
+                                    <td class="text-right">
 
                                             <a class="btn btn-small btn-info action-btn" href="{{ URL::to('invoices/' . $invoice->id . '/edit') }}">
                                                 <i class="fa fa-edit"></i>
@@ -102,7 +101,6 @@
                         </table>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
 

@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <section class="content">
+    <section class="contentxxx">
         <div class="row">
             <!-- general form elements -->
             <div class="box box-primary">
