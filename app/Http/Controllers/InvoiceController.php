@@ -34,10 +34,13 @@ class InvoiceController extends Controller
     public function store(Request $request){
 
         $input = $request->all();
+        $date = \Carbon\Carbon::now();
+        $day = $date->day;
         $month_name = date("F", mktime(0, 0, 0, $request['month'], 15));
         $customer_bill = User::where('id', $request['customer_id'])->first()->customer_monthly_bill;
         $input['month'] = $month_name;
         $input['invoice_amount'] = $customer_bill;
+        $input['date'] = $day;
 
         if(Invoice::where('customer_id', '=' ,$request['customer_id'])->where('month', '=' ,$month_name)->where('year', '=' ,$request['year'])->exists()){
             flash('Invoice already exists.')->info();
@@ -48,6 +51,13 @@ class InvoiceController extends Controller
             flash('Invoice created')->success();
             return Redirect::to('invoices');
         }
+    }
+
+    public function show($id){
+
+        $invoice = Invoice::find($id);
+        $user = User::find($invoice->customer_id);
+        return view('invoices.show')->with('invoice',$invoice)->with('user',$user);
     }
 
     public function edit($id){

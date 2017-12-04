@@ -205,7 +205,7 @@ return [
 
                 'text'  => 'Customer Complains',
                 'url'   => '/complains',
-                'icon'  => 'rss'
+                'icon'  => 'exclamation-circle'
             ],
         ],
 

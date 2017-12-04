@@ -16,10 +16,6 @@ class UsersController extends Controller
 
     public function index(Request $request)
     {
-        $date = \Carbon\Carbon::now();
-        $month_name = $date->day;
-        dd($month_name);
-
 
         if($request->has('agents')){
             $users = Role::where('name','agent')->first()->users()->get();
