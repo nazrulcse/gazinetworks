@@ -41,8 +41,6 @@
                                 <th>Customer Id</th>
                                 <th>Amount</th>
                                 <th>Date</th>
-                                <th>Month</th>
-                                <th>Year</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -52,9 +50,7 @@
                                     <td>{{$invoice->user->name}}</td>
                                     <td>{{$invoice->user->customer_id}}</td>
                                     <td>{{$invoice->user->customer_monthly_bill}}</td>
-                                    <td>{{$invoice->date}}</td>
-                                    <td>{{$invoice->month}}</td>
-                                    <td>{{$invoice->year}}</td>
+                                    <td>{{$invoice->date.' '.$invoice->month.', '.$invoice->year}}</td>
                                     <td class="text-right">
 
                                             <a class="btn btn-small btn-info action-btn" href="{{ URL::to('invoices/' . $invoice->id . '/edit') }}">
@@ -69,12 +65,9 @@
                                         </a>
 
                                         @if($invoice->status == 0 )
-                                        <a class="" style="width: 40px">
-                                            {{ Form::open(array('url' => '/payments?invoice='.$invoice->id, 'style'=>'margin-bottom:0;display:inline-block;')) }}
-                                            {{ Form::hidden('_method', 'POST') }}
-                                            <button type="submit" class="btn btn-small btn-success action-btn"><i class="fa fa-money"></i></button>
-                                            {{ Form::close() }}
-                                        </a>
+                                            <a class="btn btn-small btn-success action-btn" href="{{ URL::to('invoices/' . $invoice->id) }}">
+                                                <i class="fa fa-money"></i>
+                                            </a>
                                         @endif
 
                                         {{--                       <a class="btn btn-small btn-danger" href="{{URL::to('users/'. $user->id)}}" onclick="return check_delete();">

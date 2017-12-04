@@ -29,7 +29,6 @@
                                 <th>Customer Id</th>
                                 <th>Received By</th>
                                 <th>Invoice Month</th>
-                                <th>Invoice Year</th>
                                 <th>Payment Date</th>
                                 <th>Actions</th>
                             </tr>
@@ -40,8 +39,7 @@
                                     <td>{{$payment->invoice->user->name}}</td>
                                     <td>{{$payment->invoice->user->customer_id}}</td>
                                     <td>{{$payment->user->name}}</td>
-                                    <td>{{$payment->invoice->month}}</td>
-                                    <td>{{$payment->invoice->year}}</td>
+                                    <td>{{$payment->invoice->month.', '.$payment->invoice->year}}</td>
                                     <td>{{ date('d/m/Y', strtotime($payment->date))}}</td>
                                     <td class="text-right">
                                         <a class="" style="width: 40px">
@@ -56,6 +54,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        <input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
                     </div>
                 </div>
             </div>
@@ -67,9 +66,8 @@
 
 <script src="//code.jquery.com/jquery-1.12.4.js"></script>
 
-
-
 <script type="text/javascript">
+
 
     $(document).ready(function () {
         $('#example2').DataTable({
@@ -85,6 +83,6 @@
         });
 
         $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
-
+        
     });
 </script>

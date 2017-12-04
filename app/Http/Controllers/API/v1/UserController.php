@@ -14,7 +14,9 @@ class UserController extends Controller
     public $successStatus = 200;
 
     public function login(){
-        if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
+        if(Auth::attempt(['customer_id' => request('customer_id'),
+            'password' => request('password')])){
+
             $user = Auth::user();
             $success['token'] =  $user->createToken('GaziNetworks')->accessToken;
             $success['message'] =  'Successfully logged in';

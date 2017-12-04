@@ -30,7 +30,7 @@ class PaymentController extends Controller
 
         if($pay){
             Invoice::where('id', $request['invoice'])->update(array('status' => 1));
-            flash('Payment created')->success();
+            flash('Bill Collected')->success();
             return Redirect::back();
         }
 

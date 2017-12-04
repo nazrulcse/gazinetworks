@@ -41,15 +41,10 @@
                             {!! Form::selectMonth('month',null, ['class' => 'form-control customer_select']) !!}
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('date', 'Date:', ['class' => 'control-label']) !!}
-                            {!! Form::selectYear('date', 1, 31,null, ['class' => 'form-control customer_select']) !!}
-                        </div>
-                    </div>
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
+
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
                 {!! Form::close() !!}
 
