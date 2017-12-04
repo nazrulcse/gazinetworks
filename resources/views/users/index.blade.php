@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>{{ request()->has('agents')? "Agents" : "Customers" }}</h1>
+    <h1>{{ request()->has('agents')? "Agents List" : "Customers List" }}</h1>
 @stop
 
 
@@ -14,9 +14,6 @@
                 @include('flash::message')
 
                 <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">{{request()->has('agents')? "Agent List" : "Customer List"  }}</h3>
-                    </div>
 {{--                    @if(request()->has('agents'))
                         <a class="btn btn-lg btn-primary create-btn" href="{{ URL::to('users/create?is_agent') }}">
                             Create Agent
