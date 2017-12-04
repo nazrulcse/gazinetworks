@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
@@ -15,6 +16,10 @@ class UsersController extends Controller
 
     public function index(Request $request)
     {
+        $date = \Carbon\Carbon::now();
+        $month_name = $date->day;
+        dd($month_name);
+
 
         if($request->has('agents')){
             $users = Role::where('name','agent')->first()->users()->get();
@@ -32,13 +37,22 @@ class UsersController extends Controller
         return view('users.create');
     }
 
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
 
         $input = $request->all();
         $input['customer_is_free'] = $request->has('customer_is_free') ? 1 : 0;
         $input['customer_set_top_box_iv'] = $request->has('customer_set_top_box_iv') ? 1 : 0;
         $input['customer_status'] = $request->has('customer_status') ? 1 : 0;
+
+        if ($request->has('customer_tv_count')){
+            $input['customer_id'] = 'C'.$request['customer_road'].$request['customer_house'].$request['customer_flat'].rand(10, 99);
+
+        }else{
+            $input['customer_id'] = 'A'.rand(10000, 99999);
+        }
+
+        $input['password'] = bcrypt($input['customer_id']);
 
         $image=$request->file('image');
         if($image){
@@ -57,7 +71,7 @@ class UsersController extends Controller
             $user = User::create($input);
         }
 
-        if ($request->has('customer_id')){
+        if ($request->has('customer_tv_count')){
             $user->attachRole(Role::where('name','customer')->first());
             flash('Customer created')->success();
             return Redirect::to('users?customers');

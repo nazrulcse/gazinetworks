@@ -1,58 +1,62 @@
-/*
-Error: File to import not found or unreadable: menu.
-        on line 1 of custom.scss
+.create-btn {
+  float: right;
+  margin: 10px;
+  margin-bottom: 30px; }
 
-1: @import 'menu';
-2: 
-3: .create-btn{
-4:   float: right;
-5:   margin: 10px;
-6:   margin-bottom: 30px;
+.action-btn {
+  margin-top: 2px; }
 
-Backtrace:
-custom.scss:1
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/import_node.rb:67:in `rescue in import'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/import_node.rb:45:in `import'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/import_node.rb:28:in `imported_file'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/import_node.rb:37:in `css_import?'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:314:in `visit_import'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:36:in `visit'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/stack.rb:79:in `block in with_base'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/stack.rb:135:in `with_frame'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/stack.rb:79:in `with_base'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:162:in `visit'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:52:in `map'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:36:in `visit'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:161:in `visit'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:10:in `visit'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/root_node.rb:36:in `css_tree'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/engine.rb:307:in `render_with_sourcemap'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/plugin/compiler.rb:209:in `each'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/plugin.rb:82:in `update_stylesheets'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/exec/sass_scss.rb:51:in `process_result'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/exec/base.rb:52:in `parse'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/lib/sass/exec/base.rb:19:in `parse!'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/gems/sass-3.5.3/bin/scss:13:in `<top (required)>'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/bin/scss:23:in `load'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/bin/scss:23:in `<main>'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:15:in `eval'
-/home/raihan_rubel/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:15:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: File to import not found or unreadable: menu.\A         on line 1 of custom.scss\A \A 1: @import 'menu';\A 2: \A 3: .create-btn{\A 4:   float: right;\A 5:   margin: 10px;\A 6:   margin-bottom: 30px;"; }
+.beaccount-table {
+  margin-bottom: 0px; }
+
+.beaccount-table thead {
+  background: #0C6A83;
+  color: #fdfdfd; }
+
+.beaccount-table thead tr th {
+  font-size: 13px;
+  padding: 8px 8px;
+  border: none !important; }
+
+.beaccount-table tbody tr td {
+  padding: 4px 5px 4px 10px;
+  border: none !important; }
+
+.dataTable thead .sorting {
+  background-image: url("/public/images/sort_both.png") !important; }
+
+.box {
+  min-height: calc(100vh - 150px); }
+
+.dataTables_filter {
+  float: left !important; }
+
+.dataTables_filter input {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }
+
+.card-heading {
+  display: block;
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: 24px;
+  margin-left: 1em;
+  border-bottom: 1px #2196F3;
+  color: #fff; }
+
+/*# sourceMappingURL=custom.css.map */

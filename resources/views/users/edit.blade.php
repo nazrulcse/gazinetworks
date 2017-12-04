@@ -76,13 +76,6 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::label('customer_id', 'Customer Id:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_id', null, ['class' => 'form-control']) !!}
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
                                 {!! Form::label('customer_road', 'Road:', ['class' => 'control-label']) !!}
                                 {!! Form::text('customer_road', null, ['class' => 'form-control']) !!}
                             </div>
@@ -156,20 +149,6 @@
 
 
                     @endif
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('password', 'Password:', ['class' => 'control-label']) !!}
-                            {!! Form::text('password', null, ['class' => 'form-control']) !!}
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('c_password', 'Confirm Password:', ['class' => 'control-label']) !!}
-                            {!! Form::text('c_password', null, ['class' => 'form-control']) !!}
-                        </div>
-                    </div>
 
                     <div class="col-md-6">
                         <div class="form-group">

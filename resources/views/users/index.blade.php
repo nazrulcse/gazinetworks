@@ -37,21 +37,15 @@
                                     <th>Work Zone</th>
                                     <th>NID</th>
                                     <th>Monthly Salary</th>
+                                    <th>Agent ID</th>
                                 @else
                                     <th>Customer ID</th>
-                                    <th>Road</th>
-                                    <th>House</th>
-                                    <th>Flat</th>
                                     <th>Total TV</th>
                                     <th>Monthly Bill</th>
-                                    <th>Discount</th>
-                                    <th>Connection Charge</th>
-                                    <th>Charge Free?</th>
-                                    <th>Set-Top Box iv?</th>
-                                    <th>Status?</th>
-                                    <th>Zone</th>
                                 @endif
+                                @role('admin')
                                 <th>Actions</th>
+                                @endrole
                             </tr>
                             </thead>
                             <tbody>
@@ -66,24 +60,17 @@
                                         <td>{{$user->work_zone}}</td>
                                         <td>{{$user->nid}}</td>
                                         <td>{{$user->monthly_salary}}</td>
+                                        <td>{{$user->customer_id}}</td>
                                     @else
                                         <td>{{$user->customer_id}}</td>
-                                        <td>{{$user->customer_road}}</td>
-                                        <td>{{$user->customer_house}}</td>
-                                        <td>{{$user->customer_flat}}</td>
                                         <td>{{$user->customer_tv_count}}</td>
                                         <td>{{$user->customer_monthly_bill}}</td>
-                                        <td>{{$user->customer_discount}}</td>
-                                        <td>{{$user->customer_connection_charge}}</td>
-                                        <td>{{$user->customer_is_free}}</td>
-                                        <td>{{$user->customer_set_top_box_iv}}</td>
-                                        <td>{{$user->customer_status}}</td>
-                                        <td>{{$user->customer_zone}}</td>
                                     @endif
+                                    @role('admin')
                                     <td class="text-right">
-                                        {{--                                        <a class="btn btn-small btn-success action-btn" href="{{ URL::to('users/' . $user->id) }}">
-                                                                                    <i class="fa fa-eye"></i>
-                                                                                </a>--}}
+                                        <a class="btn btn-small btn-success action-btn" href="{{ URL::to('users/' . $user->id) }}">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
                                         @if(request()->has('agents'))
                                             <a class="btn btn-small btn-info action-btn" href="{{ URL::to('users/' . $user->id . '/edit?agents') }}">
                                                 <i class="fa fa-edit"></i>
@@ -105,6 +92,7 @@
                                                                </a>--}}
 
                                     </td>
+                                    @endrole
                                 </tr>
                             @endforeach
                             </tbody>

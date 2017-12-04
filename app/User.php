@@ -49,4 +49,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Complain', 'customer_id');
     }
+
+    public function findForPassport($identifier) {
+        return User::orWhere('email', $identifier)->orWhere('customer_id', $identifier)->first();
+    }
 }
