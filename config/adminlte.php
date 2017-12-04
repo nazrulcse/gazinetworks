@@ -112,18 +112,21 @@ return [
         [
             'text'        => 'Agents',
             'icon'        => 'user',
+            'role'   => 'admin',
             'submenu' => [
                 [
 
                     'text'  => 'Agent List',
                     'url'   => '/users?agents',
-                    'icon'  => 'list-ol'
+                    'icon'  => 'list-ol',
+
                 ],
                 [
 
                     'text'  => 'Create Agent',
                     'url'   => 'users/create?is_agent',
-                    'icon'  => 'address-card'
+                    'icon'  => 'address-card',
+
                 ],
             ]
         ],
@@ -140,7 +143,8 @@ return [
                 [
                     'text'  => 'Create Customer',
                     'url'   => 'users/create?is_customer',
-                    'icon'  => 'address-card-o'
+                    'icon'  => 'address-card-o',
+                    'role'   => 'admin',
                 ],
 
             ]
@@ -222,7 +226,8 @@ return [
         JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\SubmenuFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
+        //JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
+        App\MyMenuFilter::class,
     ],
 
     /*
