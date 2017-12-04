@@ -8,7 +8,7 @@ class Payment extends Model
 {
 
     protected $fillable = [
-        'invoice_id','receiver_id','date'
+        'invoice_id','receiver_id','date', 'amount'
     ];
 
     public function user()

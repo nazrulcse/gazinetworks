@@ -16,6 +16,6 @@ class Invoice extends Model
 
     public function payments()
     {
-        return $this->hasMany('App\Payments', 'invoice_id');
+        return $this->hasMany('App\Payment', 'invoice_id');
     }
 }

@@ -50,18 +50,27 @@ class UserController extends Controller
         $success['message'] =  'Registration Successful';
 
         return response()->json(['success'=>$success], $this->successStatus);
-
     }
 
     public function profile()
     {
         $user = Auth::user();
-        return response()->json(['success' => $user], $this->successStatus);
+        $invoices = $user->invoices;
+        $arr_invoice = array();
+        foreach ($invoices as $key => $invoice) {
+          $raw = array();
+          $raw['month'] = $invoice->month;
+          $raw['amount'] = $invoice->invoice_amount;
+          $raw['paid'] = $invoice->payments->sum('amount');
+          $raw['statue'] = $invoice->is_paid;
+          $arr_invoice[] = $raw;
+        }
+        return response()->json(['success' => $user, 'invoices' => $arr_invoice], $this->successStatus);
     }
 
         public function details()
     {
         $user = Auth::user();
-        return response()->json(['success' => $user], $this->successStatus);
+        return response()->json(['success' => $user, 'invoices' => $user->invoices()->toArray()], $this->successStatus);
     }
 }

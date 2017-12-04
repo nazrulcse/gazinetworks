@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Payment;
 use App\Invoice;
 use Validator;
+use DateTime;
 
 
 class PaymentController extends Controller{
@@ -28,24 +29,26 @@ class PaymentController extends Controller{
 
 
     public function store(Request $request){
-
-        $input = $request->all();
+        $input = array();
+        $invoice = Invoice::find($request->invoice_id);
         $input['invoice_id'] = $request->invoice_id;
         $input['receiver_id'] = $request->receiver_id;
+        $input['amount'] = $request->amount;
         $dt =  new DateTime();
         $input['date'] = $dt;
-
         $pay = Payment::create($input);
 
         if($pay){
-            Invoice::where('id', $request['invoice'])->update(array('status' => 1));
+            $total_pay = $invoice->payments->sum('amount');
+            if($total_pay >= $invoice->invoice_amount) {
+              $invoice->update(array('is_paid', true));
+            }
             $response['message'] = "Payments created successfully";
-            return response()->json(['meta' => array('status' => $this->successStatus), 'response' => $response]);
-        }else{
+            return response()->json(['status' => 200, 'response' => $response]);
+        } else{
             $response['message'] = "Payment can't be created";
             return response()->json(['meta' => array('status' => $this->failureStatus), 'response' => $response]);
         }
-
     }
 
     public function destroy($id){

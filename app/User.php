@@ -30,7 +30,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Role', 'role_user');
     }
-    public function invoice()
+    public function invoices()
     {
         return $this->hasMany('App\Invoice', 'customer_id');
     }
