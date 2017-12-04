@@ -3,13 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>
+    <h1 class='card-heading'>
         @if (request()->has('paid'))
-            Paid Invoices
+            Paid Invoices List
         @elseif (request()->has('due'))
-            Due Invoices
+            Due Invoices List
         @else
-            All Invoices
+            All Invoices List
         @endif
 
     </h1>
@@ -23,19 +23,6 @@
                 @include('flash::message')
 
                 <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">
-
-                            @if (request()->has('paid'))
-                                Paid Invoice List
-                            @elseif (request()->has('due'))
-                                Due Invoice List
-                            @else
-                                All Invoice List
-                            @endif
-
-                        </h3>
-                    </div>
                     {{--                    @if(request()->has('agents'))
                                             <a class="btn btn-lg btn-primary create-btn" href="{{ URL::to('users/create?is_agent') }}">
                                                 Create Agent
