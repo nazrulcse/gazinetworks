@@ -14,9 +14,9 @@ class InvoiceController extends Controller
     public function index(Request $request){
 
         if($request->has('paid')){
-            $invoices = Invoice::all()->where('status', 1);
+            $invoices = Invoice::all()->where('is_paid', 1);
         }elseif($request->has('due')){
-            $invoices = Invoice::all()->where('status', 0);
+            $invoices = Invoice::all()->where('is_paid', 0);
         }else{
             $invoices = Invoice::all();
         }

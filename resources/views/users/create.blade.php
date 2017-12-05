@@ -12,10 +12,6 @@
             <!-- general form elements -->
             <div class="box box-primary">
 
-                <div class="box-header with-border">
-                    <h3 class="box-title">{{ request()->has('is_agent')? "Agent" : "Customer" }} Form</h3>
-                </div>
-
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -140,7 +136,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('', 'Additional Info:', ['class' => 'control-label']) !!}</br>
                                 {!! Form::myCheckbox('customer_is_free','1','is_free', '', 'Free of charge') !!}
@@ -152,16 +148,18 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="image">File input</label>
+                            <label for="image">Agent photo</label>
                             <input type="file" id="image" name="image">
                         </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right">Create {{ request()->has('is_agent')? "Agent" : "Customer" }}</button>
+                        <a href="{{ URL::previous() }}" class="btn btn-danger pull-right" style="margin-right: 5px">Cancel</a>
                     </div>
                 </div>
                 <!-- /.box-body -->
 
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+
                 {!! Form::close() !!}
             </div>
         </div>

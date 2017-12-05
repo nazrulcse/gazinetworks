@@ -28,7 +28,10 @@
                                 <th>Payment Of</th>
                                 <th>Customer Id</th>
                                 <th>Received By</th>
-                                <th>Invoice Month</th>
+                                <th>Bill Period</th>
+                                <th>Invoice Amount</th>
+                                <th>Paid</th>
+                                <th>Due</th>
                                 <th>Payment Date</th>
                                 <th>Actions</th>
                             </tr>
@@ -40,6 +43,9 @@
                                     <td>{{$payment->invoice->user->customer_id}}</td>
                                     <td>{{$payment->user->name}}</td>
                                     <td>{{$payment->invoice->month.', '.$payment->invoice->year}}</td>
+                                    <td>{{$payment->invoice->invoice_amount}}</td>
+                                    <td>{{$payment->invoice->is_paid == 1 ? 'Full' : ($payment->amount) }}</td>
+                                    <td>{{$payment->invoice->is_paid == 1 ? 'None' : ($payment->invoice->invoice_amount - $payment->amount) }}</td>
                                     <td>{{ date('d/m/Y', strtotime($payment->date))}}</td>
                                     <td class="text-right">
                                         <a class="" style="width: 40px">
@@ -83,6 +89,6 @@
         });
 
         $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
-        
+
     });
 </script>

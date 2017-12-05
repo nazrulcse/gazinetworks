@@ -118,7 +118,7 @@ class UsersController extends Controller
             $user->fill($input)->save();
         }
 
-        if ($request->has('customer_id')){
+        if ($request->has('customer_tv_count')){
             flash('Customer updated')->success();
             return Redirect::to('users?customers');
         }else{

@@ -19,17 +19,26 @@ class PaymentController extends Controller
 
     public function store(Request $request){
 
+//        dd($request->toArray());
+
         $input = $request->all();
+        $invoice = Invoice::find($request->invoice);
         $input['invoice_id'] = $request->invoice;
         $receiver = Auth::user()->id;
         $input['receiver_id'] = $receiver;
+        $input['amount'] = $request->has('full_pay') ? $invoice->invoice_amount : $request->amount;
         $dt =  new DateTime();
         $input['date'] = $dt;
 
         $pay = Payment::create($input);
 
         if($pay){
-            Invoice::where('id', $request['invoice'])->update(array('status' => 1));
+
+            $total_pay = $invoice->payments->sum('amount');
+            if($total_pay >= $invoice->invoice_amount) {
+                $invoice->update(array('is_paid'=> 1));
+            }
+
             flash('Bill Collected')->success();
             return Redirect::back();
         }
@@ -41,7 +50,7 @@ class PaymentController extends Controller
     public function destroy($id){
 
         $paymnet = Payment::find($id);
-        Invoice::where('id', $paymnet->invoice_id)->update(array('status' => 0));
+        Invoice::find($paymnet->invoice_id)->update(array('is_paid' => 0));
         $paymnet->delete();
 
         flash('Payment deleted')->success();

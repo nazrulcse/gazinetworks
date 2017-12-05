@@ -3,11 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use NitinKaware\DependableSoftDeletable\Traits\DependableDeleteTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Invoice extends Model
 {
+    use DependableDeleteTrait, SoftDeletes ;
+
+    protected static $dependableRelationships = ['payments'];
+
     protected $fillable = [
-        'customer_id','invoice_amount','year','month','date'
+        'customer_id','invoice_amount','year','month','date','is_paid'
     ];
     public function user()
     {

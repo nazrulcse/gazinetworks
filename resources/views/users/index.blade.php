@@ -34,14 +34,14 @@
                             <th>Image</th>
                             <th>Address</th>
                             @if(request()->has('agents'))
-                                <th>Work Zone</th>
+                                <th>Zone</th>
                                 <th>NID</th>
-                                <th>Monthly Salary</th>
-                                <th>Agent ID</th>
+                                <th>Salary</th>
+                                <th>ID</th>
                             @else
-                                <th>Customer ID</th>
-                                <th>Total TV</th>
-                                <th>Monthly Bill</th>
+                                <th>ID</th>
+                                <th>TV</th>
+                                <th>Bill</th>
                             @endif
                             @role('admin')
                             <th>Actions</th>

@@ -39,38 +39,66 @@
                                                 <td>Address</td>
                                                 <td>{{$user->address}}</td>
                                             </tr>
+                                            <tr>
+
+                                                <td>Customer ID</td>
+                                                <td>{{$user->customer_id}}</td>
+                                            </tr>
+                                            <tr>
+
+                                                <td><h4><b>Invoice Month</b></h4></td>
+                                                <td><h4>{{$invoice->month.', '.$invoice->year}}</h4></td>
+                                            </tr>
+                                            <tr>
+                                                <td><h4><b>Invoice Amount</b></h4></td>
+                                                <td id="invoice_amount"><h4>{{$user->customer_monthly_bill}}</h4></td>
+                                            </tr>
+                                            @if($invoice->is_paid == 0)
                                                 <tr>
-
-                                                    <td>Customer ID</td>
-                                                    <td>{{$user->customer_id}}</td>
+                                                    <td><h4><b>Paid</b></h4></td>
+                                                    <td><h4>{{$invoice->payments->sum('amount')}}</h4></td>
                                                 </tr>
-                                            <tr>
-
-                                                    <td><h3>Invoice Month</h3></td>
-                                                    <td><h3>{{$invoice->month.', '.$invoice->year}}</h3></td>
+                                                <tr>
+                                                    <td><h4><b>Due</b></h4></td>
+                                                    <td><h4>{{$user->customer_monthly_bill - $invoice->payments->sum('amount')}}</h4></td>
                                                 </tr>
-                                            <tr>
+                                            @else
 
-                                                    <td><h3>Invoice Amount</h3></td>
-                                                    <td><h3>{{$user->customer_monthly_bill}}</h3></td>
+                                                <tr>
+                                                    <td style="color: green"><b>Full paid</b></td>
+                                                    <td style="color: green"><i class="fa fa-check"></i></td>
                                                 </tr>
+
+                                            @endif
 
 
                                             </tbody>
+
                                         </table>
 
-                                        @if($invoice->status == 0 )
-                                            <a class="" style="width: 40px">
+                                        @if($invoice->is_paid == 0 )
+                                            <div class="col-md-12">
                                                 {{ Form::open(array('url' => '/payments?invoice='.$invoice->id, 'style'=>'margin-bottom:0;display:inline-block;')) }}
-                                                {{ Form::hidden('_method', 'POST') }}
-                                                <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-money"></i> Collect Bill</button>
+                                                <div class="form-group">
+
+                                                    {!! Form::label('amount', 'Amount:', ['class' => 'control-label']) !!}
+                                                    {!! Form::text('amount', null, ['class' => 'form-control']) !!}
+                                                    @if($invoice->payments->sum('amount') == 0 )
+                                                        {!! Form::myCheckbox('full_pay','1','full_pay', '', 'Full Payment') !!}
+                                                    @endif
+
+                                                </div>
+
+                                                <button type="submit" class="btn btn-primary"><i class="fa fa-money"></i> Collect Bill</button>
                                                 {{ Form::close() }}
-                                            </a>
+                                            </div>
                                         @endif
 
                                     </div>
                                 </div>
+
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -78,3 +106,20 @@
         </div>
     </section>
 @stop
+
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        document.getElementById('full_pay').onchange = function() {
+            document.getElementById('amount').disabled = this.checked;
+            var amount = $("#invoice_amount").text();
+            document.getElementById('amount').value = amount;
+        };
+
+    });
+</script>
