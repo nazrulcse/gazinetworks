@@ -21,7 +21,9 @@ class UserController extends Controller
             $success['token'] =  $user->createToken('GaziNetworks')->accessToken;
             $success['message'] =  'Successfully logged in';
             $success['id'] =  $user->id;
-            $success['type'] =  'customer';
+            $success['type'] =  $user->roles->first()->name;
+            $success['name'] =  $user->name;
+            $success['login_id'] =  $user->customer_id;
 
             return response()->json(['success' => $success], $this->successStatus);
         }
@@ -67,10 +69,16 @@ class UserController extends Controller
           $raw['statue'] = $invoice->is_paid;
           $arr_invoice[] = $raw;
         }
-        return response()->json(['success' => $user, 'invoices' => $arr_invoice], $this->successStatus);
+        if($user->invoices->count() > 0) {
+           $status = $user->invoices->last()->is_paid;
+        }
+        else {
+           $status = false;
+        }
+        return response()->json(['success' => $user, 'last_invoice_status' => $status, 'invoices' => $arr_invoice], $this->successStatus);
     }
 
-        public function details()
+    public function details()
     {
         $user = Auth::user();
         return response()->json(['success' => $user, 'invoices' => $user->invoices()->toArray()], $this->successStatus);

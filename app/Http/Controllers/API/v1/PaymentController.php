@@ -16,10 +16,19 @@ class PaymentController extends Controller{
     public $failureStatus = 100;
 
     public function index(){
-        $payments = Payment::all()->toArray();
-        if(($payments)){
-            $response['all_payments'] = $payments;
-            $response['message'] = "All payments received successfully";
+        $payments = Payment::all();
+        if($payments){
+            $response = array();
+            foreach ($payments as $key => $payment) {
+                 $row = array();
+                 $row['customer_id'] = $payment->invoice->customer_id;
+                 $row['name'] = $payment->invoice->user->name;
+                 $row['id'] = $payment->id;
+                 $row['month'] = $payment->invoice->month;
+                 $row['amount'] = $payment->amount;
+                 $row['date'] = $payment->created_at->format('d/m/Y');
+                 $response[] = $row;
+            }
             return response()->json(['meta' => array('status' => $this->successStatus), 'response' => $response]);
         }else{
             $response['message'] = "Payments can't be received";

@@ -22,7 +22,7 @@ class CustomerController extends Controller
       	$api_customer['address'] = $customer->address;
       	$api_customer['mobile'] = $customer->phone;
       	$api_customer['tv'] = $customer->customer_tv_count;
-      	$api_customer['due'] = $customer->invoices()->sum('invoice_amount');
+      	$api_customer['due'] = $customer->total_due();
       	$response[$key] = $api_customer;
       }
       return response()->json(['status' => 200, 'response' => $response]);
@@ -36,6 +36,9 @@ class CustomerController extends Controller
         $response['mobile'] = $customer->phone;
         $response['tv'] = $customer->customer_tv_count;
         $response['line_charge'] = $customer->customer_monthly_bill;
+        if($customer->invoices->count() > 0) {
+          $response['last_bill'] = $customer->invoices->last()->is_paid;
+        }
         $response['invoices'] = array();
         $invoices = $customer->invoices;
         foreach ($invoices as $key => $invoice) {
@@ -51,7 +54,16 @@ class CustomerController extends Controller
     }
 
     public function payments($customer_id) {
-       $payments = Payment::join('invoice').where('invoices.customer_id', $customer_id);
-       return response()->json(['status' => 200, 'response' => $payments]);
+       $response = array();
+       $payments = Payment::join('invoices', 'payments.invoice_id', '=', 'invoices.id')->where('invoices.customer_id', $customer_id)->get();
+       foreach ($payments as $key => $payment) {
+         $row = array();
+         $row['id'] = $payment->id;
+         $row['month'] = $payment->invoice->month;
+         $row['amount'] = $payment->amount;
+         $row['date'] = $payment->created_at->format('d/m/Y');
+         $response[] = $row;
+       }
+       return response()->json(['status' => 200, 'response' => $response]);
     }
 }
