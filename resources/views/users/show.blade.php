@@ -25,87 +25,87 @@
                                     <div class="col-md-3 col-lg-3 " align="center"> <img src="{{asset($user->image)}}" class="img-circle img-responsive" style="height: 100px; width: 100px"> </div>
 
                                     <div class=" col-md-9 col-lg-9 ">
-                                        <table class="table table-user-information">
+                                        <table class="table table-user-information table-hover table-striped">
                                             <tbody>
                                             <tr>
-                                                <td>Email:</td>
+                                                <td><b>Email</b></td>
                                                 <td>{{$user->email}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Phone:</td>
+                                                <td><b>Phone</b></td>
                                                 <td>{{$user->phone}}</td>
                                             </tr>
 
 
                                             <tr>
-                                                <td>Address</td>
+                                                <td><b>Address</b></td>
                                                 <td>{{$user->address}}</td>
                                             </tr>
                                             @if (request()->has('agents'))
                                                 <tr>
-                                                    <td>Salary</td>
+                                                    <td><b>Salary</b></td>
                                                     <td>{{$user->monthly_salary}}</td>
 
                                                 </tr>                                                <tr>
-                                                    <td>Agent ID</td>
+                                                    <td><b>ID</b></td>
                                                     <td>{{$user->customer_id}}</td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td>Work Zone</td>
+                                                    <td><b>Work Zone</b></td>
                                                     <td>{{$user->work_zone}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>NID</td>
+                                                    <td><b>NID</b></td>
                                                     <td>{{$user->nid}}</td>
                                                 </tr>
                                                 @else
 
                                                 <tr>
 
-                                                    <td>Customer ID</td>
+                                                    <td><b>ID</b></td>
                                                     <td>{{$user->customer_id}}</td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td>Road</td>
+                                                    <td><b>Road</b></td>
                                                     <td>{{$user->customer_road}}</td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td>House</td>
+                                                    <td><b>House</b></td>
                                                     <td>{{$user->customer_house}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Flat</td>
+                                                    <td><b>Flat</b></td>
                                                     <td>{{$user->customer_flat}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Number of TV</td>
+                                                    <td><b>Number of TV</b></td>
                                                     <td>{{$user->customer_tv_count}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Monthly Bill</td>
+                                                    <td><b>Monthly Bill</b></td>
                                                     <td>{{$user->customer_monthly_bill}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Discount</td>
+                                                    <td><b>Discount</b></td>
                                                     <td>{{$user->customer_discount}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Connection Charge</td>
+                                                    <td><b>Connection Charge</b></td>
                                                     <td>{{$user->customer_connection_charge}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Zone</td>
+                                                    <td><b>Zone</b></td>
                                                     <td>{{$user->customer_zone}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Free of charge</td>
+                                                    <td><b>Free of charge</b></td>
                                                     <td>{{$user->customer_is_free == 1 ? 'Yes' : 'No'}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Set Top Box iv</td>
+                                                    <td><b>Set Top Box iv</b></td>
                                                     <td>{{$user->customer_set_top_box_iv == 1 ? 'Yes' : 'No'}}</td>
                                                 </tr>
                                             @endif

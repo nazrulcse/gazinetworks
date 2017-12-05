@@ -50,7 +50,7 @@ class PaymentController extends Controller{
         if($pay){
             $total_pay = $invoice->payments->sum('amount');
             if($total_pay >= $invoice->invoice_amount) {
-              $invoice->update(array('is_paid', true));
+              $invoice->update(array('is_paid' => 1));
             }
             $response['message'] = "Payments created successfully";
             return response()->json(['status' => 200, 'response' => $response]);

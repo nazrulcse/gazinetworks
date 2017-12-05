@@ -183,6 +183,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         App\Providers\FormMacroServiceProvider::class,
+        NitinKaware\DependableSoftDeletable\SoftDeletableServiceProvider::class,
 
 
     ],

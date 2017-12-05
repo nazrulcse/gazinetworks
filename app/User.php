@@ -6,14 +6,22 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
-use App\Role;
+use App\Payment;
+use NitinKaware\DependableSoftDeletable\Traits\DependableDeleteTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, DependableDeleteTrait;
+    use EntrustUserTrait { restore as private restoreA; }
+    use SoftDeletes { restore as private restoreB; }
 
-    use EntrustUserTrait;
+    public function restore()
+    {
+        $this->restoreA();
+        $this->restoreB();
+    }
 
     protected $fillable = [
         'name', 'email', 'password','phone','work_zone','nid','address','monthly_salary','image',
@@ -25,6 +33,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected static $dependableRelationships = ['contact', 'complain', 'invoices', 'payments'];
+
 
     public function roles()
     {
