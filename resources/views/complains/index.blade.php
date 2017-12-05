@@ -33,7 +33,9 @@
                                 <th>Category</th>
                                 <th>Message</th>
                                 <th>Complain Date</th>
+                                @role('admin')
                                 <th>Actions</th>
+                                @endrole
                             </tr>
                             </thead>
                             <tbody>
@@ -45,6 +47,7 @@
                                     <td>{{$complain->category}}</td>
                                     <td>{{$complain->message}}</td>
                                     <td>{{ date('d/m/Y', strtotime($complain->created_at))}}</td>
+                                    @role('admin')
                                     <td class="text-right">
                                         <a class="" style="width: 40px">
                                             {{ Form::open(array('url' => 'complains/' . $complain->id, 'style'=>'margin-bottom:0;display:inline-block;')) }}
@@ -54,6 +57,7 @@
                                         </a>
 
                                     </td>
+                                    @endrole
                                 </tr>
                             @endforeach
                             </tbody>

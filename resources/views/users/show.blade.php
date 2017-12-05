@@ -97,6 +97,10 @@
                                                     <td>{{$user->customer_connection_charge}}</td>
                                                 </tr>
                                                 <tr>
+                                                    <td><b>Connection Date</b></td>
+                                                    <td>{{date('d/m/Y', strtotime($user->customer_connection_date))}}</td>
+                                                </tr>
+                                                <tr>
                                                     <td><b>Zone</b></td>
                                                     <td>{{$user->customer_zone}}</td>
                                                 </tr>

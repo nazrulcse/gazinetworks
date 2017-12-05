@@ -25,7 +25,7 @@
 
             <!-- /.box-header -->
                 <!-- form start -->
-                {!! Form::open(['url' => '/users','enctype'=>'multipart/form-data']) !!}
+                {!! Form::open(['url' => '/users','enctype'=>'multipart/form-data', 'id'=>'agent-form']) !!}
                 <div class="box-body">
 
                     <div class="col-md-6">
@@ -75,6 +75,19 @@
                             <div class="form-group">
                                 {!! Form::label('monthly_salary', 'Monthly Salary:', ['class' => 'control-label']) !!}
                                 {!! Form::text('monthly_salary', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('password', 'Password:', ['class' => 'control-label']) !!}<span id="message" ></span>
+                                {!! Form::text('password', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('c_password', 'Confirm Password:', ['class' => 'control-label']) !!}
+                                {!! Form::text('c_password', null, ['class' => 'form-control', 'required' => 'required']) !!}
                             </div>
                         </div>
 
@@ -128,6 +141,18 @@
                                 {!! Form::text('customer_connection_charge', null, ['class' => 'form-control', 'required' => 'required']) !!}
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('customer_connection_date', 'Connection Date:', ['class' => 'control-label']) !!}
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    {!! Form::text('customer_connection_date', null, ['class' => 'form-control', 'required' => 'required', "data-date" => Carbon\Carbon::now() ]) !!}
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
@@ -164,4 +189,46 @@
             </div>
         </div>
     </section>
+@stop
+
+
+@section('js')
+    <script>
+
+        $('#customer_connection_date').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy',
+        });
+
+        $('#password, #c_password').on('keyup', validatePassword);
+
+
+        function validatePassword () {
+            var passwordVal  = $('#password').val();
+            var comfirmVal = $('#c_password').val();
+            if( passwordVal &&  comfirmVal){
+                if (passwordVal.length >= 6 ){
+                    if ($('#password').val() == $('#c_password').val()) {
+                        $('#message').html(' -Password matched.').css('color', 'green');
+                        return true;
+                    } else
+                        $('#message').html(' -Password not matched.').css('color', 'red');
+                    return false;
+                }
+                else{
+                    $('#message').html(' -Password should not be less than 6 characters.').css('color', 'red');
+                    return false;
+                }
+            }
+        }
+
+        $('#agent-form').on('submit', function (e) {
+            var check_validation = validatePassword();
+            if(check_validation === false){
+                e.preventDefault();
+                return false;
+            }
+        });
+
+    </script>
 @stop

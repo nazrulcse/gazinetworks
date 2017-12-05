@@ -17,7 +17,7 @@
 
                 <!-- /.box-header -->
                 <!-- form start -->
-                {!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id],'enctype'=>'multipart/form-data']) !!}
+                {!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id],'enctype'=>'multipart/form-data', 'id' => 'agent-edit-form']) !!}
                 <div class="box-body">
 
                     <div class="col-md-6">
@@ -69,6 +69,21 @@
                             {!! Form::text('monthly_salary', null, ['class' => 'form-control', 'required' => 'required']) !!}
                         </div>
                     </div>
+
+                        <div class="col-md-12"><h5><b>Change Password (Leave blank if there's no need to change) :</b></h5></div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('new_password', 'Password:', ['class' => 'control-label']) !!}<span id="message" ></span>
+                                {!! Form::text('new_password', null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('new_c_password', 'Confirm Password:', ['class' => 'control-label']) !!}
+                                {!! Form::text('new_c_password', null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
 
                     @else
 
@@ -123,6 +138,19 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
+                                {!! Form::label('customer_connection_date', 'Connection Date:', ['class' => 'control-label']) !!}
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    {!! Form::text('customer_connection_date', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 {!! Form::label('customer_zone', 'Zone:', ['class' => 'control-label']) !!}
                                 {!! Form::text('customer_zone', null, ['class' => 'form-control', 'required' => 'required']) !!}
                             </div>
@@ -163,4 +191,45 @@
             </div>
         </div>
     </section>
+
+@stop
+
+@section('js')
+    <script>
+
+        $('#customer_connection_date').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy',
+        });
+
+        $('#new_password, #new_c_password').on('keyup', validatePassword);
+
+        function validatePassword () {
+            var passwordVal  = $('#new_password').val();
+            var comfirmVal = $('#new_c_password').val();
+            if( passwordVal &&  comfirmVal){
+                if (passwordVal.length >= 6 ){
+                    if ($('#new_password').val() == $('#new_c_password').val()) {
+                        $('#message').html(' -Password matched.').css('color', 'green');
+                        return true;
+                    } else
+                        $('#message').html(' -Password not matched.').css('color', 'red');
+                    return false;
+                }
+                else{
+                    $('#message').html(' -Password should not be less than 6 characters.').css('color', 'red');
+                    return false;
+                }
+            }
+        }
+
+        $('#agent-edit-form').on('submit', function (e) {
+            var check_validation = validatePassword();
+            if(check_validation === false){
+                e.preventDefault();
+                return false;
+            }
+        });
+
+    </script>
 @stop

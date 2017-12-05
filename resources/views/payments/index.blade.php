@@ -33,7 +33,9 @@
                                 <th>Paid</th>
                                 <th>Due</th>
                                 <th>Payment Date</th>
+                                @role('admin')
                                 <th>Actions</th>
+                                @endrole
                             </tr>
                             </thead>
                             <tbody>
@@ -47,6 +49,7 @@
                                     <td>{{$payment->invoice->is_paid == 1 ? 'Full' : ($payment->amount) }}</td>
                                     <td>{{$payment->invoice->is_paid == 1 ? 'None' : ($payment->invoice->invoice_amount - $payment->amount) }}</td>
                                     <td>{{ date('d/m/Y', strtotime($payment->date))}}</td>
+                                    @role('admin')
                                     <td class="text-right">
                                         <a class="" style="width: 40px">
                                             {{ Form::open(array('url' => 'payments/' . $payment->id, 'style'=>'margin-bottom:0;display:inline-block;')) }}
@@ -56,11 +59,11 @@
                                         </a>
 
                                     </td>
+                                    @endrole
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                        <input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
                     </div>
                 </div>
             </div>

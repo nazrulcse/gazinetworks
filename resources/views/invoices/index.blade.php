@@ -48,6 +48,7 @@
                                 <td>{{$invoice->is_paid == 1 ? 'None' : ($invoice->invoice_amount - $invoice->payments->sum('amount')) }}</td>
                                 <td>{{$invoice->month.', '.$invoice->year}}</td>
                                 <td>{{ date('d/m/Y', strtotime($invoice->created_at))}}</td>
+                                @role(['admin','agent'])
                                 <td class="text-right">
 
                                     <a class="btn btn-small btn-success action-btn" href="{{ URL::to('invoices/' . $invoice->id) }}">
@@ -57,6 +58,9 @@
                                     <a class="btn btn-small btn-info action-btn" href="{{ URL::to('invoices/' . $invoice->id . '/edit') }}">
                                         <i class="fa fa-edit"></i>
                                     </a>
+                                    @endrole
+
+                                    @role('admin')
 
                                     <a class="" style="width: 40px">
                                         {{ Form::open(array('url' => 'invoices/' . $invoice->id, 'style'=>'margin-bottom:0;display:inline-block;')) }}
@@ -64,6 +68,7 @@
                                         <button type="submit" class="btn btn-small btn-danger action-btn"><i class="fa fa-remove"></i></button>
                                         {{ Form::close() }}
                                     </a>
+                                    @endrole
 
                                 </td>
                             </tr>

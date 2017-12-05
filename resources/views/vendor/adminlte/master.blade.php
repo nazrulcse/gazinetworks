@@ -23,8 +23,11 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('public/vendor/adminlte/dist/css/AdminLTE.min.css') }}">
     <link rel="stylesheet" text='text/css' href="{{ asset('public/vendor/adminlte/dist/css/custom.scss') }}">
+    <link rel="stylesheet" text='text/css' href="{{ asset('public/css/bootstrap-datepicker.min.css') }}">
 
-    @if(config('adminlte.plugins.datatables'))
+
+
+@if(config('adminlte.plugins.datatables'))
         <!-- DataTables -->
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
     @endif
@@ -34,9 +37,11 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
     <![endif]-->
 
     <!-- Google Font -->
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition @yield('body_class')">
@@ -44,7 +49,7 @@
 @yield('body')
 
 <script src="{{ asset('public/vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
-<script src="{{ asset('public/vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('public/js/bootstrap-datepicker.min.js') }}"></script>
 
 @if(config('adminlte.plugins.select2'))
     <!-- Select2 -->

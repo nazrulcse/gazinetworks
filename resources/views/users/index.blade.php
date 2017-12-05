@@ -112,27 +112,28 @@
 
 @stop
 
-<script src="//code.jquery.com/jquery-1.12.4.js"></script>
 
 
 
-<script type="text/javascript">
+@section('js')
+    <script type="text/javascript">
 
-    $(document).ready(function () {
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "scrollX": '100%',
-            "autoWidth": false,
-            "dom": 'T<"clear">lfrtip',
-            "tableTools": {
-                "sSwfPath": "/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"}
+        $(document).ready(function () {
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "scrollX": '100%',
+                "autoWidth": false,
+                "dom": 'T<"clear">lfrtip',
+                "tableTools": {
+                    "sSwfPath": "/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"}
+            });
+
+            $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
+
         });
-
-        $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
-
-    });
-</script>
+    </script>
+@stop

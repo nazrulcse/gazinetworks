@@ -133,6 +133,7 @@ return [
         [
             'text'        => 'Customers',
             'icon'        => 'address-book-o',
+            'role'        => ['admin', 'agent'],
             'submenu' => [
 
                 [
@@ -153,6 +154,7 @@ return [
         [
             'text'        => 'Invoices',
             'icon'        => 'folder-open-o',
+            'role'  => ['admin', 'agent'],
             'submenu' => [
 
                 [
@@ -182,6 +184,7 @@ return [
         [
             'text'        => 'Payments',
             'icon'        => 'money',
+            'role'  => ['admin', 'agent'],
             'submenu' => [
 
                 [
@@ -199,13 +202,15 @@ return [
 
                 'text'  => 'Customer Enquiry',
                 'url'   => '/contacts',
-                'icon'  => 'phone-square'
+                'icon'  => 'phone-square',
+                'role'  => ['admin', 'agent'],
             ],
             [
 
                 'text'  => 'Customer Complains',
                 'url'   => '/complains',
-                'icon'  => 'exclamation-circle'
+                'icon'  => 'exclamation-circle',
+                'role'  => ['admin', 'agent'],
             ],
         ],
 

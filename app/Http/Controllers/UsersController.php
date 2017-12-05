@@ -36,19 +36,24 @@ class UsersController extends Controller
     public function store(CreateUserRequest $request)
     {
 
+
         $input = $request->all();
         $input['customer_is_free'] = $request->has('customer_is_free') ? 1 : 0;
         $input['customer_set_top_box_iv'] = $request->has('customer_set_top_box_iv') ? 1 : 0;
         $input['customer_status'] = $request->has('customer_status') ? 1 : 0;
+        $input['customer_connection_date'] = date('Y-m-d', strtotime($request['customer_connection_date']));
 
         if ($request->has('customer_tv_count')){
-            $input['customer_id'] = 'C'.$request['customer_road'].$request['customer_house'].$request['customer_flat'].rand(10, 99);
+            $last_id = User::orderBy('created_at', 'desc')->first()->id;
+            $input['customer_id'] = 'CT'.$last_id.$request['customer_road'].$request['customer_house'].$request['customer_flat'].rand(10, 99);
+            $input['password'] = bcrypt($input['customer_id']);
 
         }else{
-            $input['customer_id'] = 'A'.rand(10000, 99999);
-        }
 
-        $input['password'] = bcrypt($input['customer_id']);
+            $last_id = User::orderBy('created_at', 'desc')->first()->id;
+            $input['customer_id'] = 'AG'.$last_id.rand(10000, 99999);
+            $input['password'] = bcrypt($input['password']);
+        }
 
         $image=$request->file('image');
         if($image){
@@ -100,7 +105,10 @@ class UsersController extends Controller
         $input['customer_is_free'] = $request->has('customer_is_free') ? 1 : 0;
         $input['customer_set_top_box_iv'] = $request->has('customer_set_top_box_iv') ? 1 : 0;
         $input['customer_status'] = $request->has('customer_status') ? 1 : 0;
-
+        $input['customer_connection_date'] = date('Y-m-d', strtotime($request['customer_connection_date']));
+        if(!empty($request['new_password'])){
+            $input['password'] = bcrypt($request['new_password']);
+        }
         $image=$request->file('image');
         if($image){
             $image_name=str_random(20);
