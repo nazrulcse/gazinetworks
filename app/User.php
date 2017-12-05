@@ -64,4 +64,10 @@ class User extends Authenticatable
     public function findForPassport($identifier) {
         return User::orWhere('email', $identifier)->orWhere('customer_id', $identifier)->first();
     }
+
+    public function total_due() {
+        $total_invoice = $this->invoices()->sum('invoice_amount');
+        $total_payment = Payment::join('invoices', 'payments.invoice_id', '=', 'invoices.id')->where('invoices.customer_id', $this->id)->sum('payments.amount');
+        return ($total_invoice - $total_payment);
+    }
 }
