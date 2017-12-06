@@ -117,6 +117,9 @@
                                 <th>Invoice Amount</th>
                                 <th>Paid</th>
                                 <th>Payment Date</th>
+                                @role('admin')
+                                <th>Actions</th>
+                                @endrole
                             </tr>
                             </thead>
                             <tbody>
@@ -127,6 +130,17 @@
                                     <td>{{$payment->invoice->invoice_amount}}</td>
                                     <td>{{ $payment->amount }}</td>
                                     <td>{{ date('d/m/Y', strtotime($payment->date))}}</td>
+                                    @role('admin')
+                                    <td class="text-right">
+                                        <a class="" style="width: 40px">
+                                            {{ Form::open(array('url' => 'payments/' . $payment->id, 'style'=>'margin-bottom:0;display:inline-block;')) }}
+                                            {{ Form::hidden('_method', 'DELETE') }}
+                                            <button type="submit" class="btn btn-small btn-danger action-btn"><i class="fa fa-remove"></i></button>
+                                            {{ Form::close() }}
+                                        </a>
+
+                                    </td>
+                                    @endrole
                                 </tr>
                             @endforeach
                             </tbody>

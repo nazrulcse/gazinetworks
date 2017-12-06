@@ -58,7 +58,7 @@ class PaymentController extends Controller
         $paymnet->delete();
 
         flash('Payment deleted')->success();
-        return Redirect::to('payments');
+        return Redirect::back();
 
     }
 }
