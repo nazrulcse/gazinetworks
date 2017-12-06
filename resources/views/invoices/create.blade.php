@@ -12,9 +12,7 @@
 
             <!-- general form elements -->
             <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Invoice Form</h3>
-                </div>
+
                 <!-- /.box-header -->
                 <!-- form start -->
                 {!! Form::open(['url' => '/invoices','enctype'=>'multipart/form-data']) !!}
@@ -43,9 +41,11 @@
                     </div>
 
                 </div>
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="box-footer" style="padding: 28px">
+                    <button type="submit" class="btn btn-primary pull-right">Create {{ request()->has('is_agent')? "Agent" : "Customer" }}</button>
+                    <a href="{{ URL::previous() }}" class="btn btn-danger pull-right" style="margin-right: 5px">Cancel</a>
                 </div>
+
                 {!! Form::close() !!}
 
             </div>

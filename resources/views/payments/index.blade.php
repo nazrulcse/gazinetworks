@@ -3,10 +3,10 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h1>
-    All Payments
+    <h1>
+        All Payments
 
-</h1>
+    </h1>
 @stop
 
 
@@ -14,40 +14,38 @@
 
     <section class="contentXX">
         <div class="row">
-                @include('flash::message')
+            @include('flash::message')
 
-                <div class="box">
-                    <div class="box-header">
-                        
-                    </div>
+            <div class="box">
+                <div class="box-header">
 
-                    <div class="box-body">
-                        <table id="example2" class="table table-hover beaccount-table table-striped">
-                            <thead>
+                </div>
+
+                <div class="box-body">
+                    <table id="example2" class="table table-hover beaccount-table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Payment Of</th>
+                            <th>Customer Id</th>
+                            <th>Received By</th>
+                            <th>Bill Period</th>
+                            <th>Invoice Amount</th>
+                            <th>Paid</th>
+                            <th>Payment Date</th>
+                            @role('admin')
+                            <th>Actions</th>
+                            @endrole
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($payments as $payment )
                             <tr>
-                                <th>Payment Of</th>
-                                <th>Customer Id</th>
-                                <th>Received By</th>
-                                <th>Bill Period</th>
-                                <th>Invoice Amount</th>
-                                <th>Paid</th>
-                                <th>Due</th>
-                                <th>Payment Date</th>
-                                @role('admin')
-                                <th>Actions</th>
-                                @endrole
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($payments as $payment )
-                                <tr>
-                                    <td>{{$payment->invoice->user->name}}</td>
-                                    <td>{{$payment->invoice->user->customer_id}}</td>
-                                    <td>{{$payment->user->name}}</td>
-                                    <td>{{$payment->invoice->month.', '.$payment->invoice->year}}</td>
-                                    <td>{{$payment->invoice->invoice_amount}}</td>
-                                    <td>{{$payment->invoice->is_paid == 1 ? 'Full' : ($payment->amount) }}</td>
-                                    <td>{{$payment->invoice->is_paid == 1 ? 'None' : ($payment->invoice->invoice_amount - $payment->amount) }}</td>
+                                <td>{{$payment->invoice->user->name}}</td>
+                                <td>{{$payment->invoice->user->customer_id}}</td>
+                                <td>{{$payment->user->name}}</td>
+                                <td>{{$payment->invoice->month.', '.$payment->invoice->year}}</td>
+                                <td>{{$payment->invoice->invoice_amount}}</td>
+                                <td>{{ $payment->amount }}</td>
                                     <td>{{ date('d/m/Y', strtotime($payment->date))}}</td>
                                     @role('admin')
                                     <td class="text-right">
@@ -60,13 +58,13 @@
 
                                     </td>
                                     @endrole
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
     </section>
 
     {{--<script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>--}}

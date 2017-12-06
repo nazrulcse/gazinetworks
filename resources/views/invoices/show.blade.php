@@ -102,7 +102,40 @@
                         </div>
                     </div>
                 </div>
+                <div class="box-body">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Payment History</h3>
+                    </div>
+
+                    <div class="box-body">
+                        <table id="example2" class="table table-hover beaccount-table table-striped">
+                            <thead>
+                            <tr>
+
+                                <th>Received By</th>
+                                <th>Bill Period</th>
+                                <th>Invoice Amount</th>
+                                <th>Paid</th>
+                                <th>Payment Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($invoice->payments as $payment)
+                                <tr>
+                                    <td>{{$payment->user->name}}</td>
+                                    <td>{{$payment->invoice->month.', '.$payment->invoice->year}}</td>
+                                    <td>{{$payment->invoice->invoice_amount}}</td>
+                                    <td>{{ $payment->amount }}</td>
+                                    <td>{{ date('d/m/Y', strtotime($payment->date))}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
+        </div>
         </div>
     </section>
 @stop
@@ -112,6 +145,18 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
+
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "dom": 'T<"clear">lfrtip',
+                "tableTools": {
+                    "sSwfPath": "/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"}
+            });
 
             document.getElementById('full_pay').onchange = function() {
                 document.getElementById('amount').readOnly = this.checked;
