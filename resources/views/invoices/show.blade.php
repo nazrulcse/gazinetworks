@@ -60,7 +60,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td><h4><b>Due</b></h4></td>
-                                                    <td><h4>{{$user->customer_monthly_bill - $invoice->payments->sum('amount')}}</h4></td>
+                                                    <td id="invoice_due"><h4>{{$user->customer_monthly_bill - $invoice->payments->sum('amount')}}</h4></td>
                                                 </tr>
                                             @else
 
@@ -83,9 +83,9 @@
 
                                                     {!! Form::label('amount', 'Amount:', ['class' => 'control-label']) !!}
                                                     {!! Form::text('amount', null, ['class' => 'form-control']) !!}
-                                                    @if($invoice->payments->sum('amount') == 0 )
-                                                        {!! Form::myCheckbox('full_pay','1','full_pay', '', 'Full Payment') !!}
-                                                    @endif
+
+                                                    {!! Form::myCheckbox('full_pay','1','full_pay', '', 'Full Payment') !!}
+
 
                                                 </div>
 
@@ -107,19 +107,18 @@
     </section>
 @stop
 
-<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+@section('js')
 
+    <script type="text/javascript">
 
+        $(document).ready(function () {
 
-<script type="text/javascript">
+            document.getElementById('full_pay').onchange = function() {
+                document.getElementById('amount').readOnly = this.checked;
+                var amount = $("#invoice_due").text();
+                document.getElementById('amount').value = amount;
+            };
 
-    $(document).ready(function () {
-
-        document.getElementById('full_pay').onchange = function() {
-            document.getElementById('amount').disabled = this.checked;
-            var amount = $("#invoice_amount").text();
-            document.getElementById('amount').value = amount;
-        };
-
-    });
-</script>
+        });
+    </script>
+@stop

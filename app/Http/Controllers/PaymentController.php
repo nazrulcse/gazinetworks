@@ -26,15 +26,19 @@ class PaymentController extends Controller
         $input['invoice_id'] = $request->invoice;
         $receiver = Auth::user()->id;
         $input['receiver_id'] = $receiver;
-        $input['amount'] = $request->has('full_pay') ? $invoice->invoice_amount : $request->amount;
+        $input['amount'] = $request->amount;
+
         $dt =  new DateTime();
         $input['date'] = $dt;
+
+
 
         $pay = Payment::create($input);
 
         if($pay){
 
             $total_pay = $invoice->payments->sum('amount');
+
             if($total_pay >= $invoice->invoice_amount) {
                 $invoice->update(array('is_paid'=> 1));
             }

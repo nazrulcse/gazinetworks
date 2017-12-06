@@ -77,7 +77,7 @@
                         </li>
                         <li  class=" "><a href="contact.html" >Contact Us</a></li>
                         <li  class=" "><a href="{{ route('login') }}">Login</a></li>
-                        <li  class=" "><a href="{{ route('register') }}">Register</a></li>
+                        {{--<li  class=" "><a href="{{ route('register') }}">Register</a></li>--}}
                     </ul>
                 </nav>
             </div>
