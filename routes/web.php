@@ -4,7 +4,7 @@ Route::get('/','WelcomeController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::resource('users', 'UsersController');
 

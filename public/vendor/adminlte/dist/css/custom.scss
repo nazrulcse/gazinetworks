@@ -45,7 +45,9 @@
 }
 
 .box {
-	min-height: calc(100vh - 150px)
+	  min-height: calc(100vh - 108px);
+    margin-bottom: -27px;
+    overflow-y: hidden;
 }
 
 .dataTables_filter {
@@ -88,4 +90,12 @@
 
 .dataTables_scrollHeadInner table {
     width: 100% !important;
+}
+
+.dashboard-graph {
+  margin-bottom: 10px;
+}
+
+.highcharts-credits {
+  display: none !important;
 }

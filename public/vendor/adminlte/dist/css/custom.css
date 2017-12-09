@@ -26,7 +26,10 @@
   background-image: url("/public/images/sort_both.png") !important; }
 
 .box {
-  min-height: calc(100vh - 150px); }
+    min-height: calc(100vh - 108px);
+    margin-bottom: -27px; 
+    overflow-y: hidden;
+}
 
 .dataTables_filter {
   float: left !important; }
