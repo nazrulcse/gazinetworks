@@ -200,6 +200,24 @@ return [
 
             ]
         ],
+        [
+            'text'        => 'Expenses',
+            'icon'        => 'usd',
+            'role'  => ['admin', 'agent'],
+            'submenu' => [
+
+                [
+                    'text'  => 'Expense List',
+                    'url'   => '/expenses',
+                    'icon'  => 'align-justify'
+                ],
+                [
+                    'text'  => 'New Expense',
+                    'url'   => '/expenses/create',
+                    'icon'  => 'plus-square-o'
+                ],
+            ]
+        ],
 
         'Feedbacks',
 
