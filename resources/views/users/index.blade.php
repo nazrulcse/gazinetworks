@@ -29,6 +29,7 @@
                         <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Status</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Image</th>
@@ -52,6 +53,11 @@
                         @foreach($users as $user)
                             <tr>
                                 <td>{{$user->name}}</td>
+                                <td>
+                                   {!!
+                                      $user->customer_status ? "<span class='label label-success'> Active </span>" : "<span class='label label-default'> Inactive </span>"
+                                    !!}
+                                </td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->phone}}</td>
                                 <td><img src="{{$user->image}}" style="height: 50px; width: 50px"></td>

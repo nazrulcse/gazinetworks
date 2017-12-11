@@ -135,6 +135,14 @@ class UsersController extends Controller
         }
     }
 
+    public function change_status($id) {
+      $user = User::find($id);
+      $user->customer_status = !$user->customer_status;
+      $user->save();
+      $role = $user->roles->first()->name;
+      return Redirect::to("users/{$user->id}?$role");
+    }
+
     public function destroy($id)
     {
         $user = User::find($id);

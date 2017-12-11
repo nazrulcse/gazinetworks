@@ -9,6 +9,7 @@ Route::get('/report/income', 'ReportsController@income')->name('income_report');
 Route::get('/report/expense', 'ReportsController@expense')->name('expense_report');
 
 Route::resource('users', 'UsersController');
+Route::get('/users/{id}/change_status', 'UsersController@change_status');
 
 Route::resource('invoices', 'InvoiceController');
 

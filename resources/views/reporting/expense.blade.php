@@ -25,7 +25,9 @@
 		                <input type='hidden' name='sdate' class='form-control'/>
 		                <input type='hidden' name='edate' class='form-control'/>
 	                </form>
-	              
+	                <h3 class='alert alert-warning'>
+	                	Total Expense: <b> {{ $total }} Taka </b>
+	                </h3>
 	                <div id='income_graph' style="min-width: 310px; height: 400px; margin: 10px auto"></div>
 	                <h3> Expense Details </h3>
                     <table id="example2" class="table table-hover beaccount-table table-striped">
@@ -59,10 +61,7 @@
 @stop
 
 @section('js')
-<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
 <script src='https://code.highcharts.com/highcharts.js'></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 <script type="text/javascript">
 
     $(document).ready(function () {
