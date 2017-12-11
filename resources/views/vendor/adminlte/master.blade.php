@@ -23,7 +23,7 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('public/vendor/adminlte/dist/css/AdminLTE.min.css') }}">
-    <link rel="stylesheet" text='text/css' href="{{ asset('public/vendor/adminlte/dist/css/custom.scss') }}">
+    <link rel="stylesheet" text='text/css' href="{{ asset('public/vendor/adminlte/dist/css/custom.css') }}">
     <link rel="stylesheet" text='text/css' href="{{ asset('public/css/bootstrap-datepicker.min.css') }}">
 
 
@@ -67,6 +67,7 @@
 @endif
 
 @yield('adminlte_js')
+@yield('custom_js')
 
 </body>
 </html>

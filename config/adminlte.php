@@ -85,7 +85,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
 
     'logout_url' => 'logout',
 
@@ -108,6 +108,11 @@ return [
     */
 
     'menu' => [
+        [
+          'text' => 'Dashboard',
+          'icon' => 'dashboard',
+          'url' => '/dashboard' 
+        ],
         'MENU',
         [
             'text'        => 'Agents',
@@ -193,6 +198,24 @@ return [
                     'icon'  => 'list'
                 ],
 
+            ]
+        ],
+        [
+            'text'        => 'Expenses',
+            'icon'        => 'usd',
+            'role'  => ['admin', 'agent'],
+            'submenu' => [
+
+                [
+                    'text'  => 'Expense List',
+                    'url'   => '/expenses',
+                    'icon'  => 'align-justify'
+                ],
+                [
+                    'text'  => 'New Expense',
+                    'url'   => '/expenses/create',
+                    'icon'  => 'plus-square-o'
+                ],
             ]
         ],
 
