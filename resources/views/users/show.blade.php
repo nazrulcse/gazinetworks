@@ -22,7 +22,20 @@
                             </div>
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-md-3 col-lg-3 " align="center"> <img src="{{asset($user->image)}}" class="img-circle img-responsive" style="height: 100px; width: 100px"> </div>
+                                    <div class="col-md-3 col-lg-3 " align="center"> 
+                                      <img src="{{asset($user->image ? $user->image : '/public/images/default.png')}}" class="img-circle img-responsive" style="width: 100px"/>
+                                      @if ($user->customer_status)
+                                        <div style='margin: 5px 0;'>
+                                          <span class='label label-success'> Active </span>
+                                        </div>
+                                        <a class='btn btn-danger' href="/users/{{$user->id}}/change_status"> Click To Inctive </a>
+                                      @else
+                                        <div style='margin: 5px 0;'>
+                                          <span class='label label-default'> Inactive </span>
+                                        </div>
+                                        <a class='btn btn-success' href="/users/{{$user->id}}/change_status"> Click To Active </a>
+                                      @endif
+                                    </div>
 
                                     <div class=" col-md-9 col-lg-9 ">
                                         <table class="table table-user-information table-hover table-striped">

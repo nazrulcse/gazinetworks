@@ -218,6 +218,23 @@ return [
                 ],
             ]
         ],
+        [
+          'text' => 'Reporting',
+          'icon' => 'line-chart',
+          'role' => ['admin', 'agent'],
+          'submenu' => [
+            [
+              'text' => 'Income',
+              'url' => '/report/income',
+              'icon' => 'usd'
+            ],
+            [
+              'text' => 'Expense',
+              'url' => '/report/expense',
+              'icon' => 'money'
+            ]
+          ]
+        ],
 
         'Feedbacks',
 
