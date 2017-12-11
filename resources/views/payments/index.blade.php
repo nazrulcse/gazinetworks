@@ -13,7 +13,7 @@
 @section('content')
 
     <div class="form-group text-center">
-        <label>Search Between Date</label>
+        <label>Search Between Dates</label>
 
         <div class="input-group" style="  width: 300px; margin: auto;padding-bottom: 10px;">
             <div class="input-group-addon">
@@ -25,6 +25,7 @@
     </div>
 
     @include('payments._payment_table')
+
 
 @stop
 @section('js')
@@ -51,6 +52,31 @@
                 locale: {
                     format: 'DD/MM/YYYY'
                 }
+            });
+
+            $( "#destroy-form" ).submit(function( event ) {
+                event.preventDefault();
+                swal({
+                    title: 'Are you sure?',
+                    text: "Please click confirm to delete this item",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'No, cancel!',
+                    confirmButtonClass: 'btn btn-success',
+                    cancelButtonClass: 'btn btn-danger',
+                    buttonsStyling: true
+                }).then(function() {
+                    $("#destroy-form").off("submit").submit();
+                }, function(dismiss) {
+                    // dismiss can be 'cancel', 'overlay',
+                    // 'close', and 'timer'
+                    if (dismiss === 'cancel') {
+                        swal('Cancelled', 'Delete Cancelled :)', 'error');
+                    }
+                })
             });
 
         });

@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('public/vendor/adminlte/dist/css/AdminLTE.min.css') }}">
     <link rel="stylesheet" text='text/css' href="{{ asset('public/vendor/adminlte/dist/css/custom.css') }}">
     <link rel="stylesheet" text='text/css' href="{{ asset('public/css/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" text='text/css' href="{{ asset('public/css/sweetalert2.min.css') }}">
 
 
 
@@ -53,6 +54,7 @@
 <script src="{{ asset('public/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('public/js/moment.min.js') }}"></script>
 <script src="{{ asset('public/js/daterangepicker.js') }}"></script>
+<script src="{{ asset('public/js/sweetalert2.min.js') }}"></script>
 
 
 @if(config('adminlte.plugins.select2'))

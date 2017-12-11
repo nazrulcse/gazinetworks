@@ -55,39 +55,46 @@
                         </div>
                     </div>
 
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('customer_id', 'ID:', ['class' => 'control-label']) !!}
+                            {!! Form::text('customer_id', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                        </div>
+                    </div>
+
                     @if ($flag= request()->has('is_agent'))
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('work_zone', 'Work Zone:', ['class' => 'control-label']) !!}
-                                {!! Form::text('work_zone', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('work_zone', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('nid', 'NID:', ['class' => 'control-label']) !!}
-                                {!! Form::text('nid', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('nid', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('monthly_salary', 'Monthly Salary:', ['class' => 'control-label']) !!}
-                                {!! Form::text('monthly_salary', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('monthly_salary', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('password', 'Password:', ['class' => 'control-label']) !!}<span id="message" ></span>
-                                {!! Form::text('password', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('password', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('c_password', 'Confirm Password:', ['class' => 'control-label']) !!}
-                                {!! Form::text('c_password', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('c_password', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
@@ -96,49 +103,49 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_road', 'Road:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_road', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_road', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_house', 'House:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_house', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_house', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_flat', 'Flat:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_flat', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_flat', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_tv_count', 'Number of TV:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_tv_count', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_tv_count', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_monthly_bill', 'Monthly Bill:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_monthly_bill', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_monthly_bill', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_discount', 'Discount:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_discount', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_discount', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_connection_charge', 'Connection Charge:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_connection_charge', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_connection_charge', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -148,7 +155,7 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    {!! Form::text('customer_connection_date', null, ['class' => 'form-control', 'required' => 'required', "data-date" => Carbon\Carbon::now() ]) !!}
+                                    {!! Form::text('customer_connection_date', null, ['class' => 'form-control', "data-date" => Carbon\Carbon::now() ]) !!}
                                 </div>
                                 <!-- /.input group -->
                             </div>
@@ -157,7 +164,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_zone', 'Zone:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_zone', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_zone', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
@@ -199,6 +206,19 @@
             autoclose: true,
             format: 'dd-mm-yyyy',
         });
+
+        $(document).ready(function () {
+
+            var random = Math.floor(Math.random() * (100000 - 1) + 1);
+
+            if ($('#work_zone').length) {
+                $('#customer_id').val('AG' + random);
+            } else {
+                $('#customer_id').val('CU' + random);
+            }
+
+        });
+
 
         $('#password, #c_password').on('keyup', validatePassword);
 

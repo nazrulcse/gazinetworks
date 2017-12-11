@@ -44,14 +44,11 @@ class UsersController extends Controller
         $input['customer_connection_date'] = date('Y-m-d', strtotime($request['customer_connection_date']));
 
         if ($request->has('customer_tv_count')){
-            $last_id = User::orderBy('created_at', 'desc')->first()->id;
-            $input['customer_id'] = 'CT'.$last_id.$request['customer_road'].$request['customer_house'].$request['customer_flat'].rand(10, 99);
+
             $input['password'] = bcrypt($input['customer_id']);
 
         }else{
 
-            $last_id = User::orderBy('created_at', 'desc')->first()->id;
-            $input['customer_id'] = 'AG'.$last_id.rand(10000, 99999);
             $input['password'] = bcrypt($input['password']);
         }
 
@@ -143,6 +140,23 @@ class UsersController extends Controller
         // redirect
         flash('Record deleted')->success();
         return redirect()->back();
+    }
+
+    public function search(Request $request){
+
+        $customers = Role::where('name','customer')->first()->users();
+
+        $users = $customers
+            ->where('name', 'LIKE', "%{$request['name']}%")
+            ->where('address', 'LIKE', "%{$request['address']}%")
+            ->where('customer_house', 'LIKE', "%{$request['house']}%")
+            ->where('customer_road', 'LIKE', "%{$request['road']}%")
+            ->get();
+
+        //dd($users->toArray());
+
+        return view('users.search_result')->with('users', $users);
+
     }
 
 }

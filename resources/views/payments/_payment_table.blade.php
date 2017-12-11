@@ -36,9 +36,9 @@
                             @role('admin')
                             <td class="text-right">
                                 <a class="" style="width: 40px">
-                                    {{ Form::open(array('url' => 'payments/' . $payment->id, 'style'=>'margin-bottom:0;display:inline-block;')) }}
+                                    {{ Form::open(array('url' => 'payments/' . $payment->id, 'style'=>'margin-bottom:0;display:inline-block;', "id" => 'destroy-form')) }}
                                     {{ Form::hidden('_method', 'DELETE') }}
-                                    <button type="submit" class="btn btn-small btn-danger action-btn"><i class="fa fa-remove"></i></button>
+                                    <button type="submit" class="btn btn-small btn-danger action-btn destroy"><i class="fa fa-remove"></i></button>
                                     {{ Form::close() }}
                                 </a>
 

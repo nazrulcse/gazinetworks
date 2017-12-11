@@ -47,6 +47,13 @@
                         </div>
                     </div>
 
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('customer_id', 'ID:', ['class' => 'control-label']) !!}
+                            {!! Form::text('customer_id', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                        </div>
+                    </div>
+
                     @if ($flag= request()->has('agents'))
 
                     <div class="col-md-6">

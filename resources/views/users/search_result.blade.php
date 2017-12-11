@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>{{ request()->has('agents')? "Agents List" : "Customers List" }}</h1>
+    <h1>Search Result</h1>
 @stop
 
 
@@ -17,11 +17,11 @@
 
             <div class="box">
 
-                @if (request()->has('customers'))
+
 
                     @include ('users._search_cusomer')
 
-                @endif
+               
 
                 <div class="box-body">
                     <table id="example2" class="table table-hover beaccount-table table-striped">
