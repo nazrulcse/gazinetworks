@@ -8,12 +8,37 @@ use Illuminate\Http\Request;
 use Auth;
 use DateTime;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Carbon;
+use Illuminate\View\View;
 
 class PaymentController extends Controller
 {
-    public function index(){
-        $payments = Payment::all();
-        return view('payments.index')->with('payments', $payments);
+    /**
+     * @param Request $request
+     * @return $this|string
+     */
+    public function index(Request $request){
+
+        if($request->ajax()){
+
+            $dateRange =  $request["dateRange"];
+            $dates = explode(' - ', $dateRange);
+            $start_date = Carbon::createFromFormat('d/m/Y', $dates[0])->startOfDay();
+            $end_date = Carbon::createFromFormat('d/m/Y', $dates[1])->endOfDay();
+
+            $payments = Payment::whereBetween('created_at', [$start_date, $end_date])->get();
+            $pay_view = view('payments._payment_table')->with('payments', $payments)->render();
+            return $pay_view;
+
+            \Log::info($payments);
+
+
+        }else{
+
+            $payments = Payment::all();
+            return view('payments.index')->with('payments', $payments);
+
+        }
 
     }
 
