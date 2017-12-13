@@ -20,12 +20,20 @@ class UsersController extends Controller
         if($request->has('agents')){
             $users = Role::where('name','agent')->first()->users()->get();
         }elseif($request->has('customers')){
-            $users = Role::where('name','customer')->first()->users()->get();
+            $users = Role::where('name','customer')->first()->users();
+            if($request->q) {
+                echo $request->q;
+                $users = $users->where('name', 'LIKE', "%{$request['q']}%")
+                         ->orWhere('address', 'LIKE', "%{$request['q']}%")
+                         ->orWhere('customer_house', 'LIKE', "%{$request['q']}%")
+                         ->orWhere('customer_road', 'LIKE', "%{$request['q']}%");
+            }
+            $users = $users->get();
         }else{
             $users = User::all();
         }
 
-        return view('users.index')->with('users', $users);
+        return view('users.index')->with(array('users' => $users, 'search' => $request->q));
     }
 
     public function create()

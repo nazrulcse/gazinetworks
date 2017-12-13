@@ -6,6 +6,7 @@ use App\Expense;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Validator;
+use App\ExpenseCategory;
 
 class ExpenseController extends Controller
 {
@@ -27,8 +28,7 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        $expense_category = array('Salary' => 'Salary', 'Purchase' => 'Purchase', 'Other' => 'Other', 'Rent' => 'Rent', 'Bazar' => 'Bazar');
-        return view('expenses.create')->with('category', $expense_category);
+        return view('expenses.create')->with('category', $this->category());
     }
 
     /**
@@ -73,9 +73,8 @@ class ExpenseController extends Controller
      */
     public function edit(Expense $expense)
     {
-        $expense_category = array('Salary' => 'Salary', 'Purchase' => 'Purchase', 'Other' => 'Other', 'Rent' => 'Rent', 'Bazar' => 'Bazar');
        $expense = Expense::find($expense->id);
-       return view('expenses.edit')->with(array('expense' => $expense, 'category' => $expense_category));
+       return view('expenses.edit')->with(array('expense' => $expense, 'category' => $this->category()));
     }
 
     /**
@@ -115,5 +114,14 @@ class ExpenseController extends Controller
        $expense = Expense::find($expense->id);
        $expense->delete();
        return Redirect::to('expenses');
+    }
+
+    public function category() {
+        $expense_category = array();
+        $categories = ExpenseCategory::select('name')->pluck('name');
+        foreach($categories as $key => $category) {
+          $expense_category[$category] = $category;
+        }
+      return $expense_category;
     }
 }

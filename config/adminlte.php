@@ -150,7 +150,7 @@ return [
                     'text'  => 'Create Customer',
                     'url'   => 'users/create?is_customer',
                     'icon'  => 'address-card-o',
-                    'role'   => 'admin',
+                    'role'   => ['admin', 'agent'],
                 ],
 
             ]
@@ -198,6 +198,24 @@ return [
                     'icon'  => 'list'
                 ],
 
+            ]
+        ],
+        [
+            'text'        => 'Expenses Category',
+            'icon'        => 'usd',
+            'role'  => ['admin', 'agent'],
+            'submenu' => [
+
+                [
+                    'text'  => 'Expense Category',
+                    'url'   => '/expense_categories',
+                    'icon'  => 'align-justify'
+                ],
+                [
+                    'text'  => 'New Expense Category',
+                    'url'   => '/expense_categories',
+                    'icon'  => 'plus-square-o'
+                ],
             ]
         ],
         [

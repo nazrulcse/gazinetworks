@@ -20,6 +20,7 @@
     <link href="{{asset('public/css/style.css')}}" rel="stylesheet" type="text/css" media="all">
     <!-- Color CSS -->
     <link href="{{asset('public/css/color.css')}}" rel="stylesheet" type="text/css" media="all">
+    <link href="{{asset('public/css/responsive.css')}}" rel="stylesheet" type="text/css" media="all">
     <!-- Responsive CSS -->
 
 </head>
@@ -67,13 +68,6 @@
                         <li class="active"><a>Home</a></li>
                         <li class=""><a href="about-us.html">About Us</a></li>
                         <li class=""><a href="package_view.html">Package</a>
-                            <ul>
-                                <li><a href="#">1.5mb -- package1200</a></li>
-                                <li><a href="#">2.5mb -- package2000</a></li>
-                                <li><a href="#">3.5mb -- package2500</a></li>
-                                <li><a href="#">4.5mb -- package1500</a></li>
-                                <li><a href="#">5.5mb -- package4500</a></li>
-                            </ul>
                         </li>
                         <li  class=" "><a href="contact.html" >Contact Us</a></li>
                         <li  class=" "><a href="{{ route('login') }}">Login</a></li>
