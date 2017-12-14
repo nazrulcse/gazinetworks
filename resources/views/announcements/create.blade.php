@@ -35,20 +35,27 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('publish_date', 'Publish Date*:', ['class' => 'control-label']) !!}
-                            {!! 
-                                Form::text('publish_date', '', ['class' => 'form-control'])
-                            !!}
+                            <div class="input-group date">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                {!! Form::text('publish_date', null, ['class' => 'form-control']) !!}
+                            </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('expire_date', 'Expire Date*:', ['class' => 'control-label']) !!}
-                            {!! 
-                                Form::text('expire_date', '', ['class' => 'form-control'])
-                            !!}
+                            <div class="input-group date">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                {!! Form::text('expire_date', null, ['class' => 'form-control']) !!}
+                            </div>
                         </div>
                     </div>
+                    
                     <div class='clear'></div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary pull-right">Create Announcement </button>
