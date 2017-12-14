@@ -46,7 +46,7 @@
                                   <div class="form-group">
                                       {!! Form::label('description', 'Category Description:', ['class' => 'control-label']) !!}
                                       {!! 
-                                          Form::textarea('description', null, ['class' => 'form-control customer_select', 'style' => 'height: 70px;'])
+                                          Form::textarea('description', null, ['class' => 'form-control', 'style' => 'height: 70px;'])
                                       !!}
                                   </div>
                               </div>

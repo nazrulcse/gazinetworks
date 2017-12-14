@@ -21,12 +21,12 @@
                         <table id="example2" class="table table-hover beaccount-table table-striped">
                             <thead>
                             <tr>
-                                <th>Complain By</th>
+                                <th>Name</th>
                                 <th>Customer Id</th>
                                 <th>Category</th>
                                 <th>Subject</th>
                                 <th>Message</th>
-                                <th>Complain Date</th>
+                                <th>Date</th>
                                 @role('admin')
                                 <th>Actions</th>
                                 @endrole

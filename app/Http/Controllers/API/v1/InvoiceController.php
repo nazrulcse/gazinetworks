@@ -60,6 +60,7 @@ class InvoiceController extends Controller{
            $customer_info['amount'] = $invoice->invoice_amount;
            $customer_info['paid'] = $invoice->payments->sum('amount');
            $customer_info['customer_id'] = $customer->id;
+           $customer_info['login_id'] = $customer->customer_id;
            $customer_info['id'] = $invoice->id;
            $customer_info['month'] = $invoice->month;
            $response[] = $customer_info;

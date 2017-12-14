@@ -23,6 +23,7 @@ Route::resource('complains', 'ComplainController');
 Route::resource('expense_categories', 'ExpenseCategoryController');
 
 Route::resource('expenses', 'ExpenseController');
+Route::resource('announcements', 'AnnouncementController');
 
 // Graph URL
 Route::get('/dashboard/graph_inex', 'HomeController@graph_inex')->name('graph_inex');

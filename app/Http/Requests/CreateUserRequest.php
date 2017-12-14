@@ -14,7 +14,7 @@ class CreateUserRequest extends FormRequest
      */
     public function authorize()
     {
-        if (Auth::user()->can('manage-all')){
+        if (Auth::user()->hasRole(['admin', 'agent'])) {
             return true;
         }
         return false;

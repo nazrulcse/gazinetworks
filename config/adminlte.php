@@ -253,6 +253,23 @@ return [
             ]
           ]
         ],
+        [
+          'text' => 'Announcement',
+          'icon' => 'bullhorn',
+          'role' => ['admin', 'agent'],
+          'submenu' => [
+            [
+              'text' => 'Announcements',
+              'url' => '/announcements',
+              'icon' => 'align-justify'
+            ],
+            [
+              'text' => 'New Announcement',
+              'url' => '/announcements/create',
+              'icon' => 'plus-square-o'
+            ]
+          ]
+        ],
 
         'Feedbacks',
 

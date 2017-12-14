@@ -10,21 +10,23 @@
   <div class='row'>
     <div class='box'>
       <div class='body-box box-body'>
-        <div class='graph-header'>
-          Expense Analysis - {{ date('F') }} {{ date('Y') }}
-        </div>
-        <div class='graph-body'>
-          <div class='row'>
-           <div class='col-lg-12'>
-             <div class='col-sm-6 braph-bg'>
-                 <div id="incomevsexpense" style="min-width: 310px; height: 300px; margin: 10px auto"></div>
-             </div>
-             <div class='col-sm-6 braph-bg'>
-                 <div id='expensesanalysis' style="min-width: 310px; height: 300px; margin: 10px auto"></div>
-             </div>
-           </div>
+        @role('admin')
+          <div class='graph-header'>
+            Expense Analysis - {{ date('F') }} {{ date('Y') }}
           </div>
-        </div>
+          <div class='graph-body'>
+            <div class='row'>
+             <div class='col-lg-12'>
+               <div class='col-sm-6 braph-bg'>
+                   <div id="incomevsexpense" style="min-width: 310px; height: 300px; margin: 10px auto"></div>
+               </div>
+               <div class='col-sm-6 braph-bg'>
+                   <div id='expensesanalysis' style="min-width: 310px; height: 300px; margin: 10px auto"></div>
+               </div>
+             </div>
+            </div>
+          </div>
+        @endrole
 
         <div class='graph-header'>
           Invoice - {{ date('F') }} {{ date('Y') }}
@@ -55,26 +57,28 @@
                     <div class="progress">
                       <div data-percentage="0%" style="width: {{ $invoice_data['paid_per'] }}%;" class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <div class='row'>
-                      <div class='col-lg-12 statictics'>
-                        <div class='col-sm-6'>
-                           <h3> Weekly Statistics </h3>
-                           <ul>
-                               <li> Total Invoice Generated: {{ $invoice_data['total_amount'] }} Taka </li>
-                               <li> Total Paid: {{ $invoice_data['total_paid'] }} Taka </li>
-                               <li> Total Due: {{ $invoice_data['total_amount'] - $invoice_data['total_paid'] }} Taka </li>
-                           </ul>
-                        </div>
-                        <div class='col-sm-6'>
-                            <h3> Monthly Statistics </h3>
-                           <ul>
-                               <li> Total Invoice Generated: {{ $invoice_data['total_amount'] }} Taka </li>
-                               <li> Total Paid: {{ $invoice_data['total_paid'] }} Taka </li>
-                               <li> Total Due: {{ $invoice_data['total_amount'] - $invoice_data['total_paid'] }} Taka </li>
-                           </ul>
+                    @role('admin')
+                      <div class='row'>
+                        <div class='col-lg-12 statictics'>
+                          <div class='col-sm-6'>
+                             <h3> Weekly Statistics </h3>
+                             <ul>
+                                 <li> Total Invoice Generated: {{ $invoice_data['total_amount'] }} Taka </li>
+                                 <li> Total Paid: {{ $invoice_data['total_paid'] }} Taka </li>
+                                 <li> Total Due: {{ $invoice_data['total_amount'] - $invoice_data['total_paid'] }} Taka </li>
+                             </ul>
+                          </div>
+                          <div class='col-sm-6'>
+                              <h3> Monthly Statistics </h3>
+                             <ul>
+                                 <li> Total Invoice Generated: {{ $invoice_data['total_amount'] }} Taka </li>
+                                 <li> Total Paid: {{ $invoice_data['total_paid'] }} Taka </li>
+                                 <li> Total Due: {{ $invoice_data['total_amount'] - $invoice_data['total_paid'] }} Taka </li>
+                             </ul>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    @endrole
                 </div>
             </div>
           </div>
@@ -115,12 +119,14 @@
              </tbody>
             </table>
           </div>
-          <div class='graph-header'>
-            Income vs Expense - {{ date('F') }} {{ date('Y') }}
-          </div>
-          <div class='graph-body'>
-            <div id='d_chart' style='min-width: 310px; height: 300px; margin: 10px auto'></div>
-          </div>
+          @role('admin')
+            <div class='graph-header'>
+              Income vs Expense - {{ date('F') }} {{ date('Y') }}
+            </div>
+            <div class='graph-body'>
+              <div id='d_chart' style='min-width: 310px; height: 300px; margin: 10px auto'></div>
+            </div>
+          @endrole
         </div>
       </div>
     </div>
