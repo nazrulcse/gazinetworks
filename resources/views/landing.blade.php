@@ -12,6 +12,7 @@
     <meta name="description" content="Kid Template for Children and child.">
     <meta name="keywords" content="child,children,school,childcare,colorful">
     <meta name="author" content="2goodtheme">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Unicase:700" rel="stylesheet">
 
     <title>Dish Cable &amp; ISP Billing - Home Page</title>
     <!-- Swiper Slider CSS -->
@@ -36,17 +37,32 @@
             <div class="container">
                 <div class="gt_top3_scl_icon">
                     <ul class="gt_hdr3_scl_icon">
-                        <li><a href="http://www.facebook.com/thesoftking"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="http://www.twitter/thesoftking"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="http://plus.google.com/thesoftking"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="http://linkdin.com/thesoftking"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="http://youtube.com/thesoftking"><i class="fa fa-youtube"></i></a></li>
+                        <li>
+                            <a href="https://www.facebook.com/syftetit" target="_blank">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/SyftetLtd" target="_blank">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/syftet/" target="_blank">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/channel/UCVPyFdbHv5haeqL-3bpVIEg/videos" target="_blank">
+                                <i class="fa fa-youtube"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="gt_hdr_3_ui_element">
                     <ul>
-                        <li><i class="fa fa-phone"></i>+123456789</li>
-                        <li><i class="fa fa-envelope-o"></i>software@thesoftking.com</li>
+                        <li><i class="fa fa-phone"></i>+8801722-647240</li>
+                        <li><i class="fa fa-envelope-o"></i>info@gazinetwork.one</li>
                     </ul>
                 </div>
             </div>
@@ -54,7 +70,7 @@
         <div class="gt_top3_menu default_width">
             <div class="container">
                 <div class="gt-logo">
-                    <a><img src="{{asset('public/images/logo.png')}}" alt=""></a>
+                    <a><img src="{{asset('public/images/logo.png')}}" alt="" width="190"></a>
                 </div>
                 <nav class="gt_hdr3_navigation">
                     <!-- Responsive Buttun -->
@@ -65,13 +81,14 @@
                     </a>
                     <!-- Responsive Buttun -->
                     <ul class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <li class="active"><a>Home</a></li>
-                        <li class=""><a href="about-us.html">About Us</a></li>
-                        <li class=""><a href="package_view.html">Package</a>
+                        <li class="active">
+                          <a href="<?php base_path(); ?>">Home</a>
                         </li>
-                        <li  class=" "><a href="contact.html" >Contact Us</a></li>
+                        <li class=""><a href="#about-us">About Us</a></li>
+                        <li class=""><a href="#package">Package</a>
+                        </li>
+                        <li  class=" "><a href="#contact-us" >Contact Us</a></li>
                         <li  class=" "><a href="{{ route('login') }}">Login</a></li>
-                        {{--<li  class=" "><a href="{{ route('register') }}">Register</a></li>--}}
                     </ul>
                 </nav>
             </div>
@@ -87,22 +104,28 @@
                 <li class="swiper-slide">
                     <img src="{{asset('public/extra-images/1483791108.jpg')}}" alt="">
                     <div class="gt_banner_text gt_slide_1">
-                        <h3>Welcome To Softking Cable Channel </h3>
-                        <h2>It is a Bold text test</h2>
+                        <h3>Welcome To Gazi Network </h3>
+                        <h2>
+                            We offers wide range of services.
+                        </h2>
                     </div>
                 </li>
                 <li class="swiper-slide">
                     <img src="{{asset('public/extra-images/1483791142.jpg')}}" alt="">
                     <div class="gt_banner_text gt_slide_1">
-                        <h3>small text banner test</h3>
-                        <h2>Bold text banner test</h2>
+                        <h3>
+                            In clear high definition network
+                        </h3>
+                        <h2>
+                            Digital cable connection.
+                        </h2>
                     </div>
                 </li>
                 <li class="swiper-slide">
                     <img src="{{asset('public/extra-images/1483791168.jpg')}}" alt="">
                     <div class="gt_banner_text gt_slide_1">
-                        <h3>Slider small message test</h3>
-                        <h2>Slider Bold message test</h2>
+                        <h3>Premium service offer.</h3>
+                        <h2>Starting from Content to Digital Setup.</h2>
                     </div>
                 </li>
             </ul>
@@ -113,40 +136,49 @@
     <!--Banner Wrap End-->
 
     <!--Main Content Wrap Start-->
-    <div class="gt_main_content_wrap">
+    <div class="gt_main_content_wrap" id='about-us'>
         <!--Banner Services Wrap Start-->
         <div class="gt_servicer">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="gt_main_services bg_1">
+                        <div class="gt_main_services">
                             <i class="icon-write-board text-center"></i>
                             <h5 class="text-center">Coonection FEE</h5>
-                            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.</p>
+                            <p>A connection fee applies to all users and to provide first connection we take cost 1000tk only.</p>
                         </div>
                     </div>
 
                     <div class="col-md-3">
-                        <div class="gt_main_services bg_2">
+                        <div class="gt_main_services">
                             <i class="icon-teacher-showing-on-whiteboard text-center"></i>
                             <h5 class="text-center">FTP Information</h5>
-                            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet</p>
+                            <p>
+                                Built on a client-server model architecture and uses
+                                separate control and data connections.
+                            </p>
 
                         </div>
                     </div>
 
                     <div class="col-md-3">
-                        <div class="gt_main_services bg_3"><i class="icon-compass text-center"></i>
+                        <div class="gt_main_services"><i class="icon-compass text-center"></i>
                             <h5 class="text-center">Cable Information</h5>
-                            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet</p>
+                            <p>
+                                Different types of network cables, such as coaxial cable, optical fiber cable
+                                are used depending on the network
+                            </p>
                         </div>
                     </div>
 
                     <div class="col-md-3">
-                        <div class="gt_main_services bg_4">
+                        <div class="gt_main_services">
                             <i class="icon-number-blocks text-center"></i>
                             <h5 class="text-center">Traning Information</h5>
-                            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet</p>
+                            <p>
+                                we have developed a suite of complementary courses,
+                                available either through face-to-face training.
+                            </p>
 
                         </div>
                     </div>
@@ -161,7 +193,14 @@
                 <div class="gt_hdg_1">
                     <h3>What we Services You</h3>
                     <span><img src="{{asset('public/images/hdg-01.png')}}" alt=""></span>
-                    <p>Lorem Ipsum&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard ddummy text ever since the 1500s, when an unknowdn printer took af ghalley of type and scrambled dit to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                    <p>
+                        Gazi Network brings out immense benefits for all parties involved: Viewers, Operators, and the
+                        Government. Clients of Gazi Network shall get enhanced services and network quality comparing
+                        with existing analog cable & ISP, large number of offers in multiple packages.
+
+                        It has also the facility to Dish Bussiness such as record TV channel's program, Smart UI (User Interface), Channel
+                        Guide, Video on Demand, Games, Interactive Applications etc.
+                    </p>
                 </div>
 
             </div>
@@ -179,7 +218,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
                         <div class="gt_facts_wrap">
-                            <h2 class="counter">7</h2>
+                            <h2 class="counter">700</h2>
                             <span>Total Customer</span>
                         </div>
                         <span class="facts_border bg_1"></span>
@@ -200,7 +239,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="gt_facts_wrap">
-                            <h2 class="counter">4</h2>
+                            <h2 class="counter">5</h2>
                             <span>Total Staff</span>
                         </div>
                         <span class="facts_border bg_4"></span>
@@ -212,64 +251,77 @@
         <!--Facts and Figure Wrap End-->
 
         <!--Popular Courses Wrap Start-->
-        <section>
+        <section id="package">
             <div class="container">
                 <div class="gt_hdg_1">
                     <h3>Popular Package</h3>
-                    <span><img src="{{asset('public/images/hdg-01.png')}}" alt=""></span>
+                    <span><img src="./gazinet_files/hdg-01.png" alt=""></span>
                 </div>
 
 
                 <!--Popular Courses List Wrap Start-->
-                <div id="filterable-item-holder-1">
-                    <div class="filterable-item all 1 col-md-4 col-sm-6 col-xs-12">
+                <div id="filterable-item-holder-1" class="masoned"
+                     style="position: relative; height: 1936px; overflow: hidden;">
+                    <div class="filterable-item all 1 col-md-4 col-sm-6 col-xs-12"
+                         style="position: absolute; left: 0px; top: 0px;">
                         <div class="gt_latest_course2_wrap default_width">
                             <figure>
-                                <img src="{{asset('public/extra-images/latest-course-01.jpg')}}" alt="">
+                                <img src="{{asset('public/images/package.png')}}" alt="">
                                 <figcaption>
-                                    <div class="course_price">1000</div>
+                                    <div class="course_price">500</div>
                                     <div class="course_category bg_1">1.5mb</div>
                                 </figcaption>
                             </figure>
                             <div class="gt_latest_course_des default_width">
-                                <h5><a href="#">1.5mb  package1200</a></h5>
-                                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.<a href="#">Read more</a></p>
+                                <h5><a href="http://gazinetwork.one/#">1.5mb package 500tk</a></h5>
+                                <p>
+                                    Package feature allows users to switch between DATA mode & premium mode of Network.
+                                    <a href="http://gazinetwork.one/#">Read more</a>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="filterable-item all 1 col-md-4 col-sm-6 col-xs-12">
+                    <div class="filterable-item all 1 col-md-4 col-sm-6 col-xs-12"
+                         style="position: absolute; left: 0px; top: 708px;">
                         <div class="gt_latest_course2_wrap default_width">
                             <figure>
-                                <img src="{{asset('public/extra-images/latest-course-01.jpg')}}" alt="">
+                                <img src="{{asset('public/images/package.png')}}" alt="">
                                 <figcaption>
-                                    <div class="course_price">1500</div>
+                                    <div class="course_price">1000</div>
                                     <div class="course_category bg_1">2.5mb</div>
                                 </figcaption>
                             </figure>
                             <div class="gt_latest_course_des default_width">
-                                <h5><a href="#">2.5mb  package2000</a></h5>
-                                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.<a href="#">Read more</a></p>
+                                <h5><a href="http://gazinetwork.one/#">2.5mb package 1000tk</a></h5>
+                                <p>
+                                    Package feature allows users to switch between DATA mode & premium mode of Network.
+                                    <a href="http://gazinetwork.one/#">Read more</a>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="filterable-item all 1 col-md-4 col-sm-6 col-xs-12">
+                    <div class="filterable-item all 1 col-md-4 col-sm-6 col-xs-12"
+                         style="position: absolute; left: 0px; top: 1416px;">
                         <div class="gt_latest_course2_wrap default_width">
                             <figure>
-                                <img src="{{asset('public/extra-images/latest-course-01.jpg')}}" alt="">
+                                <img src="{{asset('public/images/package.png')}}" alt="">
                                 <figcaption>
-                                    <div class="course_price">2500</div>
+                                    <div class="course_price">2000</div>
                                     <div class="course_category bg_1">3.5mb</div>
                                 </figcaption>
                             </figure>
                             <div class="gt_latest_course_des default_width">
-                                <h5><a href="#">3.5mb  package2500</a></h5>
-                                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.<a href="#">Read more</a></p>
+                                <h5><a href="http://gazinetwork.one/#">3.5mb package 2000</a></h5>
+                                <p>
+                                    Package feature allows users to switch between DATA mode & premium mode of Network.
+                                    <a href="http://gazinetwork.one/#">Read more</a>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="gt_view_more default_width">
-                    <a href="package_view.html">View All Package</a>
+                    <a href="#">View All Package</a>
                 </div>
                 <!--Popular Courses List Wrap End-->
 
@@ -326,7 +378,7 @@
 
 
     <!--Footer Wrap Start-->
-    <footer>
+    <footer id='contact-us'>
 
         <!--Footer Wrap Start-->
         <div class="gt_footer_bg default_width">
@@ -336,13 +388,31 @@
                         <div class="gt_office_wrap default_width" style="margin-top: 30px; overflow: hidden">
                             <div class="gt_foo_about widget">
                                 <h5 class="text-center">About Dish Cable &amp; ISP Billing</h5>
-                                <p>Lorem Ipsum&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                <p>
+                                    ABH Cable/Dish/ISP Billing service is a great online
+                                    based bussiness accounting for cable TV operator or ISP company.
+                                </p>
                                 <ul>
-                                    <li><a href="http://www.facebook.com/thesoftking"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="http://www.twitter/thesoftking"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="http://plus.google.com/thesoftking"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="http://linkdin.com/thesoftking"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="http://youtube.com/thesoftking"><i class="fa fa-youtube"></i></a></li>
+                                    <li>
+                                        <a href="https://www.facebook.com/syftetit" target="_blank">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/SyftetLtd" target="_blank">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/company/syftet/" target="_blank">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.youtube.com/channel/UCVPyFdbHv5haeqL-3bpVIEg/videos" target="_blank">
+                                            <i class="fa fa-youtube"></i>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -356,9 +426,11 @@
                                     <div class="widget">
                                         <h5>Our Address</h5>
                                         <ul class="gt_team1_contact_info">
-                                            <li><i class="fa fa-map-marker"></i>Garden Street, Ring Road, Shyamoli, Dhaka</li>
-                                            <li><i class="fa fa-phone"></i>+123456789 </li>
-                                            <li><i class="fa fa-envelope"></i> software@thesoftking.com</li>
+                                            <li><i class="fa fa-map-marker"></i>House #262, DOHS, Mirpur-12,
+                                                Dhaka
+                                            </li>
+                                            <li><i class="fa fa-phone"></i>+8801722-647240</li>
+                                            <li><i class="fa fa-envelope"></i> info@gazinetwork.one</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -375,8 +447,15 @@
         <div class="copyright_bg default_width">
             <div class="container">
                 <div class="copyright_wrap default_width">
-                    <p>© All Copyright Reserved.</p>
-                    <span>Cable &amp; ISP</span>
+                    <p>
+                        Copyright <?php echo date("Y"); ?>© All Right Reserved.
+                    </p>
+                    <span>
+                        Powered by 
+                        <a href="http://www.syftet.com" style="cursor: pointer; color: #80cd33; font-weight: bold; ">
+                          Syftet
+                        </a>
+                    </span>
                 </div>
             </div>
         </div>

@@ -33,6 +33,8 @@ Route::group(['prefix' => '/v1'], function(){
     Route::post('contacts/store', 'API\v1\ContactController@store');
     Route::post('complain/store', 'API\v1\ComplainController@store');
     Route::get('announcements', 'API\v1\AnnouncementController@index');
+    Route::get('/expenses/new', 'API\v1\ExpenseController@new');
+    Route::post('/expenses/store', 'API\v1\ExpenseController@store');
 
 });
 

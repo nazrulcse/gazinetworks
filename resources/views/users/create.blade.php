@@ -37,7 +37,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('email', 'Email:', ['class' => 'control-label']) !!}
-                            {!! Form::text('email', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::text('email', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 

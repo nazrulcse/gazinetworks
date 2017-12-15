@@ -31,7 +31,6 @@ class CreateUserRequest extends FormRequest
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:255',
             'address' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
             'customer_id' => 'unique:users|required|string|'
         ];
     }

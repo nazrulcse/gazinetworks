@@ -723,18 +723,21 @@ ul.gt_hdr3_scl_icon li a{
 	position: absolute;
 }
 .gt_banner_text h3{
-	font-size: 53px;
-	color: #737474;
+	font-size: 45px;
+	color: #ffffff;
 	line-height: 50px;
-	margin: 0px 0px 10px;
-	font-family: inherit;
+	margin: 130px 0px 10px;
+	font-family: 'Cormorant Unicase', serif;
+	text-shadow: 1px 2px 15px #000000;
 }
 .gt_banner_text h2{
-	font-size: 73px;
+	font-size: 60px;
 	font-weight: 600;
-	font-family: inherit;
+	font-family: 'Cormorant Unicase', serif;
 	line-height: 70px;
 	margin: 0px 0px 10px;
+	color: #dfdfdf !important;
+	text-shadow: 1px 2px 15px #999999;
 }
 .gt_banner_text > a{
 	margin-right: 10px;
@@ -811,7 +814,7 @@ ul.gt_hdr3_scl_icon li a{
 */
 .gt_servicer{
 	position:relative;
-	margin-top:-50px;
+	margin-top: 50px;
 	float: left;
 	width: 100%;
 	z-index: 10;
@@ -821,21 +824,23 @@ ul.gt_hdr3_scl_icon li a{
     width: 100%;
     padding: 40px 30px 50px;
     position: relative;
+    background: #cccccc;
+    color: #333;
 }
 .gt_main_services >i{
 	font-size:50px;
 	margin-bottom: 23px;
-	color: #fff;
+	color: #333;
 	display: block;
 } 
 .gt_main_services h5{
 	margin-bottom:18px;
-	color: #fff;
+	color: #000;
 	font-weight: 600;
 }
 .gt_main_services p{
 	font-size:14px;
-	color: #fff;
+	color: #333;
 }
 .gt_main_services a {
 	float: right;
@@ -865,7 +870,7 @@ ul.gt_hdr3_scl_icon li a{
 	background:#896ac3;
 }
 .gt_main_services:hover{
-	background-color: #222;
+	/*background-color: #222;*/
 }
 /*
 	  ==============================================================
