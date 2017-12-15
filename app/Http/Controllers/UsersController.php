@@ -22,11 +22,11 @@ class UsersController extends Controller
         }elseif($request->has('customers')){
             $users = Role::where('name','customer')->first()->users();
             if($request->q) {
-                echo $request->q;
                 $users = $users->where('name', 'LIKE', "%{$request['q']}%")
                          ->orWhere('address', 'LIKE', "%{$request['q']}%")
                          ->orWhere('customer_house', 'LIKE', "%{$request['q']}%")
-                         ->orWhere('customer_road', 'LIKE', "%{$request['q']}%");
+                         ->orWhere('customer_road', 'LIKE', "%{$request['q']}%")
+                         ->orWhere('customer_id', 'LIKE', "%{$request['q']}%");
             }
             $users = $users->get();
         }else{

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Validator;
 use App\ExpenseCategory;
+use Illuminate\Support\Facades\Auth;
 
 class ExpenseController extends Controller
 {
@@ -47,6 +48,8 @@ class ExpenseController extends Controller
         ])->validate();
 
         $input = $request->all();
+        $input['is_approved'] = true;
+        $input['user_id'] = Auth::user()->id;
         $expense = Expense::create($input);
         if($expense) {
             return Redirect::to('expenses');

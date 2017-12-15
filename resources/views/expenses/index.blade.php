@@ -19,34 +19,30 @@
             @include('flash::message')
 
             <div class="box">
-                <div class="box-header">
-
-                </div>
-
                 <div class="box-body">
                     <table id="example2" class="table table-hover beaccount-table table-striped">
                         <thead>
                         <tr>
+                            <th>User</th>
                             <th>Date</th>
                             <th>Category</th>
                             <th>Title</th>
                             <th>Description</th>
                             <th>Amount</th>
-                            <th>Voucher No</th>
-                            <th>Received By</th>
+                            <th>Voucher</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($expenses as $expense )
                             <tr>
+                                <td>{{ $expense->user ? $expense->user->name : $expense->received_by }}</td>
                                 <td>{{$expense->date}}</td>
                                 <td>{{$expense->category}}</td>
                                 <td>{{$expense->title}}</td>
                                 <td>{{$expense->description}}</td>
                                 <td>{{$expense->amount}}</td>
                                 <td>{{$expense->voucher_no}}</td>
-                                <td>{{ $expense->received_by }}</td>
                                 @role('admin')
                                   <td class="text-right">
                                      <a class="btn btn-small btn-warning action-btn" href="/expenses/{{ $expense->id }}/edit">

@@ -43,9 +43,7 @@
                                 <th>TV</th>
                                 <th>Bill</th>
                             @endif
-                            @role('admin')
                             <th>Actions</th>
-                            @endrole
                         </tr>
                         </thead>
                         <tbody>
@@ -60,7 +58,7 @@
                                 </td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->phone}}</td>
-                                <td><img src="{{$user->image}}" style="height: 50px; width: 50px"></td>
+                                <td><img src="{{$user->image ? $user->image : '/public/images/default.png' }}" style="height: 50px; width: 50px"></td>
                                 <td>{{$user->address}}</td>
                                 @if(request()->has('agents'))
                                     <td>{{$user->work_zone}}</td>
