@@ -26,7 +26,7 @@ class PaymentController extends Controller{
                  $row['id'] = $payment->id;
                  $row['month'] = $payment->invoice->month;
                  $row['amount'] = $payment->amount;
-                 $row['date'] = $payment->created_at->format('d/m/Y');
+                 $row['date'] = $payment->created_at->format('Y-m-d');
                  $response[] = $row;
             }
             return response()->json(['meta' => array('status' => $this->successStatus), 'response' => $response]);

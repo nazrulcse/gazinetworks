@@ -3,11 +3,15 @@
         @include('flash::message')
 
         <div class="box">
-            <div class="box-header">
-
-            </div>
-
             <div class="box-body">
+                <div class="text-center pull-right" style='margin-bottom: -50px;'>
+                    <div class="input-group" style="  width: 300px; margin: auto;padding-bottom: 10px;">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control pull-right" id="reservation">
+                    </div>
+                </div>
                 <table id="example2" class="table table-hover beaccount-table table-striped">
                     <thead>
                     <tr>

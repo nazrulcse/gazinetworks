@@ -63,17 +63,41 @@
                           <div class='col-sm-6'>
                              <h3> Weekly Statistics </h3>
                              <ul>
-                                 <li> Total Invoice Generated: {{ $invoice_data['total_amount'] }} Taka </li>
-                                 <li> Total Paid: {{ $invoice_data['total_paid'] }} Taka </li>
-                                 <li> Total Due: {{ $invoice_data['total_amount'] - $invoice_data['total_paid'] }} Taka </li>
+                                 <li> 
+                                    <a href='/invoices'>
+                                      Total Invoice Generated: {{ $invoice_data['total_amount'] }} Taka
+                                    </a>
+                                  </li>
+                                 <li> 
+                                   <a href='/payments'>
+                                     Total Paid: {{ $invoice_data['total_paid'] }} Taka 
+                                   </a>
+                                 </li>
+                                 <li> 
+                                   <a href='/invoices'>
+                                     Total Due: {{ $invoice_data['total_amount'] - $invoice_data['total_paid'] }} Taka 
+                                   </a>
+                                 </li>
                              </ul>
                           </div>
                           <div class='col-sm-6'>
                               <h3> Monthly Statistics </h3>
                              <ul>
-                                 <li> Total Invoice Generated: {{ $invoice_data['total_amount'] }} Taka </li>
-                                 <li> Total Paid: {{ $invoice_data['total_paid'] }} Taka </li>
-                                 <li> Total Due: {{ $invoice_data['total_amount'] - $invoice_data['total_paid'] }} Taka </li>
+                                 <li> 
+                                    <a href='/invoices'>
+                                      Total Invoice Generated: {{ $invoice_data['total_amount'] }} Taka
+                                    </a>
+                                  </li>
+                                 <li> 
+                                   <a href='/payments'>
+                                     Total Paid: {{ $invoice_data['total_paid'] }} Taka 
+                                   </a>
+                                 </li>
+                                 <li> 
+                                   <a href='/invoices'>
+                                     Total Due: {{ $invoice_data['total_amount'] - $invoice_data['total_paid'] }} Taka 
+                                   </a>
+                                 </li>
                              </ul>
                           </div>
                         </div>

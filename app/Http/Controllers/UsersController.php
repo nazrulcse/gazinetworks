@@ -52,9 +52,7 @@ class UsersController extends Controller
         $input['customer_connection_date'] = date('Y-m-d', strtotime($request['customer_connection_date']));
 
         if ($request->has('customer_tv_count')){
-
-            $input['password'] = bcrypt($input['customer_id']);
-
+            $input['password'] = bcrypt($input['phone']);
         }else{
 
             $input['password'] = bcrypt($input['password']);

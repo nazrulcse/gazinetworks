@@ -1,32 +1,16 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Payments')
 
 @section('content_header')
     <h1>
         All Payments
-
     </h1>
 @stop
 
 
 @section('content')
-
-    <div class="form-group text-center">
-        <label>Search Between Dates</label>
-
-        <div class="input-group" style="  width: 300px; margin: auto;padding-bottom: 10px;">
-            <div class="input-group-addon">
-                <i class="fa fa-calendar"></i>
-            </div>
-            <input type="text" class="form-control pull-right" id="reservation">
-        </div>
-        <!-- /.input group -->
-    </div>
-
-    @include('payments._payment_table')
-
-
+  @include('payments._payment_table')
 @stop
 @section('js')
 
@@ -71,8 +55,6 @@
                 }).then(function() {
                     $("#destroy-form").off("submit").submit();
                 }, function(dismiss) {
-                    // dismiss can be 'cancel', 'overlay',
-                    // 'close', and 'timer'
                     if (dismiss === 'cancel') {
                         swal('Cancelled', 'Delete Cancelled :)', 'error');
                     }
