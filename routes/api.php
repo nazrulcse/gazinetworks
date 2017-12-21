@@ -24,6 +24,7 @@ Route::group(['prefix' => '/v1'], function(){
     Route::get('/customers', 'API\v1\CustomerController@index');
     Route::get('/customers/{id}', 'API\v1\CustomerController@show');
     Route::get('/customers/{customer_id}/payments', 'API\v1\CustomerController@payments');
+    Route::post('/customers/store', 'API\v1\CustomerController@store');
     Route::post('/invoice/store', 'API\v1\InvoiceController@store');
     Route::get('/invoices', 'API\v1\InvoiceController@index');
     Route::get('/invoices/{id}', 'API\v1\InvoiceController@show');
