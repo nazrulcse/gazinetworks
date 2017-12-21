@@ -37,7 +37,7 @@ class CustomerController extends Controller
             'customer_id' => 'unique:users|required|string|'
         ]);
         if ($validator->fails()) {
-            $response['message'] = $validator->errors();
+            $response['message'] = $validator->errors()->first();
             return response()->json(['status' => 500, 'response' => $response]);
         }
 
@@ -52,6 +52,7 @@ class CustomerController extends Controller
 
         if(($user)){
             $response['message'] = "Customer created successfully";
+            $response['user_id'] = $user->id;
             return response()->json(['status' => 200, 'response' => $response]);
         }else{
             $response['message'] = "Customer can't be created";
