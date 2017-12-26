@@ -24,10 +24,12 @@ Route::group(['prefix' => '/v1'], function(){
     Route::get('/customers', 'API\v1\CustomerController@index');
     Route::get('/customers/{id}', 'API\v1\CustomerController@show');
     Route::get('/customers/{customer_id}/payments', 'API\v1\CustomerController@payments');
+    Route::get('/customers/{customer_id}/payments/state', 'API\v1\CustomerController@payment_state');
     Route::post('/invoice/store', 'API\v1\InvoiceController@store');
     Route::get('/invoices', 'API\v1\InvoiceController@index');
     Route::get('/invoices/{id}', 'API\v1\InvoiceController@show');
     Route::get('payments', 'API\v1\PaymentController@index');
+    Route::post('/payments/collection', 'API\v1\PaymentController@collection');
     Route::post('payment/store', 'API\v1\PaymentController@store');
     Route::post('payment/{}', 'API\v1\PaymentController@store');
     Route::post('contacts/store', 'API\v1\ContactController@store');

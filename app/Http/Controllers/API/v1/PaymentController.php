@@ -60,6 +60,13 @@ class PaymentController extends Controller{
         }
     }
 
+    public function collection(Request $request) {
+      $collections = Payment::where('receiver_id', '=', $request->id)
+      ->where('date', '>=', $request->from)
+      ->where('date', '<=', $request->to)->sum('amount');
+      return response()->json(['response' => array('amount' => $collections)]);
+    }
+
     public function destroy($id){
 
         $paymnet = Payment::find($id);
