@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API\v1;
 
-use App\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Role;
 use App\User;
 use App\Payment;
 use App\Invoice;
+use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
 {
@@ -27,6 +27,40 @@ class CustomerController extends Controller
       	$response[$key] = $api_customer;
       }
       return response()->json(['status' => 200, 'response' => $response]);
+    }
+
+    public function store(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'customer_id' => 'unique:users|required|string|'
+        ]);
+        if ($validator->fails()) {
+            $response['message'] = $validator->errors();
+            return response()->json(['status' => 500, 'response' => $response]);
+        }
+
+        $input = $request->all();
+        $input['customer_is_free'] = $request->has('customer_is_free') ? 1 : 0;
+        $input['customer_set_top_box_iv'] = $request->has('customer_set_top_box_iv') ? 1 : 0;
+        $input['customer_status'] = $request->has('customer_status') ? 1 : 0;
+        $input['customer_connection_date'] = date('Y-m-d', strtotime($request['customer_connection_date']));
+        $input['password'] = bcrypt($input['phone']);
+
+        $user = User::create($input);
+
+        if(($user)){
+            $response['message'] = "Customer created successfully";
+            return response()->json(['status' => 200, 'response' => $response]);
+        }else{
+            $response['message'] = "Customer can't be created";
+            return response()->json(['status' => 100, 'response' => $response]);
+        }
+
+        $user->attachRole(Role::where('name','customer')->first());
+
     }
 
     public function show($id) {
