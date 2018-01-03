@@ -90,7 +90,7 @@ class HomeController extends Controller
       $g_invoice = array('unpaid' => 0, 'paid' => 0, 'partial' => 0, 'total_amount' => 0, 'total_paid' => 0);
       $invoices = $this->invoice();
       $g_invoice['total_amount'] = $invoices->sum('invoice_amount');
-      $g_invoice['total_invoice'] = $invoices->count();
+      $g_invoice['total_invoice'] = $invoices->count() > 0 ? $invoices->count() : 1;
       foreach($invoices as $key => $invoice) {
         $paid = $invoice->payments->sum('amount');
         $g_invoice['total_paid'] += $paid;
