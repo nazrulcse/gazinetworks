@@ -70,7 +70,7 @@
         <div class="gt_top3_menu default_width">
             <div class="container">
                 <div class="gt-logo">
-                    <a><img src="{{asset('public/images/logo.png')}}" alt="" width="190"></a>
+                    <a><img src="{{asset('public/images/final.png')}}" alt="" width="60" height="60"></a>
                 </div>
                 <nav class="gt_hdr3_navigation">
                     <!-- Responsive Buttun -->

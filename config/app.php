@@ -164,6 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -184,6 +185,8 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         App\Providers\FormMacroServiceProvider::class,
         NitinKaware\DependableSoftDeletable\SoftDeletableServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
 
 
     ],
@@ -238,6 +241,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Carbon' => 'Carbon\Carbon',
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

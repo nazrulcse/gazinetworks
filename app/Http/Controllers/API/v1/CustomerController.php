@@ -37,7 +37,7 @@ class CustomerController extends Controller
             'customer_id' => 'unique:users|required|string|'
         ]);
         if ($validator->fails()) {
-            $response['message'] = $validator->errors()->first();
+            $response = $validator->errors()->first();
             return response()->json(['status' => 500, 'response' => $response]);
         }
 
@@ -51,15 +51,14 @@ class CustomerController extends Controller
         $user = User::create($input);
 
         if(($user)){
-            $response['message'] = "Customer created successfully";
-            $response['user_id'] = $user->id;
-            return response()->json(['status' => 200, 'response' => $response]);
+            $user->attachRole(Role::where('name','customer')->first());
+            $response = "Customer created successfully";
+            $id = $user->id;
+            return response()->json(['status' => 200, 'response' => $response, 'id'=> $id]);
         }else{
-            $response['message'] = "Customer can't be created";
+            $response = "Customer can't be created";
             return response()->json(['status' => 100, 'response' => $response]);
         }
-
-        $user->attachRole(Role::where('name','customer')->first());
 
     }
 

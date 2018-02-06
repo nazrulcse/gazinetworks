@@ -30,3 +30,10 @@ Route::get('/dashboard/graph_inex', 'HomeController@graph_inex')->name('graph_in
 Route::get('/dashboard/graph_income_expense', 'HomeController@graph_income_expense')->name('graph_income_expense');
 Route::get('/dashboard/graph_expense', 'HomeController@graph_expense')->name('graph_expense');
 Route::get('/dashboard/graph_invoice', 'HomeController@graph_invoice')->name('graph_invoice');
+
+// Route for view/blade file.
+Route::get('/importExport', 'MaatwebsiteController@importExport');
+// Route for export/download tabledata to .csv, .xls or .xlsx
+//Route::get('downloadExcel/{type}', 'MaatwebsiteController@downloadExcel');
+// Route for import excel data to database.
+Route::post('/importExcel', 'MaatwebsiteController@importExcel');
