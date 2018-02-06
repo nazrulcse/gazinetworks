@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Role;
 use App\User;
 use App\Payment;
+use App\Invoice;
 use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
@@ -99,5 +100,15 @@ class CustomerController extends Controller
          $response[] = $row;
        }
        return response()->json(['status' => 200, 'response' => $response]);
+    }
+
+    public function payment_state(Request $request) {
+      $response = array();
+      $payments = Invoice::where('customer_id', $request->customer_id)
+      ->where('year', $request->year)->where('is_paid', true)->get()->groupBy('month');
+      foreach ($payments as $key => $payment) {
+        $response[] = $key;
+      }
+      return response()->json(['status' => 200, 'response' => $response]);
     }
 }
