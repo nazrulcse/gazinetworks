@@ -152,13 +152,6 @@ return [
                     'icon'  => 'address-card-o',
                     'role'   => ['admin', 'agent'],
                 ],
-                [
-                    'text'  => 'Upload Customer',
-                    'url'   => '/importExport',
-                    'icon'  => 'address-card-o',
-                    'role'   => ['admin', 'agent'],
-                ],
-
             ]
         ],
 

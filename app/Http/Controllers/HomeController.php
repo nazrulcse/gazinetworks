@@ -9,6 +9,7 @@ use App\Invoice;
 use App\Expense;
 use App\Role;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -104,10 +105,10 @@ class HomeController extends Controller
           $g_invoice['unpaid'] += 1;
         }
       }
-/*      $g_invoice['paid_per'] = round(($g_invoice['paid'] / $g_invoice['total_invoice']) * 100.0, 2);
-      $g_invoice['unpaid_per'] = round(($g_invoice['unpaid'] / $g_invoice['total_invoice']) * 100.0, 2);
-      $g_invoice['partial_per'] = round(($g_invoice['partial'] / $g_invoice['total_invoice']) * 100.0, 2);
-      return $g_invoice;*/
+        $g_invoice['paid_per'] = round(($g_invoice['paid'] / $g_invoice['total_invoice']) * 100.0, 2);
+        $g_invoice['unpaid_per'] = round(($g_invoice['unpaid'] / $g_invoice['total_invoice']) * 100.0, 2);
+        $g_invoice['partial_per'] = round(($g_invoice['partial'] / $g_invoice['total_invoice']) * 100.0, 2);
+        return $g_invoice;
     }
 
     public function connection($year) {

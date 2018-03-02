@@ -33,6 +33,7 @@ Route::get('/dashboard/graph_invoice', 'HomeController@graph_invoice')->name('gr
 
 // Route for view/blade file.
 Route::get('/importExport', 'MaatwebsiteController@importExport');
+Route::get('/importExport/createinvoice', 'MaatwebsiteController@createAllInvoice');
 // Route for export/download tabledata to .csv, .xls or .xlsx
 //Route::get('downloadExcel/{type}', 'MaatwebsiteController@downloadExcel');
 // Route for import excel data to database.

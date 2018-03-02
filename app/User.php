@@ -27,7 +27,8 @@ class User extends Authenticatable
         'name', 'email', 'password','phone','work_zone','nid','address','monthly_salary','image',
         'customer_id', 'customer_road', 'customer_house', 'customer_flat', 'customer_tv_count',
         'customer_monthly_bill', 'customer_discount', 'customer_connection_charge', 'customer_is_free',
-        'customer_set_top_box_iv','customer_status','customer_zone','customer_connection_date'
+        'customer_set_top_box_iv','customer_status','customer_zone','customer_connection_date',
+        'customer_mobile_no', 'customer_phone_no'
     ];
 
     protected $hidden = [

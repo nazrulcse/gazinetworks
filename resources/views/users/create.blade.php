@@ -51,7 +51,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('address', 'Address:', ['class' => 'control-label']) !!}
-                            {!! Form::text('address', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::text('address', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
@@ -131,7 +131,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_monthly_bill', 'Monthly Bill:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_monthly_bill', null, ['class' => 'form-control']) !!}
+                                {!! Form::text('customer_monthly_bill', null, ['class' => 'form-control', 'required' => 'required']) !!}
                             </div>
                         </div>
 

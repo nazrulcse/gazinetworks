@@ -41,9 +41,9 @@
                         <tbody>
                         @foreach($invoices as $invoice)
                             <tr>
-                                <td>{{$invoice->user->name}}</td>
-                                <td>{{$invoice->user->customer_id}}</td>
-                                <td>{{$invoice->user->customer_monthly_bill}}</td>
+                                <td>{{$invoice->user['name']}}</td>
+                                <td>{{$invoice->user['customer_id']}}</td>
+                                <td>{{$invoice->user['customer_monthly_bill']}}</td>
                                 <td>{{$invoice->is_paid == 1 ? 'Full' : ($invoice->payments->sum('amount')) }}</td>
                                 <td>{{$invoice->is_paid == 1 ? 'None' : ($invoice->invoice_amount - $invoice->payments->sum('amount')) }}</td>
                                 <td>{{$invoice->month.', '.$invoice->year}}</td>

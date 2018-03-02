@@ -41,7 +41,7 @@ class CustomCommand extends Command
      */
     public function handle()
     {
-        $date = \Carbon\Carbon::now();
+        $date = new Carbon('last day of last month');
         $month_name = $date->format('F');
         $year = $date->year;
         $day = $date->day;

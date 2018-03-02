@@ -29,7 +29,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('email', 'Email:', ['class' => 'control-label']) !!}
-                            {!! Form::text('email', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::text('email', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
@@ -43,7 +43,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('address', 'Address:', ['class' => 'control-label']) !!}
-                            {!! Form::text('address', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::text('address', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
@@ -59,21 +59,21 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('work_zone', 'Work Zone:', ['class' => 'control-label']) !!}
-                            {!! Form::text('work_zone', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::text('work_zone', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('nid', 'NID:', ['class' => 'control-label']) !!}
-                            {!! Form::text('nid', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::text('nid', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('monthly_salary', 'Monthly Salary:', ['class' => 'control-label']) !!}
-                            {!! Form::text('monthly_salary', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                            {!! Form::text('monthly_salary', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
@@ -97,28 +97,28 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_road', 'Road:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_road', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_road', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_house', 'House:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_house', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_house', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_flat', 'Flat:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_flat', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_flat', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_tv_count', 'Number of TV:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_tv_count', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_tv_count', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
@@ -132,14 +132,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_discount', 'Discount:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_discount', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_discount', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_connection_charge', 'Connection Charge:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_connection_charge', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_connection_charge', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
@@ -150,7 +150,7 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    {!! Form::text('customer_connection_date', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                    {!! Form::text('customer_connection_date', null, ['class' => 'form-control']) !!}
                                 </div>
                                 <!-- /.input group -->
                             </div>
@@ -159,13 +159,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('customer_zone', 'Zone:', ['class' => 'control-label']) !!}
-                                {!! Form::text('customer_zone', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::text('customer_zone', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::label('', 'Additional Info:', ['class' => 'control-label', 'required' => 'required']) !!}</br>
+                                {!! Form::label('', 'Additional Info:', ['class' => 'control-label']) !!}</br>
 
                                 {!! Form::checkbox('customer_is_free','1', null, ['id' => 'free-checkbox']) !!}
                                 {!! Form::label('customer_is_free','Free of charge', ['class' => 'my-checkbox']) !!}

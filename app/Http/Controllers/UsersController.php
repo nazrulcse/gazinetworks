@@ -109,6 +109,8 @@ class UsersController extends Controller
         $input['customer_set_top_box_iv'] = $request->has('customer_set_top_box_iv') ? 1 : 0;
         $input['customer_status'] = $request->has('customer_status') ? 1 : 0;
         $input['customer_connection_date'] = date('Y-m-d', strtotime($request['customer_connection_date']));
+        $input['customer_status'] = $user['customer_status'];
+//        dd($user['customer_status']);
         if(!empty($request['new_password'])){
             $input['password'] = bcrypt($request['new_password']);
         }

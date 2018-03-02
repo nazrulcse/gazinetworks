@@ -394,23 +394,8 @@
                                 </p>
                                 <ul>
                                     <li>
-                                        <a href="https://www.facebook.com/syftetit" target="_blank">
+                                        <a href="https://www.facebook.com/gazinetwork" target="_blank">
                                             <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://twitter.com/SyftetLtd" target="_blank">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.linkedin.com/company/syftet/" target="_blank">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.youtube.com/channel/UCVPyFdbHv5haeqL-3bpVIEg/videos" target="_blank">
-                                            <i class="fa fa-youtube"></i>
                                         </a>
                                     </li>
                                 </ul>
@@ -426,10 +411,8 @@
                                     <div class="widget">
                                         <h5>Our Address</h5>
                                         <ul class="gt_team1_contact_info">
-                                            <li><i class="fa fa-map-marker"></i>House #262, DOHS, Mirpur-12,
-                                                Dhaka
-                                            </li>
-                                            <li><i class="fa fa-phone"></i>+8801722-647240</li>
+
+                                            <li><i class="fa fa-phone"></i>+8801754-121265</br>  +8801754-121266 </li>
                                             <li><i class="fa fa-envelope"></i> info@gazinetwork.one</li>
                                         </ul>
                                     </div>

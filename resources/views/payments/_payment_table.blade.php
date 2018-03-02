@@ -30,9 +30,9 @@
                     <tbody>
                     @foreach($payments as $payment )
                         <tr>
-                            <td>{{$payment->invoice->user->name}}</td>
-                            <td>{{$payment->invoice->user->customer_id}}</td>
-                            <td>{{$payment->user->name}}</td>
+                            <td>{{$payment->invoice->user['name']}}</td>
+                            <td>{{$payment->invoice->user['customer_id']}}</td>
+                            <td>{{$payment->user['name']}}</td>
                             <td>{{$payment->invoice->month.', '.$payment->invoice->year}}</td>
                             <td>{{$payment->invoice->invoice_amount}}</td>
                             <td>{{ $payment->amount }}</td>
