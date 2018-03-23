@@ -24,6 +24,8 @@
 
             <div class="box">
 
+                @include ('invoices._search_invoice')
+
                 <div class="box-body">
                     <table id="example2" class="table table-hover beaccount-table table-striped">
                         <thead>
@@ -75,6 +77,8 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <div class="pull-right">{{ $invoices->appends(request()->query())->links() }}</div>
+
                 </div>
             </div>
         </div>
@@ -88,7 +92,7 @@
 
     <script type="text/javascript">
 
-        $(document).ready(function () {
+/*        $(document).ready(function () {
             $('#example2').DataTable({
                 "paging": true,
                 "lengthChange": false,
@@ -103,7 +107,7 @@
 
             $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
 
-        });
+        });*/
     </script>
 
 @stop

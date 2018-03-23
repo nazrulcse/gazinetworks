@@ -11,8 +11,11 @@ Route::get('/report/expense', 'ReportsController@expense')->name('expense_report
 Route::resource('users', 'UsersController');
 Route::get('/users/{id}/change_status', 'UsersController@change_status');
 Route::get('/customers/search', 'UsersController@search');
+Route::get('/customers/report', 'UsersController@customer_report');
+Route::get('/agents/report', 'UsersController@agent_report');
 
 Route::resource('invoices', 'InvoiceController');
+Route::get('/invoice_reports', 'InvoiceController@invoice_report');
 
 Route::resource('payments', 'PaymentController');
 

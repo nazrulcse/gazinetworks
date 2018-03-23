@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
+use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
@@ -18,19 +19,32 @@ class UsersController extends Controller
     {
 
         if($request->has('agents')){
-            $users = Role::where('name','agent')->first()->users()->get();
+            $users = Role::where('name','agent')->first()->users()->paginate(50);
         }elseif($request->has('customers')){
             $users = Role::where('name','customer')->first()->users();
+
+            if($request->has('active')){
+                $users = $users->where('customer_status', 1);
+
+            }elseif ($request->has('inactive')){
+                $users = $users->where('customer_status', 0);
+
+            }elseif ($request->has('free')){
+                $users = $users->where('customer_is_free', 1);
+            }else{
+                $users;
+            }
+
             if($request->q) {
                 $users = $users->where('name', 'LIKE', "%{$request['q']}%")
-                         ->orWhere('address', 'LIKE', "%{$request['q']}%")
-                         ->orWhere('customer_house', 'LIKE', "%{$request['q']}%")
-                         ->orWhere('customer_road', 'LIKE', "%{$request['q']}%")
-                         ->orWhere('customer_id', 'LIKE', "%{$request['q']}%");
+                    ->orWhere('address', 'LIKE', "%{$request['q']}%")
+                    ->orWhere('customer_house', 'LIKE', "%{$request['q']}%")
+                    ->orWhere('customer_road', 'LIKE', "%{$request['q']}%")
+                    ->orWhere('customer_id', 'LIKE', "%{$request['q']}%");
             }
-            $users = $users->get();
+            $users = $users->paginate(50);
         }else{
-            $users = User::all();
+            $users = User::paginate(50);
         }
 
         return view('users.index')->with(array('users' => $users, 'search' => $request->q));
@@ -58,6 +72,8 @@ class UsersController extends Controller
             $input['password'] = bcrypt($input['password']);
         }
 
+
+
         $image=$request->file('image');
         if($image){
             $image_name=str_random(20);
@@ -68,10 +84,12 @@ class UsersController extends Controller
             $success=$image->move($upload_path,$image_full_name);
             if($success){
                 $input['image']=$image_url;
+                $input['customer_status'] = 1;
                 $user = User::create($input);
             }
         }
         else{
+            $input['customer_status'] = 1;
             $user = User::create($input);
         }
 
@@ -141,11 +159,11 @@ class UsersController extends Controller
     }
 
     public function change_status($id) {
-      $user = User::find($id);
-      $user->customer_status = !$user->customer_status;
-      $user->save();
-      $role = $user->roles->first()->name;
-      return Redirect::to("users/{$user->id}?$role");
+        $user = User::find($id);
+        $user->customer_status = !$user->customer_status;
+        $user->save();
+        $role = $user->roles->first()->name;
+        return Redirect::to("users/{$user->id}?$role");
     }
 
     public function destroy($id)
@@ -173,6 +191,22 @@ class UsersController extends Controller
 
         return view('users.search_result')->with('users', $users);
 
+    }
+
+    public function customer_report(){
+        $customers = Role::where('name','customer')->first()->users()->get();
+        $inactive = $customers->where('customer_status', 0)->count();
+        $active = $customers->where('customer_status', 1)->count();
+        $free = $customers->where('customer_is_free', 1)->count();
+        return view('users.customer_report')->with('inactive', $inactive)->with('active', $active)->with('free', $free);
+    }
+
+    public function agent_report(Request $request){
+        $start_date = $request->sdate ? $request->sdate : date('Y-m-01');
+        $end_date = $request->edate ? $request->edate : date("Y-m-d");
+        $agents = Role::where('name','agent')->first()->users()->get();
+        $payment = Payment::whereBetween(DB::raw('DATE_FORMAT(date, "%Y-%m-%d")'), array($start_date, $end_date))->get();
+        return view('users.agent_report')->with(array('agents' => $agents, 'payment' =>$payment, 'sdate' => $start_date, 'edate' => $end_date));
     }
 
 }

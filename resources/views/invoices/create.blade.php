@@ -42,11 +42,23 @@
 
                 </div>
                 <div class="box-footer" style="padding: 28px">
-                    <button type="submit" class="btn btn-primary pull-right">Create {{ request()->has('is_agent')? "Agent" : "Customer" }}</button>
+                    <button type="submit" class="btn btn-primary pull-right">Create Invoice</button>
                     <a href="{{ URL::previous() }}" class="btn btn-danger pull-right" style="margin-right: 5px">Cancel</a>
                 </div>
 
                 {!! Form::close() !!}
+
+                <div class="Jumbotron">
+                    <div style="margin-left: 20px">
+                        <h1>Create All Invoice of Past Month</h1>
+                        <a class="btn btn-lg btn-success action-btn" href="{{ URL::to('/importExport/createinvoice') }}">
+                            <i class="fa fa-plus"></i> Create All Invoice
+                        </a>
+                    </div>
+
+                </div>
+
+
 
             </div>
         </div>

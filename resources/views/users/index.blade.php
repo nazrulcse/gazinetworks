@@ -4,6 +4,14 @@
 
 @section('content_header')
     <h1>{{ request()->has('agents')? "Agents List" : "Customers List" }}</h1>
+    @if (request()->has('active'))
+        <h4>Active Customers</h4>
+    @elseif(request()->has('inactive'))
+        <h4>Inactive Customers</h4>
+    @elseif(request()->has('free'))
+        <h4>Free of charge Customers</h4>
+    @else
+    @endif
 @stop
 
 
@@ -52,9 +60,9 @@
                             <tr>
                                 <td>{{$user->name}}</td>
                                 <td>
-                                   {!!
-                                      $user->customer_status ? "<span class='label label-success'> Active </span>" : "<span class='label label-default'> Inactive </span>"
-                                    !!}
+                                    {!!
+                                       $user->customer_status ? "<span class='label label-success'> Active </span>" : "<span class='label label-default'> Inactive </span>"
+                                     !!}
                                 </td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->phone}}</td>
@@ -109,6 +117,8 @@
                         @endforeach
                         </tbody>
                     </table>
+
+                    <div class="pull-right">{{ $users->appends(request()->query())->links() }}</div>
                 </div>
             </div>
         </div>
@@ -122,24 +132,24 @@
 
 
 @section('js')
-    <script type="text/javascript">
+    {{--    <script type="text/javascript">
 
-        $(document).ready(function () {
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "scrollX": '100%',
-                "autoWidth": false,
-                "dom": 'T<"clear">lfrtip',
-                "tableTools": {
-                    "sSwfPath": "/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"}
+            $(document).ready(function () {
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": true,
+                    "scrollX": '100%',
+                    "autoWidth": false,
+                    "dom": 'T<"clear">lfrtip',
+                    "tableTools": {
+                        "sSwfPath": "/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"}
+                });
+
+                $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
+
             });
-
-            $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
-
-        });
-    </script>
+        </script>--}}
 @stop

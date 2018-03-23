@@ -7,21 +7,37 @@ use App\Invoice;
 use App\Role;
 use App\User;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 
 class InvoiceController extends Controller
 {
     public function index(Request $request){
 
+        $status_array = array();
+
         if($request->has('paid')){
-            $invoices = Invoice::all()->where('is_paid', 1);
+            $invoices = Invoice::where('is_paid', 1)->paginate(50);
+            array_push($status_array, 1);
         }elseif($request->has('due')){
-            $invoices = Invoice::all()->where('is_paid', 0);
+            $invoices = Invoice::where('is_paid', 0)->paginate(50);
+            array_push($status_array, 0);
         }else{
-            $invoices = Invoice::all();
+            $invoices = Invoice::paginate(50);
+            array_push($status_array, 0,1);
         }
 
-        return view('invoices.index')->with('invoices', $invoices);
+        if($request->q) {
+            $invoices = Invoice::whereIn('is_paid', $status_array)
+                ->whereHas('User', function($query) use($request){
+
+                    $query->where('name', 'LIKE', '%'. $request['q'] .'%')
+                        ->orWhere('customer_id', 'LIKE', '%'. $request['q'] .'%');
+
+                })->paginate(50);
+        }
+
+        return view('invoices.index')->with(array('invoices' => $invoices, 'search' => $request->q));
     }
 
     public function create(){
@@ -85,6 +101,40 @@ class InvoiceController extends Controller
 
         flash('Invoice deleted')->success();
         return Redirect::to('invoices');
+    }
+
+    public function invoice_report(Request $request) {
+        $start_date = $request->sdate ? $request->sdate : date('Y-m-01');
+        $end_date = $request->edate ? $request->edate : date("Y-m-d");
+        $status = $request->status ? (int)$request->status : 0;
+        $g_invoice = $this->graph_invoice($start_date, $end_date);
+        $invoices = Invoice::whereBetween(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'), array($start_date, $end_date))->where('is_paid', $status)->paginate(50);
+        return view('invoices.report')->with(array('invoice_data' => $g_invoice, 'sdate' => $start_date, 'edate' => $end_date, 'invoices'=> $invoices));
+    }
+
+    public function graph_invoice($start_date, $end_date) {
+        $g_invoice = array('unpaid' => 0, 'paid' => 0, 'partial' => 0, 'total_amount' => 0, 'total_paid' => 0);
+        $invoices = Invoice::whereBetween(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'), array($start_date, $end_date))->get();
+        $g_invoice['total_amount'] = $invoices->sum('invoice_amount');
+        $g_invoice['total_invoice'] = $invoices->count() > 0 ? $invoices->count() : 1;
+        foreach($invoices as $key => $invoice) {
+            $paid = $invoice->payments->sum('amount');
+            $g_invoice['total_paid'] += $paid;
+            if($paid >= $invoice->invoice_amount) {
+                $g_invoice['paid'] += 1;
+            }
+            else if($paid > 0) {
+                $g_invoice['partial'] += 1;
+            }
+            else {
+                $g_invoice['unpaid'] += 1;
+            }
+        }
+
+        $g_invoice['paid_per'] = round(($g_invoice['paid'] / $g_invoice['total_invoice']) * 100.0, 2);
+        $g_invoice['unpaid_per'] = round(($g_invoice['unpaid'] / $g_invoice['total_invoice']) * 100.0, 2);
+        $g_invoice['partial_per'] = round(($g_invoice['partial'] / $g_invoice['total_invoice']) * 100.0, 2);
+        return $g_invoice;
     }
 
 }

@@ -111,7 +111,8 @@ return [
         [
           'text' => 'Dashboard',
           'icon' => 'dashboard',
-          'url' => '/dashboard' 
+          'url' => '/dashboard' ,
+          'role' => ['admin', 'agent']
         ],
         'MENU',
         [
@@ -133,6 +134,11 @@ return [
                     'icon'  => 'address-card',
 
                 ],
+                [
+                    'text'  => 'Agent Report',
+                    'url'   => 'agents/report',
+                    'icon'  => 'line-chart',
+                ],
             ]
         ],
         [
@@ -151,6 +157,11 @@ return [
                     'url'   => 'users/create?is_customer',
                     'icon'  => 'address-card-o',
                     'role'   => ['admin', 'agent'],
+                ],
+                [
+                    'text'  => 'Customer Report',
+                    'url'   => 'customers/report',
+                    'icon'  => 'line-chart',
                 ],
             ]
         ],
@@ -180,6 +191,11 @@ return [
                     'text'  => 'Create Invoice',
                     'url'   => '/invoices/create',
                     'icon'  => 'pencil'
+                ],
+                [
+                    'text'  => 'Invoice Report',
+                    'url'   => 'invoice_reports',
+                    'icon'  => 'line-chart',
                 ],
 
             ]

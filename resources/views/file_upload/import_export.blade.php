@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1>
-Upload Customer
+Generate All Invoice of Past Month
 
     </h1>
 @stop
