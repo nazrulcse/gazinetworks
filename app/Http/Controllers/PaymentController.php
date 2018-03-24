@@ -26,16 +26,25 @@ class PaymentController extends Controller
             $start_date = Carbon::createFromFormat('d/m/Y', $dates[0])->startOfDay();
             $end_date = Carbon::createFromFormat('d/m/Y', $dates[1])->endOfDay();
 
-            $payments = Payment::whereBetween('created_at', [$start_date, $end_date])->get();
+            $payments = Payment::whereBetween('created_at', [$start_date, $end_date])->whereHas('Invoice', function($query) use($request){
+
+                $query->where('customer_id','!=' , 0);
+
+            })->paginate(50);
+
+
             $pay_view = view('payments._payment_table')->with('payments', $payments)->render();
             return $pay_view;
-
-            \Log::info($payments);
 
 
         }else{
 
-            $payments = Payment::all();
+            $payments = Payment::whereHas('Invoice', function($query) use($request){
+
+                $query->where('customer_id','!=' , 0);
+
+            })->paginate(50);
+
             return view('payments.index')->with('payments', $payments);
 
         }
@@ -85,5 +94,15 @@ class PaymentController extends Controller
         flash('Payment deleted')->success();
         return Redirect::back();
 
+    }
+
+    public function other_income_payments(Request $request){
+        $payments = Payment::whereHas('Invoice', function($query) use($request){
+
+            $query->where('customer_id','==' , 0);
+
+        })->paginate(50);
+
+        return view('payments.other_income_payments')->with('payments', $payments);
     }
 }

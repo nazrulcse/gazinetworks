@@ -4,13 +4,7 @@
 
 @section('content_header')
     <h1>
-        @if (request()->has('paid'))
-            Paid Invoices List
-        @elseif (request()->has('due'))
-            Due Invoices List
-        @else
-            All Invoices List
-        @endif
+        Other Income Invoices List
 
     </h1>
 @stop
@@ -24,40 +18,36 @@
 
             <div class="box">
 
-                @include ('invoices._search_invoice')
-
                 <div class="box-body">
                     <table id="example2" class="table table-hover beaccount-table table-striped">
                         <thead>
                         <tr>
-                            <th>Invoice of</th>
-                            <th>Customer Id</th>
+                            <th>Title</th>
                             <th>Amount</th>
                             <th>Paid</th>
                             <th>Due</th>
                             <th>Bill Period</th>
-                            <th>Date</th>
+                            <th>Creation Date</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($invoices as $invoice)
                             <tr>
-                                <td>{{$invoice->user['name']}}</td>
-                                <td>{{$invoice->user['customer_id']}}</td>
-                                <td>{{$invoice->user['customer_monthly_bill']}}</td>
+                                <td>{{$invoice->other_invoice_title}}</td>
+                                <td>{{$invoice->invoice_amount}}</td>
                                 <td>{{$invoice->is_paid == 1 ? 'Full' : ($invoice->payments->sum('amount')) }}</td>
                                 <td>{{$invoice->is_paid == 1 ? 'None' : ($invoice->invoice_amount - $invoice->payments->sum('amount')) }}</td>
-                                <td>{{$invoice->month.', '.$invoice->year}}</td>
+                                <td>{{$invoice->date.' '.$invoice->month.', '.$invoice->year}}</td>
                                 <td>{{ date('d/m/Y', strtotime($invoice->created_at))}}</td>
                                 @role(['admin','agent'])
                                 <td class="text-right">
 
-                                    <a class="btn btn-small btn-success action-btn" href="{{ URL::to('invoices/' . $invoice->id.'?regular') }}">
+                                    <a class="btn btn-small btn-success action-btn" href="{{ URL::to('invoices/' . $invoice->id.'?other') }}">
                                         <i class="fa fa-money"></i>
                                     </a>
 
-                                    <a class="btn btn-small btn-info action-btn" href="{{ URL::to('invoices/' . $invoice->id . '/edit') }}">
+                                    <a class="btn btn-small btn-info action-btn" href="{{ URL::to('invoices/' . $invoice->id . '/edit?other') }}">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     @endrole
@@ -92,22 +82,22 @@
 
     <script type="text/javascript">
 
-/*        $(document).ready(function () {
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "dom": 'T<"clear">lfrtip',
-                "tableTools": {
-                    "sSwfPath": "/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"}
-            });
+        /*        $(document).ready(function () {
+                    $('#example2').DataTable({
+                        "paging": true,
+                        "lengthChange": false,
+                        "searching": true,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                        "dom": 'T<"clear">lfrtip',
+                        "tableTools": {
+                            "sSwfPath": "/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"}
+                    });
 
-            $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
+                    $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
 
-        });*/
+                });*/
     </script>
 
 @stop

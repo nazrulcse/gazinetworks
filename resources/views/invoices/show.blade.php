@@ -3,7 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Invoice of {{$user->name}}</h1>
+    @if (request()->has('regular'))
+        <h1>Invoice of {{$user->name}}</h1>
+    @else
+        <h1>Invoice of {{$invoice->other_invoice_title}}</h1>
+    @endif
 @stop
 
 @section('content')
@@ -20,30 +24,36 @@
 
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-md-3 col-lg-3 " align="center"> <img src="{{asset($user->image)}}" class="img-circle img-responsive" style="height: 100px; width: 100px"> </div>
+                                    <div class="col-md-3 col-lg-3 " align="center">
+                                        @if (request()->has('regular'))
+                                            <img src="{{asset($user->image)}}" class="img-circle img-responsive" style="height: 100px; width: 100px">
+                                        @endif
+                                    </div>
 
                                     <div class=" col-md-9 col-lg-9 ">
                                         <table class="table table-user-information">
                                             <tbody>
-                                            <tr>
-                                                <td>Email:</td>
-                                                <td>{{$user->email}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Phone:</td>
-                                                <td>{{$user->phone}}</td>
-                                            </tr>
+                                            @if (request()->has('regular'))
+                                                <tr>
+                                                    <td>Email:</td>
+                                                    <td>{{$user->email}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Phone:</td>
+                                                    <td>{{$user->phone}}</td>
+                                                </tr>
 
 
-                                            <tr>
-                                                <td>Address</td>
-                                                <td>{{$user->address}}</td>
-                                            </tr>
-                                            <tr>
+                                                <tr>
+                                                    <td>Address</td>
+                                                    <td>{{$user->address}}</td>
+                                                </tr>
+                                                <tr>
 
-                                                <td>Customer ID</td>
-                                                <td>{{$user->customer_id}}</td>
-                                            </tr>
+                                                    <td>Customer ID</td>
+                                                    <td>{{$user->customer_id}}</td>
+                                                </tr>
+                                            @endif
                                             <tr>
 
                                                 <td><h4><b>Invoice Month</b></h4></td>
@@ -51,7 +61,7 @@
                                             </tr>
                                             <tr>
                                                 <td><h4><b>Invoice Amount</b></h4></td>
-                                                <td id="invoice_amount"><h4>{{$user->customer_monthly_bill}}</h4></td>
+                                                <td id="invoice_amount"><h4>{{$invoice->invoice_amount}}</h4></td>
                                             </tr>
                                             @if($invoice->is_paid == 0)
                                                 <tr>
@@ -60,7 +70,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td><h4><b>Due</b></h4></td>
-                                                    <td id="invoice_due"><h4>{{$user->customer_monthly_bill - $invoice->payments->sum('amount')}}</h4></td>
+                                                    <td id="invoice_due"><h4>{{$invoice->invoice_amount - $invoice->payments->sum('amount')}}</h4></td>
                                                 </tr>
                                             @else
 

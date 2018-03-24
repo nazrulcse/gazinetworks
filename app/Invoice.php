@@ -13,7 +13,7 @@ class Invoice extends Model
     protected static $dependableRelationships = ['payments'];
 
     protected $fillable = [
-        'customer_id','invoice_amount','year','month','date','is_paid'
+        'customer_id','invoice_amount','year','month','date','is_paid','other_invoice_title'
     ];
     public function user()
     {

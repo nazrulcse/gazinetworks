@@ -8,6 +8,7 @@ use App\Role;
 use App\User;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
+use DateTime;
 
 
 class InvoiceController extends Controller
@@ -17,18 +18,18 @@ class InvoiceController extends Controller
         $status_array = array();
 
         if($request->has('paid')){
-            $invoices = Invoice::where('is_paid', 1)->paginate(50);
+            $invoices = Invoice::where('is_paid', 1)->where('customer_id','!=' , 0)->paginate(50);
             array_push($status_array, 1);
         }elseif($request->has('due')){
-            $invoices = Invoice::where('is_paid', 0)->paginate(50);
+            $invoices = Invoice::where('is_paid', 0)->where('customer_id','!=' , 0)->paginate(50);
             array_push($status_array, 0);
         }else{
-            $invoices = Invoice::paginate(50);
+            $invoices = Invoice::where('customer_id','!=' , 0)->paginate(50);
             array_push($status_array, 0,1);
         }
 
         if($request->q) {
-            $invoices = Invoice::whereIn('is_paid', $status_array)
+            $invoices = Invoice::whereIn('is_paid', $status_array)->where('customer_id','!=' , 0)
                 ->whereHas('User', function($query) use($request){
 
                     $query->where('name', 'LIKE', '%'. $request['q'] .'%')
@@ -50,23 +51,33 @@ class InvoiceController extends Controller
     public function store(Request $request){
 
         $input = $request->all();
-        $date = \Carbon\Carbon::now();
-        $day = $date->day;
-        $month_name = date("F", mktime(0, 0, 0, $request['month'], 15));
-        $customer_bill = User::where('id', $request['customer_id'])->first()->customer_monthly_bill;
+        $date = DateTime::createFromFormat("d-m-Y", $input['invoice_date']);
+        $month_name = date("F", mktime(0, 0, 0, $date->format("m"), 15));
+        $input['date'] = $date->format("d");
         $input['month'] = $month_name;
-        $input['invoice_amount'] = $customer_bill;
-        $input['date'] = $day;
+        $input['year'] = $date->format("Y");
 
-        if(Invoice::where('customer_id', '=' ,$request['customer_id'])->where('month', '=' ,$month_name)->where('year', '=' ,$request['year'])->exists()){
-            flash('Invoice already exists.')->info();
-            return Redirect::to('invoices');
+        if ($request->has('customer_id')){
 
+            $customer_bill = User::where('id', $request['customer_id'])->first()->customer_monthly_bill;
+            $input['invoice_amount'] = $customer_bill;
+
+
+            if(Invoice::where('customer_id', '=' ,$request['customer_id'])->where('month', '=' ,$month_name)->where('year', '=' ,$request['year'])->exists()){
+                flash('Invoice already exists.')->info();
+                return Redirect::to('invoices');
+
+            }else{
+                Invoice::create($input);
+                flash('Invoice created')->success();
+                return Redirect::to('invoices');
+            }
         }else{
             Invoice::create($input);
             flash('Invoice created')->success();
-            return Redirect::to('invoices');
+            return Redirect::to('other_income_invoices');
         }
+
     }
 
     public function show($id){
@@ -80,18 +91,29 @@ class InvoiceController extends Controller
         $invoice = Invoice::find($id);
         $month = date_parse($invoice->month);
         $month_number = ($month['month']);
-        return view('invoices.edit')->with('invoice',$invoice)->with('month', $month_number);
+
+        $date = new DateTime($invoice->date.'-'.$month_number.'-'.$invoice->year);
+        $formatted_date = $date->format('d-m-Y');
+        return view('invoices.edit')->with('invoice',$invoice)->with('formatted_date', $formatted_date);
     }
 
     public function update($id, Request $request){
 
         $invoice = Invoice::findOrFail($id);
         $input = $request->all();
-        $month_name = date("F", mktime(0, 0, 0, $request['month'], 15));
+        $date = DateTime::createFromFormat("d-m-Y", $input['invoice_date']);
+        $month_name = date("F", mktime(0, 0, 0, $date->format("m"), 15));
+        $input['date'] = $date->format("d");
         $input['month'] = $month_name;
+        $input['year'] = $date->format("Y");
         $invoice->fill($input)->save();
         flash('Invoice updated')->success();
-        return Redirect::to('invoices');
+        if ($request->has('other')){
+            return Redirect::to('other_income_invoices');
+        }else{
+            return Redirect::to('invoices');
+        }
+
     }
 
     public function destroy($id){
@@ -136,5 +158,12 @@ class InvoiceController extends Controller
         $g_invoice['partial_per'] = round(($g_invoice['partial'] / $g_invoice['total_invoice']) * 100.0, 2);
         return $g_invoice;
     }
+
+    public function other_income_invoices(){
+        $invoices = Invoice::where('customer_id', 0)->paginate(50);
+        return view('invoices.other_income_invoice_list')->with(array('invoices' => $invoices));
+
+    }
+
 
 }

@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Create Invoice</h1>
+    <h1>Other Income Invoices</h1>
 @stop
 
 @section('content')
@@ -18,27 +18,46 @@
                 {!! Form::open(['url' => '/invoices','enctype'=>'multipart/form-data']) !!}
                 <div class="box-body">
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('customer_id', 'Customer Id:', ['class' => 'control-label']) !!}
-                            {!! Form::select('customer_id', $customers,null, ['class' => 'form-control customer_select']) !!}
+                    @if (request()->has('other'))
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('other_invoice_title', 'Invoice Title:', ['class' => 'control-label']) !!}
+                                {!! Form::text('other_invoice_title', null, ['class' => 'form-control', 'required' => 'required']) !!}
 
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('year', 'Year:', ['class' => 'control-label']) !!}
-                            {!! Form::selectYear('year', 2010, 2030,null, ['class' => 'form-control customer_select']) !!}
-                        </div>
-                    </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('invoice_amount', 'Amount:', ['class' => 'control-label']) !!}
+                                {!! Form::text('invoice_amount', null, ['class' => 'form-control', 'required' => 'required']) !!}
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('month', 'Month:', ['class' => 'control-label']) !!}
-                            {!! Form::selectMonth('month',null, ['class' => 'form-control customer_select']) !!}
+                            </div>
                         </div>
-                    </div>
+
+                    @else
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('customer_id', 'Customer Id:', ['class' => 'control-label']) !!}
+                                {!! Form::select('customer_id', $customers,null, ['class' => 'form-control customer_select']) !!}
+
+                            </div>
+                        </div>
+
+                    @endif
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('invoice_date', 'Invoice Date:', ['class' => 'control-label']) !!}
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    {!! Form::text('invoice_date', null, ['class' => 'form-control', "data-date" => Carbon\Carbon::now() ]) !!}
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
 
                 </div>
                 <div class="box-footer" style="padding: 28px">
@@ -63,9 +82,9 @@
             </div>
         </div>
     </section>
-    @endsection
+@endsection
 
-<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+@section('js')
 
 
 
@@ -74,5 +93,11 @@
     $(document).ready(function () {
         $('.customer_select').select2()
 
+        $('#invoice_date').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy',
+        });
+
     });
 </script>
+@stop

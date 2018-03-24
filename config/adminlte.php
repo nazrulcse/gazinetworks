@@ -193,6 +193,16 @@ return [
                     'icon'  => 'pencil'
                 ],
                 [
+                    'text'  => 'Other Income Invoices List',
+                    'url'   => '/other_income_invoices',
+                    'icon'  => 'asterisk'
+                ],
+                [
+                    'text'  => 'Create Other Income Invoice',
+                    'url'   => '/invoices/create?other',
+                    'icon'  => 'plus'
+                ],
+                [
                     'text'  => 'Invoice Report',
                     'url'   => 'invoice_reports',
                     'icon'  => 'line-chart',
@@ -211,6 +221,12 @@ return [
                     'text'  => 'Payment List',
                     'url'   => '/payments',
                     'icon'  => 'list'
+                ],
+
+                [
+                    'text'  => 'Other Income Payment List',
+                    'url'   => '/other_income_payments',
+                    'icon'  => 'asterisk'
                 ],
 
             ]

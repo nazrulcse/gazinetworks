@@ -16,8 +16,10 @@ Route::get('/agents/report', 'UsersController@agent_report');
 
 Route::resource('invoices', 'InvoiceController');
 Route::get('/invoice_reports', 'InvoiceController@invoice_report');
+Route::get('/other_income_invoices', 'InvoiceController@other_income_invoices');
 
 Route::resource('payments', 'PaymentController');
+Route::get('/other_income_payments', 'PaymentController@other_income_payments');
 
 Route::resource('contacts', 'ContactController');
 

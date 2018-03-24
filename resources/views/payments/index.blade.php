@@ -11,6 +11,7 @@
 
 @section('content')
   @include('payments._payment_table')
+
 @stop
 @section('js')
 
@@ -18,17 +19,6 @@
 
 
         $(document).ready(function () {
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "dom": 'T<"clear">lfrtip',
-                "tableTools": {
-                    "sSwfPath": "/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"}
-            });
 
             $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
 
@@ -77,19 +67,6 @@
                     console.log("Y");
                     $(".contentXX").replaceWith(data);
                     console.log(data);
-
-
-                    $('#example2').DataTable({
-                        "paging": true,
-                        "lengthChange": false,
-                        "searching": true,
-                        "ordering": true,
-                        "info": true,
-                        "autoWidth": false,
-                        "dom": 'T<"clear">lfrtip',
-                        "tableTools": {
-                            "sSwfPath": "/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"}
-                    });
 
                     $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
 
