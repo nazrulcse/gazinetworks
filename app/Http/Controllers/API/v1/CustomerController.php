@@ -62,7 +62,7 @@ class CustomerController extends Controller
         $input = $request->all();
         $input['customer_is_free'] = $request->has('customer_is_free') ? 1 : 0;
         $input['customer_set_top_box_iv'] = $request->has('customer_set_top_box_iv') ? 1 : 0;
-        $input['customer_status'] = $request->has('customer_status') ? 1 : 0;
+        $input['customer_status'] = 1 ;
         $input['customer_connection_date'] = date('Y-m-d', strtotime($request['customer_connection_date']));
         $input['password'] = bcrypt($input['phone']);
 

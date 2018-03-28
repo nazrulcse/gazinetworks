@@ -46,3 +46,13 @@ Route::group(['prefix' => '/v1','middleware' => 'auth:api'], function(){
     Route::post('details', 'API\v1\UserController@details');
 
 });
+
+Route::group(['prefix' => '/v2'], function(){
+    Route::get('/customers', 'API\v2\CustomerController@index');
+    Route::get('/payments', 'API\v2\PaymentController@index');
+    Route::get('/expenses', 'API\v2\ExpenseController@index');
+    Route::get('/invoices', 'API\v2\InvoiceController@index');
+    Route::post('/invoices/store', 'API\v2\InvoiceController@store');
+    Route::get('/invoices/other_income_invoices', 'API\v2\InvoiceController@other_income_invoices');
+
+});

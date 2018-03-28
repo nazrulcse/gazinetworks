@@ -63,7 +63,7 @@ class InvoiceController extends Controller
             $input['invoice_amount'] = $customer_bill;
 
 
-            if(Invoice::where('customer_id', '=' ,$request['customer_id'])->where('month', '=' ,$month_name)->where('year', '=' ,$request['year'])->exists()){
+            if(Invoice::where('customer_id', '=' ,$request['customer_id'])->where('month', '=' ,$input['month'])->where('year', '=' ,$input['year'])->exists()){
                 flash('Invoice already exists.')->info();
                 return Redirect::to('invoices');
 
