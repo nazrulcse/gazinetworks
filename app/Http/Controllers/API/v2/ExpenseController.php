@@ -71,6 +71,7 @@ class ExpenseController extends Controller
         $response['date'] = $expense->date;
         $response['amount'] = $expense->amount;
         $response['description'] = $expense->description;
+        $response['is_approved'] = $expense->is_approved;
 
 
         return response()->json(['status' => 200, 'response' => $response]);
