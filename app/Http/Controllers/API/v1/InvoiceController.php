@@ -48,7 +48,7 @@ class InvoiceController extends Controller{
 
     public function index() {
         $response = array();
-        $invoices = Invoice::all()->where('is_paid', false)->all();
+        $invoices = Invoice::all()->where('is_paid', false)->where('customer_id','!=' , 0)->all();
         foreach ($invoices as $key => $invoice) {
            $customer_info = array();
            $customer = $invoice->user;

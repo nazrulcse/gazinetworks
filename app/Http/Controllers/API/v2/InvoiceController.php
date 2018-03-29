@@ -20,7 +20,7 @@ class InvoiceController extends Controller
 
     public function index(Request $request) {
         $response = array();
-        $invoices = Invoice::where('is_paid', false);
+        $invoices = Invoice::where('is_paid', false)->where('customer_id','!=' , 0);
 
         if ($request->has('page')) {
             $invoices = $invoices->paginate(20);
@@ -35,7 +35,7 @@ class InvoiceController extends Controller
             $customer_info['address'] = $customer->address;
             $customer_info['mobile'] = $customer->phone;
             $customer_info['tv'] = $customer->customer_tv_count;
-            $customer_info['staus'] = $invoice->is_paid;
+            $customer_info['status'] = $invoice->is_paid;
             $customer_info['amount'] = $invoice->invoice_amount;
             $customer_info['paid'] = $invoice->payments->sum('amount');
             $customer_info['customer_id'] = $customer->id;
@@ -75,7 +75,7 @@ class InvoiceController extends Controller
             }else{
 
                 if ($invoice->save()) {
-                    $response['invoice_id'] = $invoice;
+                    $response['invoice_id'] = $invoice->id;
                     $response['message'] = "Invoice created successfully";
                     return response()->json(['meta' => array('status' => $this->successStatus), 'response' => $response]);
                 } else {
@@ -85,6 +85,8 @@ class InvoiceController extends Controller
 
             }
         }else{
+            $invoice['invoice_amount'] = $input['invoice_amount'];
+            $invoice['other_invoice_title'] = $input['other_invoice_title'];
             if ($invoice->save()) {
                 $response['invoice_id'] = $invoice->id;
                 $response['message'] = "Other Income Invoice created successfully";
@@ -110,6 +112,7 @@ class InvoiceController extends Controller
 
         foreach ($invoices as $key => $invoice) {
             $row = array();
+            $row['id'] = $invoice->id;
             $row['title'] = $invoice->other_invoice_title;
             $row['amount'] = $invoice->invoice_amount;
             $row['paid'] = $invoice->is_paid == 1 ? 'Full' : ($invoice->payments->sum('amount'));
