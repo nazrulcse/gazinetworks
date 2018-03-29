@@ -17,50 +17,6 @@ class ExpenseController extends Controller
     public $successStatus = 200;
     public $failureStatus = 500;
 
-    /*public function index(Request $request)
-    {
-        if($request->has('id')){
-
-            if ($request->has('date') && $request['date'] != '') {
-                $date = Carbon::createFromFormat('d/m/Y', $request['date'])->startOfDay();
-                $expenses = Expense::where('user_id', $request['id'])
-                    ->where('date', $date);
-            }else{
-                $expenses = Expense::where('user_id', $request['id']);
-            }
-
-            if ($request->has('page')) {
-                $expenses = $expenses->paginate(20);
-            } else {
-                $expenses = $expenses->get();
-            }
-
-            if ($expenses) {
-                $response = array();
-                foreach ($expenses as $key => $expense) {
-                    $row = array();
-                    $row['title'] = $expense->title;
-                    $row['amount'] = $expense->amount;
-                    $row['category'] = $expense->id;
-                    $row['expense_by'] = $expense->user->name;
-                    $row['amount'] = $expense->amount;
-                    $row['date'] = $expense->date->format('Y-m-d');
-                    $response[] = $row;
-
-                }
-                return response()->json(['meta' => array('status' => $this->successStatus), 'response' => $response]);
-            } else {
-                $response['message'] = "Payments can't be received";
-                return response()->json(['meta' => array('status' => $this->failureStatus), 'response' => $response]);
-            }
-
-        }else{
-            $response['message'] = "There is no User ID";
-            return response()->json(['meta' => array('status' => $this->failureStatus), 'response' => $response]);
-
-        }
-    }*/
-
     public function index(Request $request)
     {
         if($request->has('id')){
@@ -83,9 +39,9 @@ class ExpenseController extends Controller
                 $response = array();
                 foreach ($expenses as $key => $expense) {
                     $row = array();
+                    $row['id'] = $expense->id;
                     $row['title'] = $expense->title;
-                    $row['amount'] = $expense->amount;
-                    $row['category'] = $expense->id;
+                    $row['category'] = $expense->category;
                     $row['expense_by'] = $expense->user->name;
                     $row['amount'] = $expense->amount;
                     $row['date'] = $expense->date;
@@ -102,6 +58,22 @@ class ExpenseController extends Controller
             $response['message'] = "There is no Receiver ID";
             return response()->json(['meta' => array('status' => $this->failureStatus), 'response' => $response]);
         }
+    }
+
+    public function show($id) {
+        $expense = Expense::find($id);
+
+        $response = array();
+        $response['title'] = $expense->title;
+        $response['expense_by'] = $expense->user->name;
+        $response['received_by'] = $expense->received_by;
+        $response['category'] = $expense->category;
+        $response['date'] = $expense->date;
+        $response['amount'] = $expense->amount;
+        $response['description'] = $expense->description;
+
+
+        return response()->json(['status' => 200, 'response' => $response]);
     }
 
 }

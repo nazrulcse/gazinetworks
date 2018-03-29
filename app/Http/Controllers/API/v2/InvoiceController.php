@@ -99,6 +99,35 @@ class InvoiceController extends Controller
 
     }
 
+    public function show($id) {
+        $invoice = Invoice::find($id);
+        $response = array();
+
+        $response['invoice_id'] = $invoice->id;
+        $response['month'] = $invoice->month;
+        $response['year'] = $invoice->year;
+        $response['date'] = $invoice->date;
+        $response['amount'] = $invoice->invoice_amount;
+
+        if ($invoice->customer_id != 0){
+
+            $customer = $invoice->user;
+            $response['name'] = $customer->name;
+            $response['address'] = $customer->address;
+            $response['mobile'] = $customer->phone;
+            $response['tv'] = $customer->customer_tv_count;
+            $response['line_charge'] = $customer->customer_monthly_bill;
+        }else{
+
+            $response['other_invoice_title'] = $invoice->other_invoice_title;
+        }
+
+        $response['paid'] = $invoice->payments->sum('amount');
+        $response['due'] = $response['amount'] - $response['paid'];
+        $response['status'] = $invoice->is_paid;
+        return response()->json(['status' => 200, 'response' => $response]);
+    }
+
     public function other_income_invoices(Request $request){
 
         $response = array();
