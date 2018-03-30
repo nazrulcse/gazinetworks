@@ -105,9 +105,16 @@ class CustomerController extends Controller
         return response()->json(['status' => 200, 'response' => $response]);
     }
 
-    public function payments($customer_id) {
+    public function payments($customer_id, Request $request) {
        $response = array();
-       $payments = Payment::join('invoices', 'payments.invoice_id', '=', 'invoices.id')->where('invoices.customer_id', $customer_id)->get();
+       $payments = Payment::join('invoices', 'payments.invoice_id', '=', 'invoices.id')->where('invoices.customer_id', $customer_id);
+
+        if ($request->has('page')) {
+            $payments = $payments->paginate(20);
+        } else {
+            $payments = $payments->get();
+        }
+
        foreach ($payments as $key => $payment) {
          $row = array();
          $row['id'] = $payment->id;
