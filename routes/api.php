@@ -50,6 +50,7 @@ Route::group(['prefix' => '/v1','middleware' => 'auth:api'], function(){
 Route::group(['prefix' => '/v2'], function(){
     Route::get('/customers', 'API\v2\CustomerController@index');
     Route::get('/payments', 'API\v2\PaymentController@index');
+    Route::get('/payments/other_income_payments', 'API\v2\PaymentController@other_income_payments');
     Route::get('/expenses', 'API\v2\ExpenseController@index');
     Route::get('/expenses/{id}', 'API\v2\ExpenseController@show');
     Route::get('/invoices', 'API\v2\InvoiceController@index');
